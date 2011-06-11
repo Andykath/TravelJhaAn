@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>..::  Viajes Ucab  ::..</title>
+<style type="text/css">
+<!--
+body {
+	background-image:url(../imagenes/prueba.jpg);
+}
+.email {
+	color: #FFFFFF;
+	font-weight: bold;
+	font-family: Helvetica;
+}
+.style1 {
+	font-family: Helvetica;
+	font-size: 36px;
+}
+.style2 {font-size: 24px}
+.style3 {font-size: 18px}
+.style6 {font-family: Helvetica; font-size: 14px; }
+.style13 {color: #FFFFFF; font-size: 12px; font-family: Helvetica;}
+.style15 {
+	color: #FFFFFF;
+	font-weight: bold;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 24px;
+}
+.style16 {color: #FFFFFF}
+.style17 {color: #FF0000}
+.style18 {color: #00FF00}
+-->
+</style></head>
+
+
+<body>
+<script language="javascript" type="text/javascript" src="../js/datetimepicker_css.js"></script> 
+
+<script language="javascript">
+
+/*function validar()
+{
+document.getElementByid('mensaje3').innerHTML='PUTA';
+if (document.form.usuario.value.length==0 || document.form.pw.value.length==0) {document.getElementByid('mensaje3').innterHTML='PUTA'; return 0;}
+document.form.submit();
+}*/
+
+function validar1()
+{
+if (document.form1.solicitud.value.length==0) return 0;
+document.form1.submit();
+}
+
+function validar2()
+{
+
+if (document.form2.nombre.value.length == 0 || document.form2.apellido.value.length == 0 || document.form2.nombre2.value.length == 0 || document.form2.apellido2.value.length == 0 || document.form2.usuario.value.length == 0
+	|| document.form2.pw2.value.length==0 || document.form2.fecha.value.length==0 || document.form2.telefono1.value.length==0 || 
+	document.form2.sexo.options[0].selected==true || document.form2.telefono2.value.length==0 || document.form2.pais.options[0].selected==true || document.form2.estcivil.options[0].selected==true || document.form2.direccion.value.length==0 )
+{
+//alert("Debe llenar todos los campos!");
+document.getElementById('mensaje3').innerHTML = 'Debe llenar todos los campos!';
+return 0;
+
+}
+document.form2.submit();
+}
+
+var nav4 = window.Event ? true : false;
+
+function acceptLetr(evt){
+
+var key = nav4 ? evt.which : evt.keyCode;
+return ((key < 48 || key > 57) && (key != 8 && key != 0 && key != 46))
+	
+}
+
+function acceptNum(evt){	
+// NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57	
+var key = nav4 ? evt.which : evt.keyCode;	
+return (key <= 13 || (key >= 48 && key <= 57));
+}
+
+
+</script>
+<table width="1151" height="1096"  border="0" align="center"  cellpadding="0" cellspacing="0">
+<tr bgcolor="#000066">
+    <td height="130" colspan="8" align="center"><img src="/viajesucabbd/imagenes/todo.jpg" /></td>
+  </tr>
+  <tr bgcolor="#000066"> 
+    <td width="547" height="80" align="center"><span class="style15"></span></td>
+    <td width="604" height="80" align="right">
+      <label></label>
+<form action="../php/validarlogin.php" method="POST" id="form" name="form">      <table width="60%" height="70" border="0" align="right" cellpadding="0" cellspacing="0">
+        <tr align="left">
+          <td width="53%" class="style16"><label>            Email<br />
+            <input name="usuario" type="text" id="usuario"/>
+          </label></td>
+          <td width="32%" class="style16"><label>Contraseña<br />
+            <input name="pw" type="password" id="pw"/>
+          </label></td>
+          <td width="20%" align="left" class="style16"><label>
+            <input type="submit" name="submit" value="Entrar" />
+          </label></td>
+        </tr>
+      </table></form>
+     
+      <label></label>
+   
+    <div align="center"></div>
+    <form action="../php/consultarsolicitud.php" method="POST" id="form1" name="form1"><table width="27%" height="39" border="0" align="right" cellpadding="0" cellspacing="0">
+      
+    </table>
+    </form>
+    <p>&nbsp;</p>
+    <p align="right"><span class="style17"> {mensaje}<span class="style18">{mensaje2}</span></span></p></td>
+  </tr>
+  <tr>
+    <td height="19">
+    <marquee direction=right onMouseOver="this.stop()" onMouseOut="this.start()" >
+<font color="#000066" class="s">BIENVENIDOS</font></p>
+</marquee>    </td>
+    <td height="19">&nbsp;
+     <Marquee direction=left onMouseOver="this.stop()" onMouseOut="this.start()" >
+  <p><font color="#000066" class="s">VIAJES UCAB</font></p>
+<p>&nbsp;</p>
+</Marquee></td>
+  </tr>
+  
+    <td height="433" align="left" bgcolor="#000066"><img src="../imagenes/Fondo Azul.jpg" width="472" height="448" border="0" />
+      </form>
+    <td height="433" bgcolor="#000066" ><form id="form2" name="form2" method="post" action="../php/registrarse.php">
+      <table width="466" height="318" border="0" align="center" cellpadding="0" cellspacing="0" frame="box" bordercolor="#000066"  bgcolor="#FFFFFF">
+      <tr></tr>
+      <tr>
+        <td colspan="2" align="left"><strong><span class="style1"><span class="style2">Regístrate</span><br />
+          </span></strong><span class="style1"><span class="style3"> Es gratis y cualquiera puede unirse. <br />
+          <br />
+          </span></span></td>
+      </tr>
+      <tr>
+        <td width="137" height="30" align="right"><span class="style6">Nombre:</span></td>
+        <td width="270"><label>
+          <input type="text" name="nombre" id="nombre" onkeypress="return acceptLetr(event)"/>
+          <br />
+        </label></td>
+      </tr>
+      <tr>
+       <td height="30" align="right"><span class="style6">* 2do. Nombre:</span></td>
+        <td><label>
+          <input type="text" name="apellido" id="apellido" onkeypress="return acceptLetr(event)" />
+        </label></td>
+      </tr>
+      <tr>
+        <td height="30" align="right"><span class="style6">1er. Apellido:</span></td>
+        <td><label>
+          <input type="text" name="apellido" id="apellido" onkeypress="return acceptLetr(event)" />
+        </label></td>
+      </tr>
+      <tr>
+       <td height="30" align="right"><span class="style6">* 2do. Apellido:</span></td>
+        <td><label>
+          <input type="text" name="apellido2" id="apellido2" onkeypress="return acceptLetr(event)" />
+        </label></td>
+      </tr>
+      <tr>
+        <td height="30" align="right"><span class="style6">Usuario:</span></td>
+        <td><label>
+          <input type="text" name="login" id="login" />
+        </label></td>
+      </tr>
+      <tr>
+        <td height="30" align="right"><span class="style6">Contraseña:</span></td>
+        <td><label>
+          <input type="password" name="pw2" id="pw2" />
+        </label></td>
+      </tr>
+      <tr>
+        <td height="30" align="right"><span class="style6">Sexo</span></td>
+        <td><label>
+          <select name="sexo" id="sexo">
+            <option selected="selected">---</option>
+            <option value="F">F</option>
+            <option value="M">M</option>
+          </select>
+        </label></td>
+      </tr>
+      <tr>
+        <td height="30" align="right"><span class="style6">Fecha de nacimiento:</span></td>
+        <td><input name="fecha" id="fecha" type="text" readonly="readonly" />
+          <a href="javascript:NewCssCal('fecha','YYYYMMDD')"><img src="../js/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha" /></a></td>
+      </tr>
+      <tr>
+        <td height="30" align="right" class="style6">Nacionalidad:</td>
+        <td height="30" align="left"><label>
+          <select name="pais" id="pais">
+            <option>---</option>
+            
+              
+     {pais}
+            
+            
+          </select>
+        </label></td>
+      </tr>
+      <tr>
+        <td height="30" align="right" class="style6">Teléfono1:</td>
+        <td height="30" align="left"><label>
+          <input name="telefono" type="text" id="telefono1" value="" onkeypress="return acceptNum(event)" size="25" />
+        </label></td>
+      </tr>
+          <td height="30" align="right" class="style6">* Teléfono2:</td>
+        <td height="30" align="left"><label>
+          <input name="telefono" type="text" id="telefono2" value="" onkeypress="return acceptNum(event)" size="25" />
+        </label></td>
+      </tr>
+      <tr>
+       <td height="30" align="right" class="style6">Direccion:</td>
+        <td height="30" align="left"><label>
+          <input name="telefono" type="text" id="direccion" value="" size="30" />
+        </label></td>
+      </tr>
+        <td height="30" align="right" class="style6">Estado Civil:</td>
+        <td height="30" align="left"><label>
+          <select name="estcivil" id="estcivil">
+            <option selected="selected">---</option>
+            <option>Soltero</option>
+            <option>Casado</option>
+            <option>Viudo</option>
+            <option>Divorciado</option>
+          </select>
+        </label></td>
+      </tr>
+        <tr>
+        <td height="30" align="right"><span class="style6">Tipo</span></td>
+        <td><label>
+          <select name="sexo" id="sexo">
+            <option selected="selected">---</option>
+            <option value="F">Cliente</option>
+            <option value="M">Empleado</option>
+          </select>
+        </label></td>
+      </tr>
+      <tr>
+      
+        <td height="30" align="right">&nbsp;</td>
+        <td align="center"><input type="button" name="registrar" id="registrar" value="Registrate" onclick="validar2()" /></td>
+      </tr>
+      <tr>
+        <td height="30" align="right">&nbsp;</td>
+        <td align="center" id="mensaje3"><label></label></td>
+      </table>
+    </form>  
+  <tr>  </tr>
+   <td height="255" align="right" bgcolor="#000066">
+   <form id="form3" name="form3" method="post" action="">
+     <table width="466" height="250" border="0" frame="box" bordercolor="#000066"  align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+     <tr></tr>
+<td height="69" colspan="2" align="left"><strong><span class="style1"><span class="style2">Busqueda</span><br />
+  </span></strong><span class="style1"><span class="style3"> Consulta los costos de los multiples destinos que ofrecemos.<br />
+    <br />
+  </span></span></td>
+</tr>
+<tr>
+  <td width="137" height="30" align="right"><span class="style6">Destino:</span></td>
+  <td width="270"><label>
+    <input type="text" name="destino" id="destino" onkeypress="return acceptLetr(event)"/>
+    <br />
+  </label></td>
+</tr>
+<tr>
+  <td height="30" align="right"><span class="style6">Transporte:</span></td>
+  <td><label>
+    <input type="text" name="transporte" id="transporte" onkeypress="return acceptLetr(event)" />
+  </label></td>
+</tr>
+<tr>
+  <td height="30" align="right"><span class="style6">Fecha de nacimiento:</span></td>
+  <td><input name="fecha2" id="fecha2" type="text" readonly="readonly" />
+    <a href="javascript:NewCssCal('fecha','YYYYMMDD')"><img src="../js/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha" /></a></td>
+</tr>
+<tr>
+  <td height="30" align="right">&nbsp;</td>
+  <td align="center"><input type="button" name="aceptar" id="aceptar" value="Aceptar" onclick="" /></td>
+</tr>
+<tr>
+  <td height="61" align="right">&nbsp;</td>
+  <td align="center" id="mensaje"><label></label></td>
+</tr>
+     </table>
+     <table width="466" height="250" border="0" frame="box" bordercolor="#000066"  align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+     </table>
+   </form> </td>
+</tr>
+   </tr>
+  <tr align="right" bgcolor="#000000">
+    <td height="45" colspan="2"><span class="style13">© Copyright Viajes UCAB| Todos los derechos reservados | Producciones SzcoPa.</span></td>
+  </tr>
+</table>
+
+</body>
+</html> 

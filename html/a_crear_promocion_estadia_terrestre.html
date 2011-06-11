@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+</head>
+
+
+
+<script language="javascript" type="text/javascript" src="../js/datetimepicker_css.js"></script> 
+<script language="javascript">
+
+
+function validar()
+{
+// el if lo puse ||
+if (document.form1.cue_numero.value.length == 0 || document.form1.fecha.value.length == 0 || document.form1.fecha1.value.length == 0 || document.form1.des.value.length == 0 || document.form1.dur.value.length == 0)
+{
+document.getElementById('mensaje').innerHTML = 'Debe llenar todos los campos!';
+return 0;
+
+}
+
+document.form1.submit();
+
+}
+
+var nav4 = window.Event ? true : false;
+function acceptNum(evt){	
+// NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57	
+var key = nav4 ? evt.which : evt.keyCode;	
+return (key <= 13 || (key >= 48 && key <= 57));
+}
+
+function populate(inForm,selected,cue_numero,fecha,fecha1,des,dur) {
+
+location.href='a_crear_promocion_estadia_terrestre.php?selected=' + selected + '&nombre=' + cue_numero + '&fechai=' + fecha + '&fechaf=' + fecha1 + '&desc=' + des + '&durac=' + dur + '&hotel=k';
+}
+
+function populate1(inForm,selected,cue_numero,fecha,fecha1,des,dur,hotel) {
+
+location.href='a_crear_promocion_estadia_terrestre.php?selected=' + selected + '&nombre=' + cue_numero + '&fechai=' + fecha + '&fechaf=' + fecha1 + '&desc=' + des + '&durac=' + dur + '&hotel=' + hotel;
+}
+
+
+</script>
+
+<body>
+
+
+{form}
+<input type="hidden" name="estadio_viejo" id="estadio_nuevo" value="{cue_numero}" />	
+<input type="hidden" name="id" id="id" value="{cue_id}" />
+<input type="hidden" name="aforo_viejo1" id="aforo_viejo1" value="{des}" />
+<input type="hidden" name="aforo_viejo2" id="aforo_viejo2" value="{dur}" />
+<input type="hidden" name="ciudad_vieja" id="ciudad_vieja" value="{banco}" />
+<input type="hidden" name="fecha_vieja" id="fecha_vieja" value="{fecha}" />
+<input type="hidden" name="fecha_vieja1" id="fecha_vieja1" value="{fecha1}" />	
+<input type="hidden" name="fecha_vieja12" id="fecha_vieja12" value="{hotel}" />
+  <table width="438" border="0">
+    
+    <tr>
+      <td colspan="2" align="center">Llena la informacion de la nueva promocion</td>
+    </tr>
+    <tr>
+      <td width="203">Nombre Promocion:</td>
+      <td width="225"><input type="text" name="cue_numero" id="cue_numero" value="{cue_numero}"></td>
+    </tr>
+    
+    <tr>
+      <td>Fecha Inicio:</td>
+      <td><input name="fecha" id="fecha" type="text" readonly="readonly" value="{fecha}" ><a href="javascript:NewCssCal('fecha','YYYYMMDD')"><img src="../js/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></td>
+    </tr>
+    
+    <tr>
+      <td>Fecha Fin:</td>
+      <td><input name="fecha1" id="fecha1" type="text" readonly="readonly" value="{fecha1}" ><a href="javascript:NewCssCal('fecha1','YYYYMMDD')"><img src="../js/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></td>
+    </tr>
+    <tr>
+      <td width="203">Descuento:</td>
+      <td width="225"><input type="text" name="des" id="des" value="{des}"></td>
+    </tr>
+    <tr>
+      <td width="203">Duracion :</td>
+      <td width="225"><input type="text" name="dur" id="dur" value="{dur}"></td>
+    </tr>
+    <tr>
+      <td>Terrestre/Destino:</td>
+      <td><select name="banco" id="banco" onChange="populate(document.form1,document.form1.banco.options[document.form1.banco.selectedIndex].value, document.form1.cue_numero.value, document.form1.fecha.value, document.form1.fecha1.value, document.form1.des.value, document.form1.dur.value)">
+      <option selected="selected">Seleccione</option>
+      {bancos}
+      </select>      </td>
+    </tr>
+    <tr>
+      <td>Hotel:</td>
+      <td><select name="hotel" id="hotel" >
+      <option selected="selected">Seleccione</option>
+      {hoteles}
+      </select>      </td>
+    </tr>
+    
+    {id}
+    
+    <tr>
+      <td colspan="2" align="center"><input type="button" name="agregar" id="agregar" value="{tipo_boton}" onclick="validar()" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center" id="mensaje">{error}</td>
+    </tr>
+  </table>
+</form>
+
+</body>
+</html>

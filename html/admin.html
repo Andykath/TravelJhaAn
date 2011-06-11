@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>Untitled Document</title>
+
+<style type="text/css">
+<!--
+body {
+	background-image: url();
+}
+.style24 {font-size: 16px}
+-->
+</style>
+
+<style type="text/css">
+<!--
+body {
+	background-repeat: repeat;
+		background-image:url(../imagenes/prueba.jpg);
+}
+.style8 {font-family: Helvetica; color: #FFFFFF; font-weight: bold; }
+.style9 {color: #E3E3E3}
+.style13 {color: #FFFFFF; font-size: 12px; font-family: Helvetica;}
+.style14 {
+	font-family: Helvetica;
+	color: #FFFFFF;
+}
+-->
+</style>
+</head>
+
+{body}
+
+
+<script language="javascript">
+function pintar (objeto,col,col2,nom)
+{
+            if (nombreetiqueta != nom)
+			{
+			objeto.bgColor=col;
+			objeto.style.color=col2;	//col2		
+			}
+}
+function actual(numero)
+{
+var casilla;
+
+ switch (numero)
+ {
+ 
+  case 1:nombreetiqueta= 'solicitudes';break;
+  case 2:nombreetiqueta= 'ciudades';break;
+  case 3:nombreetiqueta= 'paises';break;
+  case 4:nombreetiqueta= 'equipos';break;
+  case 5:nombreetiqueta= 'jugadores';break;
+  case 6:nombreetiqueta= 'estadios';break;
+  case 7:nombreetiqueta= 'partidos';break;
+  case 8:nombreetiqueta= 'copas';break;
+  case 9:nombreetiqueta= 'entradas';break;
+  case 10:nombreetiqueta= 'objetos';break;
+  case 11:nombreetiqueta= 'facturas';break;
+  case 12:nombreetiqueta= 'descuentos';break;
+  case 13:nombreetiqueta= 'home';break;
+  case 14:nombreetiqueta= 'salir';break;
+  case 15:nombreetiqueta= 'usuarios' ;break;
+  case 16:nombreetiqueta= 'facturas1' ;break;
+ }
+
+ casilla = document.getElementById(nombreetiqueta);
+ casilla.bgColor = '';
+ casilla.style.color= '#000000';
+}
+
+var nombreetiqueta;
+
+</script>
+
+
+
+
+<table width="1150" align="center" cellpadding="0" cellspacing="0">
+  <tr bgcolor="#000066">
+    <td height="130" colspan="8" align="center"><img src="/viajesucabbd/imagenes/todo.jpg" /></td>
+  </tr>
+  <tr>
+    <td width="111" height="10">&nbsp;</td>
+    <td width="109" height="10">&nbsp;</td>
+    <td width="122">&nbsp;</td>
+    <td width="151" height="10">&nbsp;</td>
+    <td width="307" height="10">&nbsp;</td>
+    <td width="133" height="10">&nbsp;</td>
+    <td width="114">&nbsp;</td>
+    <td width="103" height="10">&nbsp;</td>
+  </tr>
+  
+  <tr align="center">
+    <td height="30" class="style8">&nbsp;</td>
+    <td height="30">&nbsp;</td>
+    <td class="style8">&nbsp;</td>
+    <td height="30">&nbsp;</td>
+    <td height="30">&nbsp;</td>
+    <td height="30">&nbsp;</td>
+    
+        <td id = "home" style="border:2px solid #0033CC; color:#FFFFFF; font-family:Helvetica; cursor:pointer;cursor:hand" height="30" bgcolor="#000066" onmouseover="pintar(this,'','#000066','home')" onmouseout="pintar(this,'#000066','#ffffff','home')" onClick="document.location.href='../php/a_principal.php';"><strong>BACK</strong></td>
+
+        <td id = "salir" style="border:2px solid #0033CC; color:#FFFFFF; font-family:Helvetica;cursor:pointer;cursor:hand" height="30" bgcolor="#000066" onmouseover="pintar(this,'','#000066','salir')" onmouseout="pintar(this,'#000066','#ffffff','salir')" onClick="document.location.href='../php/logout.php';"><strong>SIGN OUT</strong></td>
+  </tr>
+  
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="8">      <table width="1150" height="19" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="1150"><table width="1150" border="0" align="center">
+            <tr valign="top">
+              <td width="150"><table width="153" border="0" align="center">
+                <tr>
+                  <td height="57" align="center" bgcolor="#000066"><span class="style8 style24">PANEL DE ADMINISTRACION</span></td>
+                </tr>
+
+              </table>
+                <table width="154" border="0" align="center">
+                  <tr>
+                    <td id = "solicitudes" style="border:2px solid #0033CC; color:#FFFFFF; font-family:Helvetica;cursor:pointer;cursor:hand" height="30" bgcolor="#000066" onmouseover="pintar(this,'','#000066','solicitudes')" onmouseout="pintar(this,'#000066','#ffffff','solicitudes')"onClick="document.location.href='../php/a_aerolineas.php';"><span>AEROLINEAS</span></td>
+                   </tr>
+                   <tr>
+                    <td id = "usuarios" style="border:2px solid #0033CC; color:#FFFFFF; font-family:Helvetica;cursor:pointer;cursor:hand" height="30" bgcolor="#000066" onmouseover="pintar(this,'','#000066','usuarios')" onmouseout="pintar(this,'#000066','#ffffff','usuarios')"onClick="document.location.href='../php/a_cruceros.php';">CRUCEROS</td>
+                  </tr>
+                  <tr>
+                    <td id = "ciudades" style="border:2px solid #0033CC; color:#FFFFFF; font-family:Helvetica;cursor:pointer;cursor:hand" height="30" bgcolor="#000066" onmouseover="pintar(this,'','#000066','ciudades')" onmouseout="pintar(this,'#000066','#ffffff','ciudades')"onClick="document.location.href='../php/a_terrestre.php';">TRANSPORTE TERRESTRE</td>
+                  </tr>
+                  <tr>
+                    <td id = "paises" style="border:2px solid #0033CC; color:#FFFFFF; font-family:Helvetica;cursor:pointer;cursor:hand" height="30" bgcolor="#000066" onmouseover="pintar(this,'','#000066','paises')" onmouseout="pintar(this,'#000066','#ffffff','paises')"onClick="document.location.href='../php/a_destinos.php';">DESTINOS</td>
+                  </tr>
+                  <tr>
+                    <td id = "equipos" style="border:2px solid #0033CC; color:#FFFFFF; font-family:Helvetica;cursor:pointer;cursor:hand" height="30" bgcolor="#000066" onmouseover="pintar(this,'','#000066','equipos')" onmouseout="pintar(this,'#000066','#ffffff','equipos')"onClick="document.location.href='../php/a_usuarios.php';">USUARIOS</td>
+                  </tr>
+                  <tr>
+                    <td id = "jugadores" style="border:2px solid #0033CC; color:#FFFFFF; font-family:Helvetica;cursor:pointer;cursor:hand" height="30" bgcolor="#000066"  onmouseover="pintar(this,'','#000066','jugadores')" onmouseout="pintar(this,'#000066','#ffffff','jugadores')" onClick="document.location.href='../php/a_hoteles.php';">HOTELES</td>
+                  </tr>
+                  <tr>
+                    <td id = "estadios" style="border:2px solid #0033CC; color:#FFFFFF; font-family:Helvetica;cursor:pointer;cursor:hand" height="30" bgcolor="#000066" onmouseover="pintar(this,'','#000066','estadios')" onmouseout="pintar(this,'#000066','#ffffff','estadios')" onClick="document.location.href='../php/a_servicios.php';">SERVICIOS</td>
+                  </tr>
+                  <tr>
+                    <td id = "partidos" style="border:2px solid #0033CC; color:#FFFFFF; font-family:Helvetica;cursor:pointer;cursor:hand" height="30" bgcolor="#000066" onmouseover="pintar(this,'','#000066','partidos')" onmouseout="pintar(this,'#000066','#ffffff','partidos')" onClick="document.location.href='../php/a_paseos.php';">PASEOS</td>
+                  </tr>
+                  <tr>
+                    <td id = "copas" style="border:2px solid #0033CC; color:#FFFFFF; font-family:Helvetica;cursor:pointer;cursor:hand" height="30" bgcolor="#000066" onmouseover="pintar(this,'','#000066','copas')" onmouseout="pintar(this,'#000066','#ffffff','copas') " onClick="document.location.href='../php/a_paquetes.php';">PAQUETES</td>
+                  </tr>
+                  <tr>
+                    <td id = "entradas" style="border:2px solid #0033CC; color:#FFFFFF; font-family:Helvetica;cursor:pointer;cursor:hand" height="30" bgcolor="#000066" onmouseover="pintar(this,'','#000066','entradas')" onmouseout="pintar(this,'#000066','#ffffff','copas') " onClick="document.location.href='../php/a_promociones.php';">PROMOCIONES</td>
+                  </tr>
+                  <tr>
+                    <td id = "objetos" style="border:2px solid #0033CC; color:#FFFFFF; font-family:Helvetica;cursor:pointer;cursor:hand" height="30" bgcolor="#000066" onmouseover="pintar(this,'','#000066','objetos')" onmouseout="pintar(this,'#000066','#ffffff','objetos')">PUBLICIDAD</td>
+                  </tr>
+                  <tr>
+                    <td id = "facturas" style="border:2px solid #0033CC; color:#FFFFFF; font-family:Helvetica;cursor:pointer;cursor:hand" height="30" bgcolor="#000066" onmouseover="pintar(this,'','#000066','facturas')" onmouseout="pintar(this,'#000066','#ffffff','facturas')"onClick="document.location.href='../php/a_bancos.php';"><span>BANCOS</span></td>
+                  </tr>
+                  <tr>
+                    <td id = "descuentos" style="border:2px solid #0033CC; color:#FFFFFF; font-family:Helvetica;cursor:pointer;cursor:hand" height="30" bgcolor="#000066" onmouseover="pintar(this,'','#000066','descuentos')" onmouseout="pintar(this,'#000066','#ffffff','descuentos')"onClick="document.location.href='../php/a_cuentasbancarias.php';">CUENTAS BANCARIAS</td>
+                  </tr>
+                  <tr>
+                    <td id = "facturas1" style="border:2px solid #0033CC; color:#FFFFFF; font-family:Helvetica;cursor:pointer;cursor:hand" height="30" bgcolor="#000066" onmouseover="pintar(this,'','#000066','facturas')" onmouseout="pintar(this,'#000066','#ffffff','facturas')"onClick="document.location.href='../php/a_restaurantes.php';"><span>RESTAURANTES</span></td>
+                  </tr>
+                </table>                </td>
+              <td width="991" bgcolor="#FFFFFF"><div align="center">
+                <p>&nbsp;</p>
+                <p>{contenido}</p>
+                </div></td>
+            </tr>
+          </table>          </td>
+        </tr>
+    </table></td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="center"></div></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+<table width="1150" align="center" cellpadding="0" cellspacing="0">
+    <td height="45" colspan="8" align="right" bgcolor="#000000" class="style13">© Copyright Viajes Ucab | Todos los derechos reservados | Producciones SzcoPa.</table>
+  </tr>
+</table>
+</body>
+</html>

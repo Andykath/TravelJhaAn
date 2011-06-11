@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+</head>
+
+
+
+<script language="javascript" type="text/javascript" src="../js/datetimepicker_css.js"></script> 
+<script language="javascript">
+
+
+
+function validar()
+{
+// el if lo puse ||
+if (document.form1.cedula.value.length == 0 || document.form1.nombre1.value.length == 0 || document.form1.apellido1.value.length == 0 || document.form1.direccion.value.length == 0 || document.form1.fecha.value.length == 0 || document.form1.numero1.value.length == 0 )
+{
+document.getElementById('mensaje').innerHTML = 'Debe llenar todos los campos!';
+return 0;
+
+}
+
+document.form1.submit();
+
+}
+
+var nav4 = window.Event ? true : false;
+function acceptNum(evt){	
+// NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57	
+var key = nav4 ? evt.which : evt.keyCode;	
+return (key <= 13 || (key >= 48 && key <= 57));
+}
+function acceptLetr(evt){
+
+var key = nav4 ? evt.which : evt.keyCode;
+return ((key < 48 || key > 57) && (key != 8 && key != 0 && key != 46))
+	
+}
+
+
+
+
+</script>
+
+<body>
+
+
+{form}
+<input type="hidden" name="cedula1" id="cedula1" value="{cedula}" />
+<input type="hidden" name="nombre_1" id="nombre_1" value="{nombre1}" />	
+<input type="hidden" name="nombre_2" id="nombre_2" value="{nombre2}" />
+<input type="hidden" name="apellido_1" id="apellido_1" value="{apellido1}" />
+<input type="hidden" name="apellido_2" id="apellido_2" value="{apellido2}" />
+<input type="hidden" name="direccion1" id="direccion1" value="{direccion}" />
+<input type="hidden" name="fecha_vieja" id="fecha_vieja" value="{fecha}" />
+<input type="hidden" name="nacionalidad1" id="nacionalidad1" value="{nacionalidad}" />
+<input type="hidden" name="edo_civil1" id="edo_civil1" value="{edocivil}" />
+<input type="hidden" name="login1" id="login1" value="{login}" />
+<input type="hidden" name="password1" id="password1" value="{password}" />
+<input type="hidden" name="visa1" id="visa1" value="{visa}" />
+<input type="hidden" name="pasaporte1" id="pasaporte1" value="{pasaporte}" />
+<input type="hidden" name="numero1_1" id="numero1_1" value="{numero1}" />
+<input type="hidden" name="numero2_2" id="numero2_2" value="{numero2}" />
+<input type="hidden" name="tipo1_1" id="tipo1_1" value="{tipo1}" />
+<input type="hidden" name="tipo2_2" id="tipo2_2" value="{tipo2}" />
+  <table width="415" border="0">
+    
+    <tr>
+      <td colspan="2" align="center">Llena la informacion del nuevo empleado</td>
+    </tr>
+   
+     <tr>
+      <td width="203">Cedula:</td>
+      <td width="202"><input type="text" name="cedula" id="cedula" value="{cedula}" onKeyPress="return acceptNum(event)"></td>
+    </tr>
+    <tr>
+      <td width="203">Nombre 1:</td>
+      <td width="202"><input type="text" name="nombre1" id="nombre1" value="{nombre1}" onKeyPress="return acceptLetr(event)"></td>
+    </tr>
+     <tr>
+      <td width="203">*Nombre 2:</td>
+      <td width="202"><input type="text" name="nombre2" id="nombre2" value="{nombre2}" onKeyPress="return acceptLetr(event)"></td>
+    </tr>
+     <tr>
+      <td width="203">Apellido 1:</td>
+      <td width="202"><input type="text" name="apellido1" id="apellido1" value="{apellido1}" onKeyPress="return acceptLetr(event)"></td>
+    </tr>
+     <tr>
+      <td width="203">*Apellido 2:</td>
+      <td width="202"><input type="text" name="apellido2" id="apellido2" value="{apellido2}" onKeyPress="return acceptLetr(event)"></td>
+    </tr>
+    <tr>
+      <td>Sexo:</td>
+      <td><select name="sexo" id="sexo">
+        <option>F</option>
+        <option>M</option>
+      </select>      </td>
+    </tr>
+    <tr>
+      <td width="203">Direccion:</td>
+      <td width="202"><input type="text" name="direccion" id="direccion" value="{direccion}"></td>
+    </tr>
+    <tr>
+    <tr>
+      <td>Fecha Nacimiento:</td>
+     <td><input name="fecha" id="fecha" type="text" readonly="readonly" value="{cue_fecha_apertura}" ><a href="javascript:NewCssCal('fecha','YYYYMMDD')"><img src="../js/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></td>
+    </tr>
+      <td>Nacionalidad:</td>
+      <td><select name="nacionalidad" id="nacionalidad">
+      {bancos}
+      </select>      </td>
+    </tr>
+     
+    <tr>
+      <td>Edo Civil:</td>
+      <td><select name="edocivil" id="edocivil">
+        <option>Soltero</option>
+        <option>Casado</option>
+         <option>Divorciado</option>
+          <option>Viudo</option>
+      </select>      </td>
+    </tr>
+    <tr>
+      <td width="203">*Visa:</td>
+      <td width="202"><input type="text" name="visa" id="visa" value="{visa}"></td>
+    </tr>
+    <tr>
+      <td width="203">*Pasaporte:</td>
+      <td width="202"><input type="text" name="pasaporte" id="pasaporte" value="{pasaporte}"></td>
+    </tr>
+    <tr>
+      <td width="203">Telefono 1:</td>
+      <td width="202"><input type="text" name="numero1" id="numero1" value="{numero1}" onKeyPress="return acceptNum(event)"></td>
+    </tr>
+    <tr>
+      <td>Tipo 1:</td>
+      <td><select name="tipo1" id="tipo1">
+        <option>Celular</option>
+        <option>Habitacion</option>
+         <option>Oficina</option>
+      </select>      </td>
+    </tr>
+    <tr>
+      <td width="203">*Telefono 2:</td>
+      <td width="202"><input type="text" name="numero2" id="numero2" value="{numero2}" onKeyPress="return acceptNum(event)"></td>
+    </tr>
+     <tr>
+      <td>Tipo 2:</td>
+      <td><select name="tipo2" id="tipo2">
+        <option>Celular</option>
+        <option>Habitacion</option>
+         <option>Oficina</option>
+      </select>      </td>
+    </tr>
+    <tr>
+      <td width="203">Login:</td>
+      <td width="202"><input type="text" name="login" id="login" value="{login}"></td>
+    </tr>
+    <tr>
+      <td width="203">Passsword:</td>
+      <td width="202"><input type="text" name="password" id="password" value="{password}"></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="button" name="agregar" id="agregar" value="{tipo_boton}" onclick="validar()" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center" id="mensaje">{error}</td>
+    </tr>
+  </table>
+</form>
+
+</body>
+</html>

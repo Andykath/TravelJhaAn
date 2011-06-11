@@ -1,0 +1,117 @@
+<style type="text/css">
+<!--
+.style3 {font-size: 27px}
+-->
+</style>
+<script language="javascript" type="text/javascript" src="../js/datetimepicker_css.js"></script> 
+<script language="javascript">
+
+function validar()
+{
+if (document.form.nombre.value.length==0 || document.form.apellido.value.length==0 || document.form.pwd.value.length==0
+	 || document.form.telefono.value.length==0 || document.form.profesion.options[0].selected==true) 
+{
+//alert("Debe llenar todos los campos!");
+document.getElementById('mensaje').innerHTML = 'Debe llenar todos los campos!';
+return 0;
+
+}
+document.form.submit();
+}
+
+var nav4 = window.Event ? true : false;
+
+function acceptLetr(evt){
+
+var key = nav4 ? evt.which : evt.keyCode;
+return ((key < 48 || key > 57) && (key != 8 && key != 0 && key != 46))
+	
+}
+
+function acceptNum(evt){	
+// NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57	
+var key = nav4 ? evt.which : evt.keyCode;	
+return (key <= 13 || (key >= 48 && key <= 57));
+}
+
+
+</script>
+<p align="left"><a href="../php/u_miperfil.php">&lt;&lt;Volver</a></p>
+<form name="form" method="post" action="../php/u_editarcuenta.php" id="form">
+  <table width="382" border="0" align="left">
+    <tr>
+      <th align="left" scope="col">Nombre 
+        <label>
+        <input name="nombre" type="text" id="nombre" onKeyPress="return acceptLetr(event)" value="{nombre}">
+      </label></th>
+    </tr>
+    <tr>
+      <th width="376" align="left" scope="col"><div align="left">Apellido 
+        <label>
+        <input name="apellido" type="text" id="apellido" onKeyPress="return acceptLetr(event)" value="{apellido}">
+        </label>
+</div></th>
+    </tr>
+    <tr>
+      <th align="left" scope="row"><div align="left">Email: 
+        <label>
+        <input name="textfield3" type="text" id="textfield3" readonly="readonly" value="{email}">
+        </label>
+</div></th>
+    </tr>
+    <tr>
+      <th align="left" scope="row">Contraseña: 
+        <label>
+        <input name="pwd" type="password" id="pwd" value="{pwd}">
+      </label></th>
+    </tr>
+    <tr>
+      <th align="left" scope="row"><div align="left">Telefono: 
+        <label>
+        <input name="telefono" type="text" id="telefono" onKeyPress="return acceptNum(event)" value="{telefono}">
+        </label>
+</div></th>
+    </tr>
+    <tr>
+      <th align="left" scope="row"><div align="left">Fecha de nacimiento: 
+        <label>
+        <input name="fecha" type="text" id="fecha" value="{fecha}" readonly="readonly" >
+        <a href="javascript:NewCssCal('fecha','YYYYMMDD')"><img src="../js/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></a></label>
+</div></th>
+    </tr>
+    <tr>
+      <th align="left" scope="row"><div align="left">Pais de nacimiento: 
+          <label>
+          <select name="pais" id="pais">
+          {pais}
+          </select>
+          </label>
+</div></th>
+    </tr>
+    <tr>
+      <th align="left" scope="row">Profesion:
+        <label>
+        <select name="profesion" id="profesion">
+          <option selected="selected">---</option>
+          <option>Ingeniero</option>
+          <option>Estudiante</option>
+          <option>Obrero</option>
+          <option>Jubilado</option>
+          <option>Profesor</option>
+          <option>Otro</option>
+        </select>
+        </label></th>
+    </tr>
+    <tr>
+      <th height="34" align="left" scope="row"><label>
+        <div align="center">
+          <input type="button" name="guardar" id="guardar" value="Guardar Cambios" onclick="validar()">
+        </div>
+      </label></th>
+    </tr>
+    <tr>
+      <th align="left" scope="row" id="mensaje"><div align="center"></div>
+      <div align="center"></div><div align="center"></div></th>
+    </tr>
+  </table>
+</form>

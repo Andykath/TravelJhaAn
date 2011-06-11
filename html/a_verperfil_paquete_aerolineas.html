@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+<!--
+.style3 {font-size: 27px}
+.style4 {
+	font-size: 22px
+}
+.style9 {font-size: 15px}
+.style10 {color: #000000}
+-->
+</style>
+</head>
+<script language="javascript">
+function confirmar() { 
+
+    if(!confirm("Esta seguro que desea eliminar el paquete?"))
+	{ 
+	 	return false ;
+	}   
+}
+</script>
+<body>
+<p align="left"><a href="../php/a_paquetes_sinestadia_aerolineas.php">&lt;&lt;Volver</a></p>
+<table width="382" border="0" align="center">
+<tr>
+    <th align="left" scope="row"><div align="left">Forma de viaje: {tipoviaje}</div></th>
+  </tr>
+  <tr>
+    <th align="left" scope="row"><div align="left">Fecha Inicio: {fechai}</div></th>
+  </tr>
+  <tr>
+    <th align="left" scope="row"><div align="left">Fecha Fin: {fechaf}</div></th>
+  </tr>
+  <tr>
+    <th align="left" scope="row"><div align="left">Millas Requeridas: {mil}</div></th>
+  </tr>  
+  <tr>
+    <th align="left" scope="row"><div align="left">Tipo de paquete: {tipopaq}</div></th>
+  </tr>
+  <tr>
+    <th align="left" scope="row"><div align="left">Cantidad de personas: {cantpaq}</div></th>
+  </tr>
+  <tr>
+    <th align="left" scope="row"><div align="left">Aerolinea : {aernombre}</div></th>
+  </tr>
+  
+
+  <tr>
+    <th align="left" scope="row"><div align="center">{links}</div></th>
+  </tr>
+  <tr>
+    <th align="left" scope="row">Origen:</th>
+    
+  </tr>
+  <tr>
+    <td align="left" valign="top"><div align="left">
+      <p>{telefonos}</p>
+      </div></td>
+       </tr>
+       <tr>
+    <th align="center" scope="row">{modif}</th>
+  </tr>
+  <tr>
+    <th align="left" scope="row"><div align="center">{links1}</div></th>
+  </tr>
+  <tr>
+    <th align="left" scope="row">Destino:</th>
+    
+  </tr>
+  <tr>
+    <td align="left" valign="top"><div align="left">
+      <p>{telefonos1}</p>
+      </div></td>
+       </tr>
+       <tr>
+    <th align="center" scope="row">{modif1}</th>
+  </tr>
+</table>
+<p align="left">&nbsp;</p>
+</body>
+</html>

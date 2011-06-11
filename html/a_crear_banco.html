@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+</head>
+
+<script language="javascript">
+
+
+function validar()
+{
+
+if (document.form1.ban_nombre.value.length == 0)
+{
+//alert("Debe llenar todos los campos!");
+document.getElementById('mensaje').innerHTML = 'Debe llenar todos los campos!';
+document.form1.ban_nombre.focus()
+return 0;
+
+}
+
+document.form1.submit();
+
+}
+
+</script>
+
+<body>
+{form}
+
+<input type="hidden" value="{ban_nombre}" name="ban_nuevo"/>
+<input type="hidden" value="{ban_id}" name="ban_id"/>
+  <table width="320" height="190" border="0">
+    
+    <tr>
+      <td colspan="2" align="center"><p>Llenar la informacion del nuevo Banco.</p>
+      <p>Recuerde que los nombres de los bancos son unicos.</p></td>
+    </tr>
+    
+    <tr>
+      <td align="center">Nombre:</td>
+      <td align="center"><input name="ban_nombre" type="text" id="ban_nombre" value="{ban_nombre}" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="button" name="agregar" id="agregar" value="{tipo_boton}"s onclick="validar()" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center" id="mensaje">{error}</td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

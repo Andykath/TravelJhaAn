@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+</head>
+
+<script language="javascript">
+function confirmar() { 
+
+    if(!confirm("Si elimina la solicitud el usuario podria no entrar mas al sistema. Continuar?"))
+	{ 
+	 	return false ;
+	}   
+}
+</script>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="860" height="210" >
+    <tr>
+      <td height="53" colspan="7" align="center">Modulo para aceptar, rechazar o verificar las solicitudes de ingreso de los usuarios a WCB</td>
+    </tr>
+    {mensaje}
+    <tr>
+      <td height="53" colspan="7" align="center">Id Solicitud: 
+        <label></label>
+        <input type="text" name="buscar_id" id="buscar_id" />
+        <input name="button" type="submit" id="button" value="Buscar" /> </td>
+    </tr>
+    <tr  align="center">
+      <td style="border:2px solid #000000;" width="49" height="39" bordercolor="#000000">No Id</td>
+      <td style="border:2px solid #000000;" width="125" bordercolor="#000000">Nombre</td>
+      <td style="border:2px solid #000000;" width="125" bordercolor="#000000">Apellido</td>
+      <td style="border:2px solid #000000;" width="200" bordercolor="#000000">Email</td>
+      <td style="border:2px solid #000000;" width="106" bordercolor="#000000"><a href="../php/a_solicitudes.php?tipo=1">Sexo</td>
+      <td style="border:2px solid #000000;" width="125" bordercolor="#000000"><a href="../php/a_solicitudes.php?tipo=2">Nacionalidad</td>
+      <td style="border:2px solid #000000;" width="125" bordercolor="#000000"><a href="../php/a_solicitudes.php?tipo=3">Fecha Solicitud</td>
+      <td style="border:2px solid #000000;" width="111" bordercolor="#000000">Estatus</td>
+      <td style="border:2px solid #000000;" width="112" bordercolor="#000000">Opcion</td>
+    </tr>
+    {informacion}
+  </table>
+  
+</form>
+</body>
+
+</html>

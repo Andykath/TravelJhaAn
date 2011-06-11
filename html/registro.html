@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Registro</title>
+<style type="text/css">
+.style1 {
+	font-family: Helvetica;
+	font-size: 36px;
+}
+.style2 {font-size: 24px}
+.style3 {font-size: 18px}
+.style6 {font-family: Helvetica; font-size: 14px; }
+.style13 {color: #FFFFFF; font-size: 12px; font-family: Helvetica;}
+.style15 {
+	color: #FFFFFF;
+	font-weight: bold;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 24px;
+}
+</style>
+</head>
+<body>
+<script language="javascript">
+
+function validar2()
+{
+
+if (document.form2.nombre.value.length == 0 || document.form2.apellido.value.length == 0 || document.form2.nombre2.value.length == 0 || document.form2.apellido2.value.length == 0 || document.form2.login.value.length == 0 || document.form2.contraseña.value.length==0 || document.form2.fecha.value.length==0 || document.form2.telefono1.value.length==0 || document.form2.sexo.options[0].selected==true || document.form2.pais.options[0].selected==true || document.form2.estcivil.options[0].selected==true || document.form2.direccion.value.length==0 )
+{
+	
+	document.getElementById('mensaje3').innerHTML = 'Debe llenar todos los campos!';
+
+return 0;
+
+}
+document.form2.submit();
+}
+function cerrarse(){ 
+window.close() 
+}  
+var nav4 = window.Event ? true : false;
+
+function acceptLetr(evt){
+
+var key = nav4 ? evt.which : evt.keyCode;
+return ((key < 48 || key > 57) && (key != 8 && key != 0 && key != 46))
+	
+}
+function acceptNum(evt){	
+// NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57	
+var key = nav4 ? evt.which : evt.keyCode;	
+return (key <= 13 || (key >= 48 && key <= 57));
+}
+</script>
+<script language="javascript" type="text/javascript" src="../js/datetimepicker_css.js"></script> 
+
+<form id="form2" name="form2" method="post" action="../php/registrarse.php">
+<table width="466" height="318" border="0" align="center" cellpadding="0" cellspacing="0" frame="box" bordercolor="#000066"  bgcolor="#009999">
+      <tr>
+        <td colspan="2" align="left"><strong><span class="style1"><span class="style2">Regístrate</span><br />
+          </span></strong><span class="style3">* campos opcionales.<br />
+            <br /> 
+     
+          </span></td>
+      <tr>
+        <td width="137" height="30" align="right"><span class="style6">Cedula:</span></td>
+        <td width="270"><label>
+          <input type="text" name="cedula" id="cedula" onkeypress="return acceptNum(event)"/>
+          <br />
+        </label></td>
+      </tr>
+      <tr>
+        <td width="137" height="30" align="right"><span class="style6">Nombre:</span></td>
+        <td width="270"><label>
+          <input type="text" name="nombre" id="nombre" onkeypress="return acceptLetr(event)"/>
+          <br />
+        </label></td>
+      </tr>
+      <tr>
+       <td height="30" align="right"><span class="style6">* 2do. Nombre:</span></td>
+        <td><label>
+          <input type="text" name="nombre2" id="nombre2" onkeypress="return acceptLetr(event)" />
+        </label></td>
+      </tr>
+      <tr>
+        <td height="30" align="right"><span class="style6">1er. Apellido:</span></td>
+        <td><label>
+          <input type="text" name="apellido" id="apellido" onkeypress="return acceptLetr(event)" />
+        </label></td>
+      </tr>
+      <tr>
+       <td height="30" align="right"><span class="style6">* 2do. Apellido:</span></td>
+        <td><label>
+          <input type="text" name="apellido2" id="apellido2" onkeypress="return acceptLetr(event)" />
+        </label></td>
+      </tr>
+      <tr>
+        <td height="30" align="right"><span class="style6">Usuario:</span></td>
+        <td><label>
+          <input type="text" name="login" id="login" />
+        </label></td>
+      </tr>
+      <tr>
+        <td height="30" align="right"><span class="style6">Contraseña:</span></td>
+        <td><label>
+          <input type="password" name="contraseña" id="contraseña" />
+        </label></td>
+      </tr>
+      <tr>
+        <td height="30" align="right"><span class="style6">Sexo</span></td>
+        <td><label>
+          <select name="sexo" id="sexo">
+           <option selected="selected">---</option>
+            <option value="F">F</option>
+            <option value="M">M</option>
+          </select>
+        </label></td>
+      </tr>
+      <tr>
+        <td height="30" align="right"><span class="style6">Fecha de nacimiento:</span></td>
+        <td><input name="fecha" id="fecha" type="text" readonly="readonly" />
+          <a href="javascript:NewCssCal('fecha','YYYYMMDD')"><img src="../js/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha" /></a></td>
+      </tr>
+      <tr>
+        <td height="30" align="right" class="style6">Nacionalidad:</td>
+        <td height="30" align="left"><select name="pais" id="pais">
+            <option selected="selected">---</option>
+            <option value="Alemania">Alemania</option>
+			<option value="Argentina">Argentina</option>
+            <option value="Aruba">Aruba</option>
+            <option value="Australia">Australia</option>
+            <option value="Austria">Austria</option>
+            <option value="Bolivia">Bolivia</option>
+            <option value="Brasil">Brasil</option>
+            <option value="Canada">Canada</option>
+            <option value="Chile">Chile</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Costa Rica">Costa Rica</option>
+			<option value="Cuba">Cuba</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="España">España</option>
+            <option value="Estados Unidos">Esdatos Unidos</option>
+            <option value="Francia">Francia</option>
+            <option value="Holanda">Holanda</option>
+            <option value="Italia">Italia</option>
+            <option value="Japon">Japon</option>
+            <option value="Panama">Panama</option>
+            <option value="Paraguay">Paraguay</option>
+            <option value="Peru">Peru</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Puerto Rico">Puerto Rico</option>
+   			<option value="Reino Unido">Reino Unido</option>
+            <option value="Republica Dominicana">Republica Dominicana</option>
+            <option value="Rusia">Rusia</option>
+            <option value="Suiza">Suiza</option>
+            <option value="Uruguay">Uruguay</option>
+            <option value="Venezuela">Venezuela</option>
+          </select>
+        </label></td>
+      </tr>
+      <tr>
+        <td height="30" align="right" class="style6">Teléfono1:</td>
+        <td height="30" align="left"><label>
+          <input name="telefono1" type="text" id="telefono1" value="" onkeypress="return acceptNum(event)" size="20" />
+        </label>
+        <label>
+          <select name="tipo_tel" id="tipo_tel">
+            <option selected="selected">---</option>
+            <option value="Habitacion">Habitacion</option>
+            <option value="Oficina">Oficina</option>
+            <option value="Celular">Celular</option>
+          </select>
+        </label></td>
+             </tr>
+          <td height="30" align="right" class="style6">* Teléfono2:</td>
+        <td height="30" align="left"><label>
+          <input name="telefono2" type="text" id="telefono2" value="" onkeypress="return acceptNum(event)" size="20" />
+          
+          <label>
+          <select name="tipo_tel2" id="tipo_tel2" >
+           <option selected="selected">---</option>
+            <option value="Habitacion">Habitacion</option>
+            <option value="Oficina">Oficina</option>
+            <option value="Celular">Celular</option>
+          </select>
+        </label></td>
+      </tr>
+      <tr>
+       <td height="30" align="right" class="style6">Direccion:</td>
+        <td height="30" align="left"><label>
+          <input name="direccion" type="text" id="direccion" value="" size="30" />
+        </label></td>
+      </tr>
+        <td height="30" align="right" class="style6">Estado Civil:</td>
+        <td height="30" align="left"><label>
+          <select name="estcivil" id="estcivil">
+           <option selected="selected">---</option>
+            <option>Soltero</option>
+            <option>Casado</option>
+            <option>Viudo</option>
+            <option>Divorciado</option>
+          </select>
+        </label></td>
+      </tr>
+      <tr>
+      
+        <td height="30" align="right">&nbsp;</td>
+       <td align="center"><input type="submit" name="Registrate" value="Registrarte" size="20"  /></td>
+      </tr>
+      
+      <tr>
+        <td height="30" align="right">&nbsp;</td>
+        <td align="center" id="mensaje3"><label></label></td>
+      
+      </table>
+    </form> 
+
+
+</body>
+</html>

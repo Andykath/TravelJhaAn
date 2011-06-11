@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+</head>
+<script language="javascript" type="text/javascript" src="../js/datetimepicker_css.js"></script> 
+<script language="javascript">
+function confirmar() { 
+
+    if(!confirm("Esta seguro que desea eliminar la cuenta?"))
+	{ 
+	 	return false ;
+	}  
+}
+	
+function validar()
+{
+// el if lo puse ||
+if (document.form1.fecha.value.length == 0 || document.form1.fecha1.value.length == 0 )
+{
+document.getElementById('mensaje').innerHTML = 'Debe llenar todos los campos!';
+return 0;
+
+}
+
+document.form1.submit();
+
+}
+var nav4 = window.Event ? true : false;
+	 
+function acceptNum(evt){	
+// NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57	
+var key = nav4 ? evt.which : evt.keyCode;	
+return (key <= 13 || (key >= 48 && key <= 57));
+}	
+function populate(inForm,selected,fecha,fecha1,aerolinea,origen,destino,total,cantper,id) {
+
+location.href='u_comprar_undestino_sinestadia_terrestre.php?selected=' + selected  + '&fechai=' + fecha + '&fechaf=' + fecha1 + '&aerolinea='+ aerolinea+ '&origen='+ origen+ '&destino='+ destino+ '&total='+ total+ '&cantper='+ cantper + '&id='+ id;
+}
+
+	
+function populate2(inForm,selected,fecha,fecha1,aerolinea,origen,destino,total,cantper,tipo,id) {
+
+location.href='u_comprar_undestino_sinestadia_terrestre.php?selected=' + selected  + '&fechai=' + fecha + '&fechaf=' + fecha1 + '&aerolinea='+ aerolinea+ '&origen='+ origen+ '&destino='+ destino+ '&total='+ total+ '&cantper='+ cantper + '&tipo='+ tipo + '&id='+ id;;
+}
+
+function populate3(inForm,selected,fecha,fecha1,aerolinea) {
+
+location.href='u_comprar_undestino_sinestadia_terrestre.php?selected=' + selected  + '&fechai=' + fecha + '&fechaf=' + fecha1 + '&aerolinea='+ aerolinea;
+}
+	
+
+</script>
+
+
+<body>
+
+
+
+{form}
+<input type="hidden" name="ciudad1_vieja1" id="ciudad1_vieja1" value="{formapago}" />
+<input type="hidden" name="ciudad1_vieja2" id="ciudad1_vieja2" value="{fecha}" />
+<input type="hidden" name="ciudad1_vieja3" id="ciudad1_vieja" value="{fecha1}" />
+<input type="hidden" name="ciudad1_vieja4" id="ciudad1_vieja4" value="{origen1}" />
+<input type="hidden" name="ciudad1_vieja5" id="ciudad1_vieja5" value="{destino1}" />
+<input type="hidden" name="ciudad1_vieja6" id="ciudad1_vieja6" value="{hotel1}" />
+<input type="hidden" name="ciudad1_vieja7" id="ciudad1_vieja7" value="{destino}" />
+<input type="hidden" name="ciudad1_vieja8" id="ciudad1_vieja8" value="{origen}" />
+<input type="hidden" name="ciudad1_vieja9" id="ciudad1_vieja9" value="{hotel}" />
+<input type="hidden" name="ciudad1_vieja19" id="ciudad1_vieja19" value="{id}" />
+<input type="hidden" name="aerolinea1" id="aerolinea1" value="{aerolinea}" />
+
+
+<p align="left"><a href="../php/u_presupuesto_undestino_sinestadia_aereo.php">&lt;&lt;Volver</a></p>
+<table width="382" border="0" align="center">
+ <tr>
+    <th width="128" align="left" scope="row">Id</th>
+    <th align="left" scope="row"><div align="left" id="id">{id}</div></th>
+  </tr>
+<tr>
+    <th width="128" align="left" scope="row">T. Terrestre:</th>
+    <th width="244" align="left" scope="row"><div align="left" id="aerolinea">{aerolinea}</div></th>
+  </tr>
+  <tr>
+  <th width="128" align="left" scope="row">Origen:</th>
+    <th align="left" scope="row"><div align="left" id="origen">{origen}</div></th>
+  </tr>
+  <tr>
+    <th width="128" align="left" scope="row">Destino</th>
+    <th align="left" scope="row"><div align="left" id="destino">{destino}</div></th>
+  </tr>
+  <th width="128" align="left" scope="row">Cant Personas:</th>
+    <th align="left" scope="row"><div align="left" id="cantper">{cantper}</div></th>
+  </tr>
+  <tr>
+  <th width="128" align="left" scope="row">Total(Bs):</th>
+    <th align="left" scope="row"><div align="left" id="total">{total}</div></th>
+  </tr>
+  <tr>
+      <td>Fecha de salida:</td>
+      <td><input name="fecha" id="fecha" type="text" readonly="readonly" value="{fecha}" ><a href="javascript:NewCssCal('fecha','YYYYMMDD')"><img src="../js/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></td>
+    </tr>
+    <tr>
+      <td>Fecha de llegada:</td>
+      <td><input name="fecha1" id="fecha1" type="text" readonly="readonly" value="{fecha1}" ><a href="javascript:NewCssCal('fecha1','YYYYMMDD')"><img src="../js/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></td>
+    </tr>
+   <tr>
+      <td>Forma de pago:</td>
+      <td><select name="formapago" id="formapago" onChange="populate(document.form1,document.form1.formapago.options[document.form1.formapago.selectedIndex].value,document.form1.fecha.value,document.form1.fecha1.value,document.getElementById('aerolinea').innerHTML,document.getElementById('origen').innerHTML,document.getElementById('destino').innerHTML,document.getElementById('total').innerHTML,document.getElementById('cantper').innerHTML,document.getElementById('id').innerHTML)">
+       <option selected="selected">Seleccione</option>
+        {forma}
+      </select>      </td>
+    </tr>
+     {inicial}
+     {vacio}
+     {pago}
+     {numero}
+     {cvv2}
+     {nombre}
+     {combo}
+     {fechapago} 
+     {monto} 
+     
+     {inicial2}
+     {pago1}
+     {numero1}
+     {cvv21}
+     {nombre1}
+     {combo1}
+     {fechapago1}
+     {monto1} 
+     
+     {inicial3}
+     {pago2}
+     {numero2}
+     {cvv22}
+     {nombre2}
+     {combo2}
+     {fechapago2}
+     {monto2} 
+     
+     
+      <tr>
+      <td align="center" height="21" colspan="6">{continuar}</td>
+    </tr>
+     
+   
+     
+     <tr>
+      <td colspan="2" align="center"><input type="button" name="agregar" id="agregar" value="{tipo_boton}" onclick="validar()" /></td>
+    </tr>
+    <tr>
+
+</table>
+ <p align="left">&nbsp;</p>
+</form>
+</body>
+</html>

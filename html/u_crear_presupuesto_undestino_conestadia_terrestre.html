@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+</head>
+
+
+
+<script language="javascript" type="text/javascript" src="../js/datetimepicker_css.js"></script> 
+<script language="javascript">
+
+
+function validar()
+{
+// el if lo puse ||
+if (document.form1.fecha.value.length == 0 )
+{
+document.getElementById('mensaje').innerHTML = 'Debe llenar todos los campos!';
+return 0;
+
+}
+
+document.form1.submit();
+
+}
+
+var nav4 = window.Event ? true : false;
+function acceptNum(evt){	
+// NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57	
+var key = nav4 ? evt.which : evt.keyCode;	
+return (key <= 13 || (key >= 48 && key <= 57));
+}
+
+function populate(inForm,selected,fecha) {
+
+location.href='u_crear_presupuesto_undestino_conestadia_terrestre.php?selected=' + selected  + '&fechai=' + fecha +  '&selected2=k' +'&selected3=a' ;
+}
+
+function populate1(inForm,selected,fecha,selected2) {
+
+location.href='u_crear_presupuesto_undestino_conestadia_terrestre.php?selected=' + selected  + '&fechai=' + fecha + '&selected2=' + selected2 +'&selected3=a';
+}
+
+function populate2(inForm,selected,fecha,selected2,selected3) {
+
+location.href='u_crear_presupuesto_undestino_conestadia_terrestre.php?selected=' + selected  + '&fechai=' + fecha + '&selected2=' + selected2 +  '&selected3=' + selected3;
+}
+
+
+function populate5(inForm,selected,fecha,selected2,selected3,selected4,selected5,selected6,cantper,tipoviaje) {
+
+location.href='u_crear_presupuesto_undestino_conestadia_terrestre.php?selected=' + selected  + '&fechai=' + fecha + '&selected2=' + selected2 +  '&selected3=' + selected3  +  '&selected4=' + selected4  +  '&selected5=' + selected5  +  '&selected6=' + selected6 + '&cantper=' + cantper  + '&tipoviaje=' + tipoviaje;
+}
+
+
+</script>
+
+<body>
+
+
+{form}
+<input type="hidden" name="estadio_viejo" id="estadio_nuevo" value="{total}" />	
+<input type="hidden" name="id" id="id" value="{cue_id}" />
+
+
+<input type="hidden" name="ciudad_vieja" id="ciudad_vieja" value="{banco}" />
+<input type="hidden" name="ciudad1_vieja" id="ciudad1_vieja" value="{banco1}" />
+
+<input type="hidden" name="fecha_vieja" id="fecha_vieja" value="{fecha}" />
+
+<input type="hidden" name="fecha1_vieja1" id="fecha1_vieja1" value="{cantper}" />
+<input type="hidden" name="fecha1_vieja1" id="fecha1_vieja1" value="{hotel}" />
+<input type="hidden" name="fecha1_viejae1" id="fecha1_viejae1" value="{habitacion}" />
+<input type="hidden" name="ciudad_vieja234" id="ciudad_vieja234" value="{servicio}" />
+<input type="hidden" name="ciudad_vieja23" id="ciudad_vieja23" value="{paseo}" />
+<input type="hidden" name="ciudad_vieja231" id="ciudad_vieja231" value="{tipoviaje}" />
+<input type="hidden" name="ciudad1_vieja231" id="ciudad1_vieja231" value="{total}" />
+
+  <table width="415" border="0">
+    
+    <tr>
+      <td colspan="2" align="center">Llena la informacion del nuevo presupuesto</td>
+    </tr>
+    
+    <tr>
+      <td>Fecha del presupuesto:</td>
+      <td><input name="fecha" id="fecha" type="text" readonly="readonly" value="{fecha}" ><a href="javascript:NewCssCal('fecha','YYYYMMDD')"><img src="../js/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></td>
+    </tr>
+     <tr>
+      <td>T.Terrestre/Origen:</td>
+      <td><select name="banco" id="banco" onChange="populate(document.form1,document.form1.banco.options[document.form1.banco.selectedIndex].value, document.form1.fecha.value)">
+     <option selected="selected">Seleccione</option>
+      {bancos}
+      </select>      </td>
+    </tr>
+     <tr>
+      <td>T.Terrestre/Destino:</td>
+      <td><select name="banco1" id="banco1" onChange="populate1(document.form1,document.form1.banco.options[document.form1.banco.selectedIndex].value, document.form1.fecha.value,document.form1.banco1.options[document.form1.banco1.selectedIndex].value)">
+      <option selected="selected">Seleccione</option>
+      {bancos1}
+      </select>      </td>
+    </tr>
+    
+    <tr>
+      <td>Hotel:</td>
+      <td><select name="hotel" id="hotel" onChange="populate2(document.form1,document.form1.banco.options[document.form1.banco.selectedIndex].value, document.form1.fecha.value,document.form1.banco1.options[document.form1.banco1.selectedIndex].value,document.form1.hotel.options[document.form1.hotel.selectedIndex].value)">
+    <option selected="selected">Seleccione</option>
+      {hoteles}
+      </select>      </td>
+    </tr>
+    <tr>
+      <td>Habitacion:</td>
+      <td><select name="habitacion" id="habitacion">
+      <option selected="selected">Seleccione</option>
+      {habitaciones}
+      </select>      </td>
+    </tr>
+    <tr>
+      <td>*Servicios:</td>
+      <td><select name="servicio" id="servicio">
+     <option selected="selected">Seleccione</option>
+      {servicios}
+      </select>      </td>
+    </tr>
+     <tr>
+      <td>Cant Personas (Incluyendo al presupuestante):</td>
+      <td><select name="cantper" id="cantper">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+      </select>      </td>
+    </tr>
+     <tr>
+      <td>Tipo de viaje:</td>
+ <option selected="selected">Seleccione</option>
+      <td><select name="tipoviaje" id="tipoviaje">
+         
+        <option>Solamente Ida</option>
+        <option>Ida y vuelta</option>
+      </select>      </td>
+    </tr>
+    <tr>
+      <td>*Paseos:</td>
+      <td><select name="paseito" id="paseito" onChange= "populate5(document.form1,document.form1.banco.options[document.form1.banco.selectedIndex].value, document.form1.fecha.value,document.form1.banco1.options[document.form1.banco1.selectedIndex].value,document.form1.hotel.options[document.form1.hotel.selectedIndex].value,document.form1.habitacion.options[document.form1.habitacion.selectedIndex].value,document.form1.servicio.options[document.form1.servicio.selectedIndex].value,document.form1.paseito.options[document.form1.paseito.selectedIndex].value,document.form1.cantper.options[document.form1.cantper.selectedIndex].value,document.form1.tipoviaje.options[document.form1.tipoviaje.selectedIndex].value)">
+       <option selected="selected">Seleccione</option>
+      {paseos}
+      </select>      </td>
+    </tr>
+    
+     <tr>
+      <td width="203">Total Presupuesto(BsF):</td>
+      <td width="202"><input type="text" name="total" id="total" value="{totaltodo}" readonly></td>
+    </tr>
+    
+    {id}
+    
+    <tr>
+      <td colspan="2" align="center"><input type="button" name="agregar" id="agregar" value="{tipo_boton}" onclick="validar()" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center" id="mensaje">{error}</td>
+    </tr>
+  </table>
+</form>
+
+</body>
+</html>

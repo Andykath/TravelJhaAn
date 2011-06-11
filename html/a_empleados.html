@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+</head>
+
+<script language="javascript">
+function confirmar() { 
+
+    if(!confirm("Esta seguro que desea eliminar el pais?"))
+	{ 
+	 	return false ;
+	}   
+}
+</script>
+
+
+<body>
+<form id="form2" name="form2" method="post" action="">
+<table width="840" height="207" border="0">
+      <tr>
+      <td height="53" colspan="8" align="center">Modulo para la creacion,y visualizacion de la informacion de los empleados de Viajes UCAB</td>
+    </tr>
+       <tr>
+      <th height="" colspan="8" scope="col"><a href="../php/a_crear_empleado.php">Crear Empleado</a></th>
+    </tr>
+      
+      <tr>
+        <th height="21" colspan="6" scope="col">{mensaje}</th>
+    </tr>
+   
+    <tr>
+      <th style="border:2px solid #000000;" width="162" height="41" scope="col">Cedula</th>
+      <th style="border:2px solid #000000;" width="338" scope="col">Nombre</th>
+      <th style="border:2px solid #000000;" width="326" scope="col">Apellido</th>
+     
+    </tr>
+    {informacion}
+  </table>
+
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp; </p>
+</form>
+</body>
+</html>

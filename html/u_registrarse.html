@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>Untitled Document</title>
+
+<style type="text/css">
+<!--
+.style14 {
+	font-family: Helvetica;
+	font-weight: bold;
+}
+a:link {
+	text-decoration: none;
+	color: null;
+}
+a:visited {
+	text-decoration: none;
+	color: null;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+-->
+</style>
+
+<style type="text/css">
+<!--
+body {
+	background-repeat: no-repeat;
+	background-image: url(/viajesucabbd/imagenes/prueba.jpg);
+}
+.style8 {font-family: Helvetica; color: #FFFFFF; font-weight: bold; }
+.style9 {color: #E3E3E3}
+.style13 {color: #FFFFFF; font-size: 12px; font-family: Helvetica;}
+.style14 {
+	font-family: Helvetica;
+	color: #FFFFFF;
+}
+-->
+</style>
+</head>
+
+
+{body}
+
+
+<script language="javascript">
+function pintar (objeto,col,col2,nom)
+{
+            if (nombreetiqueta != nom)
+			{
+			objeto.bgColor=col;
+			objeto.style.color=col2;			
+			}
+}
+function actual(numero)
+{
+var casilla;
+
+ switch (numero)
+ {
+  case 1:nombreetiqueta= 'home';break;
+  case 2:nombreetiqueta= 'perfil';break;
+  case 3:nombreetiqueta= 'destinos';break;
+  case 4:nombreetiqueta= 'hoteles';break;
+  case 5:nombreetiqueta= 'restaurantes';break;
+  case 6:nombreetiqueta= 'eventos';break;
+  case 7:nombreetiqueta= 'tienda';break;
+  case 8:nombreetiqueta= 'salir';break;
+ }
+
+ casilla = document.getElementById(nombreetiqueta);
+ casilla.bgColor = '';
+ casilla.style.color= '#000066';
+}
+
+var nombreetiqueta;
+
+</script>
+
+
+
+
+<table width="1150" align="center" cellpadding="0" cellspacing="0">
+  <tr bgcolor="#000066">
+    <td height="130" colspan="8" align="center"><img src="/viajesucabbd/imagenes/todo.jpg" /></td>
+  </tr>
+  <tr>
+    <td width="114" height="10">&nbsp;</td>
+    <td width="104" height="10">&nbsp;</td>
+    <td width="211">&nbsp;</td>
+    <td width="97" height="10">&nbsp;</td>
+    <td width="144" height="10">&nbsp;</td>
+    <td width="124" height="10">&nbsp;</td>
+    <td width="175">&nbsp;</td>
+    <td width="179" height="10">&nbsp;</td>
+  </tr>
+  
+  
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td colspan="2"><div align="right">
+      <p>{nombre} {apellido}</p>
+      </div></td>
+  </tr>
+  <tr>
+    <td colspan="8" bgcolor="#FFFFFF"><div align="center">
+      <p>{contenido}</p>
+    </div></td>
+  
+<table width="1150" align="center" cellpadding="0" cellspacing="0">
+    <td height="45" colspan="8" align="right" bgcolor="#000000" class="style13">© Copyright Viajes UCAB| Todos los derechos reservados | Producciones SzcoPa.</table>
+  </tr>
+</table>
+</body>
+</html>
