@@ -17,7 +17,7 @@
 		    
 			
 			
-			
+			//print_r($_POST);
 		
 			//echo("entra");
 			//echo($total);
@@ -28,21 +28,21 @@
 				$last2 = mysql_fetch_array($last);
 				$este=$last2["max"];
 				
-				if(!(isset($pas1))){
+				if($pas1){
 				mysql_query("INSERT INTO `pre_pas` (`pre_id`, `fk_pre_id`,`fk_pas_id`) VALUES (NULL ,'$este','$pas1')");}
-				if(!(isset($pas2))){
+				if($pas2){
 				mysql_query("INSERT INTO `pre_pas` (`pre_id`, `fk_pre_id`,`fk_pas_id`) VALUES (NULL ,'$este','$pas2')");}
-				if(!(isset($pas3))){
+				if($pas3){
 				mysql_query("INSERT INTO `pre_pas` (`pre_id`, `fk_pre_id`,`fk_pas_id`) VALUES (NULL ,'$este','$pas3')");}
-				if(!(isset($pas4))){
+				if($pas4){
 				mysql_query("INSERT INTO `pre_pas` (`pre_id`, `fk_pre_id`,`fk_pas_id`) VALUES (NULL ,'$este','$pas4')");}
-				if(!(isset($pas5))){
+				if($pas5){
 				mysql_query("INSERT INTO `pre_pas` (`pre_id`, `fk_pre_id`,`fk_pas_id`) VALUES (NULL ,'$este','$pas5')");}
-				if(!(isset($pas6))){
+				if($pas6){
 				mysql_query("INSERT INTO `pre_pas` (`pre_id`, `fk_pre_id`,`fk_pas_id`) VALUES (NULL ,'$este','$pas6')");}
-				if(!(isset($pas7))){
+				if($pas7){
 				mysql_query("INSERT INTO `pre_pas` (`pre_id`, `fk_pre_id`,`fk_pas_id`) VALUES (NULL ,'$este','$pas7')");}
-				if(!(isset($pas8))){
+				if($pas8){
 				mysql_query("INSERT INTO `pre_pas` (`pre_id`, `fk_pre_id`,`fk_pas_id`) VALUES (NULL ,'$este','$pas8')");}
 				
 				
