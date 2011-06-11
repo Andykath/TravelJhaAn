@@ -9,17 +9,6 @@
 
 <script language="javascript" type="text/javascript" src="../js/datetimepicker_css.js"></script> 
 <script language="javascript">
-function get_check_value()
-{
-var c_value = "";
-for (var i=0; i < document.form1.pas.length; i++)
-   {
-   if (document.form.pas[i].checked)
-      {
-      c_value = c_value + document.form1.pas[i].value + "\n";
-      }
-   }
-}
 
 function validar()
 {
@@ -42,6 +31,7 @@ var key = nav4 ? evt.which : evt.keyCode;
 return (key <= 13 || (key >= 48 && key <= 57));
 }
 
+
 function populate(inForm,selected,fecha) {
 
 location.href='u_crear_presupuesto_undestino_conestadia_aereo.php?selected=' + selected  + '&fechai=' + fecha +  '&selected2=k' +'&selected3=a' ;
@@ -63,6 +53,7 @@ function populate5(inForm,selected,fecha,selected2,selected3,selected4,selected5
 location.href='u_crear_presupuesto_undestino_conestadia_aereo.php?selected=' + selected  + '&fechai=' + fecha + '&selected2=' + selected2 +  '&selected3=' + selected3  +  '&selected4=' + selected4  +  '&selected5=' + selected5  +  '&selected6=' + selected6 + '&cantper=' + cantper  + '&tipoviaje=' + tipoviaje;
 }
 function populate6() {
+document.form1.action = "../php/u_crear_presupuesto_undestino_conestadia_aereo.php?sipo=1";
 document.form1.submit();
 }
 
@@ -88,6 +79,7 @@ document.form1.submit();
 <input type="hidden" name="ciudad_vieja23" id="ciudad_vieja23" value="{paseo}" />
 <input type="hidden" name="ciudad_vieja231" id="ciudad_vieja231" value="{tipoviaje}" />
 <input type="hidden" name="ciudad1_vieja231" id="ciudad1_vieja231" value="{total}" />
+{hid}
 
   <table width="415" border="0">
     
@@ -152,14 +144,14 @@ document.form1.submit();
     </tr>
     <tr>
       <td>*Paseos:</td>
-      <td><input type="checkbox" name="pas0" id="0" value="0" />Ningun paseo<br />
+      <td><input type="checkbox" name="pas0" id="0" onchange="funcion(document.form1.pas0.value)"  value="0" />Ningun paseo<br />
       {paseos}</td>
     </tr>
      <tr>
       <td>Tipo de viaje:</td>
 
       <td><select name="tipoviaje" id="tipoviaje" onChange= "populate6()">
-         
+         <option>Seleccione</option>
         <option>Solamente Ida</option>
         <option>Ida y vuelta</option>
       </select>      </td>
