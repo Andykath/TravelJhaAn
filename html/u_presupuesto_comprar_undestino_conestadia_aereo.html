@@ -33,15 +33,15 @@ function acceptNum(evt){
 var key = nav4 ? evt.which : evt.keyCode;	
 return (key <= 13 || (key >= 48 && key <= 57));
 }	
-function populate(inForm,selected,fecha,fecha1,aerolinea,origen,destino,hotel,habitacion,servicio,paseo,total,cantper,id) {
+function populate(inForm,selected,fecha,fecha1,aerolinea,origen,destino,hotel,habitacion,servicio,total,cantper,id) {
 
-location.href='u_comprar_undestino_conestadia_aereo.php?selected=' + selected  + '&fechai=' + fecha + '&fechaf=' + fecha1 + '&aerolinea='+ aerolinea+ '&origen='+ origen+ '&destino='+ destino+ '&hotel='+ hotel+ '&habitacion='+ habitacion+ '&servicio='+ servicio+ '&paseo='+ paseo+ '&total='+ total+ '&cantper='+ cantper + '&id='+ id;
+location.href='u_comprar_undestino_conestadia_aereo.php?selected=' + selected  + '&fechai=' + fecha + '&fechaf=' + fecha1 + '&aerolinea='+ aerolinea+ '&origen='+ origen+ '&destino='+ destino+ '&hotel='+ hotel+ '&habitacion='+ habitacion+ '&servicio='+ servicio+ '&total='+ total+ '&cantper='+ cantper + '&id='+ id;
 }
 
 	
-function populate2(inForm,selected,fecha,fecha1,aerolinea,origen,destino,hotel,habitacion,servicio,paseo,total,cantper,tipo,id) {
+function populate2(inForm,selected,fecha,fecha1,aerolinea,origen,destino,hotel,habitacion,servicio,total,cantper,tipo,id) {
 
-location.href='u_comprar_undestino_conestadia_aereo.php?selected=' + selected  + '&fechai=' + fecha + '&fechaf=' + fecha1 + '&aerolinea='+ aerolinea+ '&origen='+ origen+ '&destino='+ destino+ '&hotel='+ hotel+ '&habitacion='+ habitacion+ '&servicio='+ servicio+ '&paseo='+ paseo+ '&total='+ total+ '&cantper='+ cantper + '&tipo='+ tipo + '&id='+ id;;
+location.href='u_comprar_undestino_conestadia_aereo.php?selected=' + selected  + '&fechai=' + fecha + '&fechaf=' + fecha1 + '&aerolinea='+ aerolinea+ '&origen='+ origen+ '&destino='+ destino+ '&hotel='+ hotel+ '&habitacion='+ habitacion+ '&servicio='+ servicio+ '&total='+ total+ '&cantper='+ cantper + '&tipo='+ tipo + '&id='+ id;;
 }
 
 function populate3(inForm,selected,fecha,fecha1,aerolinea) {
@@ -120,7 +120,7 @@ location.href='u_comprar_undestino_conestadia_aereo.php?selected=' + selected  +
     </tr>
    <tr>
       <td>Forma de pago:</td>
-      <td><select name="formapago" id="formapago" onChange="populate(document.form1,document.form1.formapago.options[document.form1.formapago.selectedIndex].value,document.form1.fecha.value,document.form1.fecha1.value,document.getElementById('aerolinea').innerHTML,document.getElementById('origen').innerHTML,document.getElementById('destino').innerHTML,document.getElementById('hotel').innerHTML,document.getElementById('habitacion').innerHTML,document.getElementById('servicio').innerHTML,document.getElementById('paseo').innerHTML,document.getElementById('total').innerHTML,document.getElementById('cantper').innerHTML,document.getElementById('id').innerHTML)">
+      <td><select name="formapago" id="formapago" onChange="populate(document.form1,document.form1.formapago.options[document.form1.formapago.selectedIndex].value,document.form1.fecha.value,document.form1.fecha1.value,document.getElementById('aerolinea').innerHTML,document.getElementById('origen').innerHTML,document.getElementById('destino').innerHTML,document.getElementById('hotel').innerHTML,document.getElementById('habitacion').innerHTML,document.getElementById('servicio').innerHTML,document.getElementById('total').innerHTML,document.getElementById('cantper').innerHTML,document.getElementById('id').innerHTML)">
        <option selected="selected">Seleccione</option>
         {forma}
       </select>      </td>

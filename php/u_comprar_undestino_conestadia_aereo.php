@@ -834,7 +834,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					$panelestadios->add("hotel",$hotel);
 					$panelestadios->add("habitacion",$habitacion);
 					 $panelestadios->add("servicio",$servicio);
-					 $panelestadios->add("paseo",$paseo);
+					 
 					  $panelestadios->add("total",$total);
 					  $panelestadios->add("cantper",$cantper);
 					   $panelestadios->add("id",$id);
@@ -851,7 +851,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					$panelestadios->add("hotel",$hotel);
 					$panelestadios->add("habitacion",$habitacion);
 					 $panelestadios->add("servicio",$servicio);
-					 $panelestadios->add("paseo",$paseo);
+					
 					  $panelestadios->add("total",$total);
 					  $panelestadios->add("cantper",$cantper);
 						$panelestadios->add("fecha",$fechai);
@@ -874,7 +874,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 							
 							
 			
-			if(($selected=="Pago Unico") && $aerolinea && $fechaf && $fechai && $hotel && $habitacion && $origen && $destino && $servicio && $paseo && $total )
+			if(($selected=="Pago Unico") && $aerolinea && $fechaf && $fechai && $hotel && $habitacion && $origen && $destino && $servicio  && $total )
 				{
 					
 				$panelestadios->add("cue_numero",$tipoviaje);
@@ -885,7 +885,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					$panelestadios->add("hotel",$hotel);
 					$panelestadios->add("habitacion",$habitacion);
 					 $panelestadios->add("servicio",$servicio);
-					 $panelestadios->add("paseo",$paseo);
+				
 					  $panelestadios->add("total",$total);
 					 $panelestadios->add("cantper",$cantper);
 					$panelestadios->add("fecha",$fechai);
@@ -897,7 +897,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					 $panelestadios->add("forma",$select2);	*/	
 							
 					
-				$panelestadios->add("pago",' <tr><td>Tipo:</td><td><select name="tipo" id="tipo"  onChange="populate2(document.form1,document.form1.formapago.options[document.form1.formapago.selectedIndex].value,document.form1.fecha.value,document.form1.fecha1.value,document.getElementById(\'aerolinea\').innerHTML,document.getElementById(\'origen\').innerHTML,document.getElementById(\'destino\').innerHTML,document.getElementById(\'hotel\').innerHTML,document.getElementById(\'habitacion\').innerHTML,document.getElementById(\'servicio\').innerHTML,document.getElementById(\'paseo\').innerHTML,document.getElementById(\'total\').innerHTML,document.getElementById(\'cantper\').innerHTML,document.form1.tipo.options[document.form1.tipo.selectedIndex].value,document.getElementById(\'id\').innerHTML)"><option selected="selected">Seleccione</option><option>Tarjeta</option><option>Cheque</option><option>Efectivo</option></select></td></tr>
+				$panelestadios->add("pago",' <tr><td>Tipo:</td><td><select name="tipo" id="tipo"  onChange="populate2(document.form1,document.form1.formapago.options[document.form1.formapago.selectedIndex].value,document.form1.fecha.value,document.form1.fecha1.value,document.getElementById(\'aerolinea\').innerHTML,document.getElementById(\'origen\').innerHTML,document.getElementById(\'destino\').innerHTML,document.getElementById(\'hotel\').innerHTML,document.getElementById(\'habitacion\').innerHTML,document.getElementById(\'servicio\').innerHTML,document.getElementById(\'total\').innerHTML,document.getElementById(\'cantper\').innerHTML,document.form1.tipo.options[document.form1.tipo.selectedIndex].value,document.getElementById(\'id\').innerHTML)"><option selected="selected">Seleccione</option><option>Tarjeta</option><option>Cheque</option><option>Efectivo</option></select></td></tr>
     ');
 				
 				
@@ -906,7 +906,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 				
 				
 				
-				else if(($selected=="Pago en cuotas") && $aerolinea && $fechaf && $fechai && $hotel && $habitacion && $origen && $destino && $servicio && $paseo && $total )
+				else if(($selected=="Pago en cuotas") && $aerolinea && $fechaf && $fechai && $hotel && $habitacion && $origen && $destino && $servicio && $total )
 					{
 					$panelestadios->add("cue_numero",$tipoviaje);
 					
@@ -916,7 +916,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					$panelestadios->add("hotel",$hotel);
 					$panelestadios->add("habitacion",$habitacion);
 					 $panelestadios->add("servicio",$servicio);
-					 $panelestadios->add("paseo",$paseo);
+				
 					  $panelestadios->add("total",$total);
 					 $panelestadios->add("cantper",$cantper);
 					$panelestadios->add("fecha",$fechai);
@@ -1033,7 +1033,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					
 					
 					//Para el de tarjeta bla bla 
-					if(($selected=="Pago Unico") && $aerolinea && $fechaf && $fechai && $hotel && $habitacion && $origen && $destino && $servicio && $paseo && $total && $tipo )
+					if(($selected=="Pago Unico") && $aerolinea && $fechaf && $fechai && $hotel && $habitacion && $origen && $destino && $servicio && $total && $tipo )
 				{
 					
 				    $panelestadios->add("cue_numero",$tipoviaje);
@@ -1044,7 +1044,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					$panelestadios->add("destino",$destino);
 					$panelestadios->add("habitacion",$habitacion);
 					 $panelestadios->add("servicio",$servicio);
-					 $panelestadios->add("paseo",$paseo);
+					 
 					  $panelestadios->add("total",$total);
 					 $panelestadios->add("cantper",$cantper);
 					$panelestadios->add("fecha",$fechai);
@@ -1054,7 +1054,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					
 				//aqui van los if
 				if ($tipo=="Tarjeta"){
-				$panelestadios->add("pago",' <tr><td>Tipo:</td><td><select name="tipo" id="tipo"  onChange="populate2(document.form1,document.form1.formapago.options[document.form1.formapago.selectedIndex].value,document.form1.fecha.value,document.form1.fecha1.value,document.getElementById(\'aerolinea\').innerHTML,document.getElementById(\'origen\').innerHTML,document.getElementById(\'destino\').innerHTML,document.getElementById(\'hotel\').innerHTML,document.getElementById(\'habitacion\').innerHTML,document.getElementById(\'servicio\').innerHTML,document.getElementById(\'paseo\').innerHTML,document.getElementById(\'total\').innerHTML,document.getElementById(\'cantper\').innerHTML,document.form1.tipo.options[document.form1.tipo.selectedIndex].value,document.getElementById(\'id\').innerHTML)"><option>Seleccione</option><option  selected="selected">Tarjeta</option><option>Cheque</option><option>Efectivo</option></select></td></tr>
+				$panelestadios->add("pago",' <tr><td>Tipo:</td><td><select name="tipo" id="tipo"  onChange="populate2(document.form1,document.form1.formapago.options[document.form1.formapago.selectedIndex].value,document.form1.fecha.value,document.form1.fecha1.value,document.getElementById(\'aerolinea\').innerHTML,document.getElementById(\'origen\').innerHTML,document.getElementById(\'destino\').innerHTML,document.getElementById(\'hotel\').innerHTML,document.getElementById(\'habitacion\').innerHTML,document.getElementById(\'servicio\').innerHTML,document.getElementById(\'total\').innerHTML,document.getElementById(\'cantper\').innerHTML,document.form1.tipo.options[document.form1.tipo.selectedIndex].value,document.getElementById(\'id\').innerHTML)"><option>Seleccione</option><option  selected="selected">Tarjeta</option><option>Cheque</option><option>Efectivo</option></select></td></tr>
     ');
 	
 				$resultk= mysql_query("SELECT * FROM  banco b");
@@ -1090,7 +1090,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 	
 	
 	if ($tipo=="Cheque"){
-				$panelestadios->add("pago",' <tr><td>Tipo:</td><td><select name="tipo" id="tipo"  onChange="populate2(document.form1,document.form1.formapago.options[document.form1.formapago.selectedIndex].value,document.form1.fecha.value,document.form1.fecha1.value,document.getElementById(\'aerolinea\').innerHTML,document.getElementById(\'origen\').innerHTML,document.getElementById(\'destino\').innerHTML,document.getElementById(\'hotel\').innerHTML,document.getElementById(\'habitacion\').innerHTML,document.getElementById(\'servicio\').innerHTML,document.getElementById(\'paseo\').innerHTML,document.getElementById(\'total\').innerHTML,document.getElementById(\'cantper\').innerHTML,document.form1.tipo.options[document.form1.tipo.selectedIndex].value,document.getElementById(\'id\').innerHTML)"><option>Seleccione</option><option>Tarjeta</option><option selected="selected">Cheque</option><option>Efectivo</option></select></td></tr>
+				$panelestadios->add("pago",' <tr><td>Tipo:</td><td><select name="tipo" id="tipo"  onChange="populate2(document.form1,document.form1.formapago.options[document.form1.formapago.selectedIndex].value,document.form1.fecha.value,document.form1.fecha1.value,document.getElementById(\'aerolinea\').innerHTML,document.getElementById(\'origen\').innerHTML,document.getElementById(\'destino\').innerHTML,document.getElementById(\'hotel\').innerHTML,document.getElementById(\'habitacion\').innerHTML,document.getElementById(\'servicio\').innerHTML,document.getElementById(\'total\').innerHTML,document.getElementById(\'cantper\').innerHTML,document.form1.tipo.options[document.form1.tipo.selectedIndex].value,document.getElementById(\'id\').innerHTML)"><option>Seleccione</option><option>Tarjeta</option><option selected="selected">Cheque</option><option>Efectivo</option></select></td></tr>
     ');
 	
 				$resultk= mysql_query("SELECT * FROM  banco b");
@@ -1125,7 +1125,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 				}
 	
 	if ($tipo=="Efectivo"){
-				$panelestadios->add("pago",' <tr><td>Tipo:</td><td><select name="tipo" id="tipo"  onChange="populate2(document.form1,document.form1.formapago.options[document.form1.formapago.selectedIndex].value,document.form1.fecha.value,document.form1.fecha1.value,document.getElementById(\'aerolinea\').innerHTML,document.getElementById(\'origen\').innerHTML,document.getElementById(\'destino\').innerHTML,document.getElementById(\'hotel\').innerHTML,document.getElementById(\'habitacion\').innerHTML,document.getElementById(\'servicio\').innerHTML,document.getElementById(\'paseo\').innerHTML,document.getElementById(\'total\').innerHTML,document.getElementById(\'cantper\').innerHTML,document.form1.tipo.options[document.form1.tipo.selectedIndex].value,document.getElementById(\'id\').innerHTML)"><option>Seleccione</option><option>Tarjeta</option><option>Cheque</option><option selected="selected">Efectivo</option></select></td></tr>
+				$panelestadios->add("pago",' <tr><td>Tipo:</td><td><select name="tipo" id="tipo"  onChange="populate2(document.form1,document.form1.formapago.options[document.form1.formapago.selectedIndex].value,document.form1.fecha.value,document.form1.fecha1.value,document.getElementById(\'aerolinea\').innerHTML,document.getElementById(\'origen\').innerHTML,document.getElementById(\'destino\').innerHTML,document.getElementById(\'hotel\').innerHTML,document.getElementById(\'habitacion\').innerHTML,document.getElementById(\'servicio\').innerHTML,document.getElementById(\'total\').innerHTML,document.getElementById(\'cantper\').innerHTML,document.form1.tipo.options[document.form1.tipo.selectedIndex].value,document.getElementById(\'id\').innerHTML)"><option>Seleccione</option><option>Tarjeta</option><option>Cheque</option><option selected="selected">Efectivo</option></select></td></tr>
     ');
 	
 				$resultk= mysql_query("SELECT * FROM  banco b");

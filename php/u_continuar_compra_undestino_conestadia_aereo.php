@@ -9,7 +9,7 @@
 	extract($_POST);
 	extract($_GET);
 	      
-		  if($nombre1)
+		  if($viaje)
 		  {    
 		//echo("entro a insertar en aco");
 		//echo($nombre1);
@@ -28,7 +28,9 @@
 			$estesi=$ro16['via_cant_per'];		
 			  
 			    //echo($estesi);
-			  
+				if($estesi==1)
+			  {
+			  mysql_query("INSERT INTO `boleto` (`bol_id`, `bol_fecha_emi`, `fk_via_id`,`fk_per_cedula`,`fk_aco_id`) VALUES (NULL ,'2011-06-18','$viaje','$cedula',NULL)");}
 			  if($estesi==2)
 			  {
 				mysql_query("INSERT INTO `acompanante` (`aco_id`, `aco_nombre`, `aco_apellido`,`aco_cedula`,`fk_via_id`,`fk_per_cedula`) VALUES (NULL ,'$nombre1', '$apellido1','$cedula1','$viaje','$cedula')");
