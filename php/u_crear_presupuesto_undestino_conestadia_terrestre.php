@@ -10,7 +10,7 @@
 	extract($_POST);
 	extract($_GET);
 	      
-		  if($fecha)
+		  if($total && !(isset($sipo)))
 		  {
 		  
 		  
@@ -23,8 +23,30 @@
 			//echo($total);
 			$total2= (float) $total;
 			//echo("entra  $total $total");
-				mysql_query("INSERT INTO `presupuesto` (`pre_id`, `pre_fecha`,`pre_habitacion`,`pre_servicio`,`pre_paseo`,`pre_total`,`pre_cant_per`,`fk_per_cedula`, `fk_via_id_origen`, `fk_via_id_destino`,`pre_abono`,`pre_status`) VALUES (NULL ,'$fecha','$habitacion','$servicio','$paseito', '$total2','$cantper', '$cedula','$banco', '$banco1',0,'No comprado')");
-			    
+				mysql_query("INSERT INTO `presupuesto` (`pre_id`, `pre_fecha`,`pre_habitacion`,`pre_servicio`,`pre_paseo`,`pre_total`,`pre_cant_per`,`fk_per_cedula`, `fk_via_id_origen`, `fk_via_id_destino`,`pre_abono`,`pre_status`) VALUES (NULL ,'$fecha','$habitacion','$servicio',NULL, '$total2','$cantper', '$cedula','$banco', '$banco1',0,'No comprado')");
+			     $last = mysql_query("SELECT max(pre_id) as max FROM presupuesto"); 
+				$last2 = mysql_fetch_array($last);
+				$este=$last2["max"];
+				
+				if($pas1){
+				mysql_query("INSERT INTO `pre_pas` (`pre_id`, `fk_pre_id`,`fk_pas_id`) VALUES (NULL ,'$este','$pas1')");}
+				if($pas2){
+				mysql_query("INSERT INTO `pre_pas` (`pre_id`, `fk_pre_id`,`fk_pas_id`) VALUES (NULL ,'$este','$pas2')");}
+				if($pas3){
+				mysql_query("INSERT INTO `pre_pas` (`pre_id`, `fk_pre_id`,`fk_pas_id`) VALUES (NULL ,'$este','$pas3')");}
+				if($pas4){
+				mysql_query("INSERT INTO `pre_pas` (`pre_id`, `fk_pre_id`,`fk_pas_id`) VALUES (NULL ,'$este','$pas4')");}
+				if($pas5){
+				mysql_query("INSERT INTO `pre_pas` (`pre_id`, `fk_pre_id`,`fk_pas_id`) VALUES (NULL ,'$este','$pas5')");}
+				if($pas6){
+				mysql_query("INSERT INTO `pre_pas` (`pre_id`, `fk_pre_id`,`fk_pas_id`) VALUES (NULL ,'$este','$pas6')");}
+				if($pas7){
+				mysql_query("INSERT INTO `pre_pas` (`pre_id`, `fk_pre_id`,`fk_pas_id`) VALUES (NULL ,'$este','$pas7')");}
+				if($pas8){
+				mysql_query("INSERT INTO `pre_pas` (`pre_id`, `fk_pre_id`,`fk_pas_id`) VALUES (NULL ,'$este','$pas8')");}
+				
+				
+				
 				$hola='u_presupuesto_undestino_conestadia_terrestre.php?mensaje=1';
 				header("Location:$hola");
 			  
@@ -271,13 +293,16 @@
 						
 						
 						$result8= mysql_query("SELECT p.pas_nombre, p.pas_descripcion,p.pas_id,p.pas_costo FROM  paseo p, hot_pas hp WHERE hp.fk_hot_id=$selected3 AND hp.fk_pas_id=p.pas_id");
+						$cont=0;
 						while($row8 = mysql_fetch_array($result8))
 						{
-						$select_actual8='<option value="'.$row8["pas_id"].'">'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'</option>'; 
+						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'" value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
 						$select8=$select8.$select_actual8;
+						
+			
+						$cont=$cont+1;
 						}
 						$panelcuentas->add("paseos",$select8);
-						
 					   
 					   
 					    
@@ -303,7 +328,7 @@
 			  
 			  
 			  
-			   if ($selected && $fechai && ($selected2!="k") && ($selected3!="a") && $selected4  && $selected5  && $selected6 &&$cantper && $tipoviaje)
+			   if ($banco && $fecha && banco1 && $hotel && $habitacion  && $servicio  && ($pas0 || $pas1 || $pas2 || $pas3 || $pas4 || $pas5 || $pas6)&& $cantper && $tipoviaje)
 			  {
 			             //echo('entra6');
 			  
@@ -313,7 +338,7 @@
 								while($row2 = mysql_fetch_array($result2))
 								{				
 									
-									if ($row2["via_id"]==$selected){
+									if ($row2["via_id"]==$banco){
 										//echo 'if';
 										$select_actual2='<option selected="selected" value="'.$row2["via_id"].'">'.$row2["ter_nombre"]."/".$row2["des_nombre"].'</option>'; }	
 									else{
@@ -324,15 +349,15 @@
 								$panelcuentas->add("bancos",$select2);
 								
 						
-								$panelcuentas->add("fecha",$fechai);
+								$panelcuentas->add("fecha",$fecha);
 							
 								
-						        $res=mysql_query("SELECT fk_ter_id FROM  via where via_id=$selected");
+						        $res=mysql_query("SELECT fk_ter_id FROM  via where via_id=$banco");
 								$ro = mysql_fetch_array($res);
 								$devuelve=$ro['fk_ter_id'];	
 								
 								
-								$res1=mysql_query("SELECT fk_des_id FROM  via where via_id=$selected");
+								$res1=mysql_query("SELECT fk_des_id FROM  via where via_id=$banco");
 								$ro1 = mysql_fetch_array($res1);
 								$devuelve1=$ro1['fk_des_id'];	
 							
@@ -341,7 +366,7 @@
 						while($row1 = mysql_fetch_array($result1))
 						{
 						    
-							if ($row1["via_id"]==$selected2){
+							if ($row1["via_id"]==$banco1){
 								//echo 'if';
 								$select_actual1='<option selected="selected" value="'.$row1["via_id"].'">'.$row1["ter_nombre"]."/".$row1["des_nombre"].'</option>'; }	
 							else{
@@ -353,7 +378,7 @@
 						
 				       
 					  // echo($selected2);
-					    $res3=mysql_query("SELECT fk_des_id FROM  via where via_id=$selected2");
+					    $res3=mysql_query("SELECT fk_des_id FROM  via where via_id=$banco1");
 						$ro3 = mysql_fetch_array($res3);
 						$devuelve3=$ro3['fk_des_id'];	
 						//echo "$devuelve3 dev";
@@ -362,7 +387,7 @@
 						$result4= mysql_query("SELECT ho.hot_nombre, ho.hot_id FROM  hotel ho WHERE ho.fk_des_id=$devuelve3");
 						while($row4 = mysql_fetch_array($result4))
 						{
-						if ($row4["hot_id"]==$selected3){
+						if ($row4["hot_id"]==$hotel){
 										//echo 'if';
 										$select_actual4='<option selected="selected" value="'.$row4["hot_id"].'">'.$row4["hot_nombre"].'</option>'; }	
 									else{
@@ -375,10 +400,10 @@
 						
 						//echo($selected3);
 						
-						$result5= mysql_query("SELECT h.hab_id, h.hab_costo FROM  habitacion h  WHERE h.fk_hot_id=$selected3 AND h.hab_status='No ocupada'");
+						$result5= mysql_query("SELECT h.hab_id, h.hab_costo FROM  habitacion h  WHERE h.fk_hot_id=$hotel AND h.hab_status='No ocupada'");
 						while($row5 = mysql_fetch_array($result5))
 						{
-						if ($row5["hab_id"]==$selected4){
+						if ($row5["hab_id"]==$habitacion){
 										//echo 'if';
 										$select_actual5='<option selected="selected" value="'.$row5["hab_id"].'">'.$row5["hab_id"].' Costo:'.$row5["hab_costo"].'</option>'; }	
 									else{
@@ -390,10 +415,10 @@
 						
 					   
 					   
-					    $result7= mysql_query("SELECT s.ser_nombre, s.ser_descripcion,s.ser_id,s.ser_costo FROM  servicio s, hot_ser hs WHERE hs.fk_hot_id=$selected3 AND hs.fk_ser_id=s.ser_id");
+					    $result7= mysql_query("SELECT s.ser_nombre, s.ser_descripcion,s.ser_id,s.ser_costo FROM  servicio s, hot_ser hs WHERE hs.fk_hot_id=$hotel AND hs.fk_ser_id=s.ser_id");
 						while($row7 = mysql_fetch_array($result7))
 						{
-						if ($row7["ser_id"]==$selected5){
+						if ($row7["ser_id"]==$servicio){
 										//echo 'if';
 										$select_actual7='<option selected="selected" value="'.$row7["ser_id"].'">'.$row7["ser_nombre"].'Descripcion:'.$row7["ser_descripcion"].'/'.$row7["ser_costo"].'</option>'; }	
 									else{
@@ -404,17 +429,54 @@
 						$panelcuentas->add("servicios",$select7);
 						
 						
-						$result8= mysql_query("SELECT p.pas_nombre, p.pas_descripcion,p.pas_id,p.pas_costo FROM  paseo p, hot_pas hp WHERE hp.fk_hot_id=$selected3 AND hp.fk_pas_id=p.pas_id");
+						$result8= mysql_query("SELECT p.pas_nombre, p.pas_descripcion,p.pas_id,p.pas_costo FROM  paseo p, hot_pas hp WHERE hp.fk_hot_id=$hotel AND hp.fk_pas_id=p.pas_id");
+						$cont=0;
 						while($row8 = mysql_fetch_array($result8))
-						{
-						if ($row8["pas_id"]==$selected6){
-										//echo 'if';
-										$select_actual8='<option selected="selected" value="'.$row8["pas_id"].'">'.$row8["pas_nombre"].'Descrpcion:'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'</option>'; }	
-									else{
-										//echo "banco es $banco";
-										$select_actual8='<option value="'.$row8["pas_id"].'">'.$row8["pas_nombre"].'Decripcion:'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'</option>'; 	}	
-						$select8=$select8.$select_actual8;
+				{
+						if ($row8["pas_id"]==$pas1){
+						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'" checked="yes" value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
 						}
+						else if ($row8["pas_id"]==$pas2)
+						{
+						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'" checked="yes" value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
+						}
+						else if ($row8["pas_id"]==$pas3)
+						{
+						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'" checked="yes" value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
+						}
+						else if ($row8["pas_id"]==$pas4)
+						{
+						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'" checked="yes" value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
+						}
+						else if ($row8["pas_id"]==$pas5)
+						{
+						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'" checked="yes" value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
+						}
+						else if ($row8["pas_id"]==$pas6)
+						{
+						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'" checked="yes" value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
+						}
+						else if ($row8["pas_id"]==$pas7)
+						{
+						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'" checked="yes" value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
+						}
+						else if ($row8["pas_id"]==$pas8)
+						{
+						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'"checked="yes"  value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
+						}
+						else
+						{
+						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'" value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
+						}
+						
+						
+						$select8=$select8.$select_actual8;
+						
+			
+						$cont=$cont+1;
+		
+						
+				}
 						$panelcuentas->add("paseos",$select8);
 						
 						
@@ -424,35 +486,69 @@
 						
 						$costo_total=0;
 						
-						$res5=mysql_query("SELECT via_costo FROM  via where via_id=$selected2");
+						$res5=mysql_query("SELECT via_costo FROM  via where via_id=$banco1");
 						$ro5 = mysql_fetch_array($res5);
 						$costo_via=$ro5['via_costo'];
 						//echo($costo_via);
 						
-						$res6=mysql_query("SELECT hab_costo FROM  habitacion h  where h.fk_hot_id=$selected3 AND h.hab_id=$selected4");
+						$res6=mysql_query("SELECT hab_costo FROM  habitacion h  where h.fk_hot_id=$hotel AND h.hab_id=$habitacion");
 						$ro6 = mysql_fetch_array($res6);
 						$costo_hab=$ro6['hab_costo'];
 						//echo($costo_hab);
 						
-						$res7=mysql_query("SELECT ser_costo FROM  servicio s, hot_ser hs  where hs.fk_hot_id=$selected3 AND hs.fk_ser_id=s.ser_id AND s.ser_id=$selected5");
+						$res7=mysql_query("SELECT ser_costo FROM  servicio s, hot_ser hs  where hs.fk_hot_id=$hotel AND hs.fk_ser_id=s.ser_id AND s.ser_id=$servicio");
 						$ro7 = mysql_fetch_array($res7);
 						$costo_ser=$ro7['ser_costo'];
 						//echo($costo_ser);
+						$costo_pas1=0;
+						$costo_pas3=0;
+						$costo_pas5=0;
+						$costo_pas7=0;
+						$costo_pas9=0;
 						
-						$res8=mysql_query("SELECT pas_costo FROM  paseo p, hot_pas hp  where hp.fk_hot_id=$selected3 AND hp.fk_pas_id=p.pas_id AND p.pas_id=$selected6");
+						if ($pas1){
+						$res8=mysql_query("SELECT pas_costo FROM  paseo p, hot_pas hp  where hp.fk_hot_id=$hotel AND hp.fk_pas_id=p.pas_id AND p.pas_id=$pas1");
 						$ro8 = mysql_fetch_array($res8);
 						$costo_pas=$ro8['pas_costo'];
-						//echo($costo_pas);
-						$costo_pas1=(($costo_pas)*($cantper));
 						
-					
+						$costo_pas1=$costo_pas*$cantper;}
+						
+						if ($pas2){
+						$res9=mysql_query("SELECT pas_costo FROM  paseo p, hot_pas hp  where hp.fk_hot_id=$hotel AND hp.fk_pas_id=p.pas_id AND p.pas_id=$pas2");
+						$ro9 = mysql_fetch_array($res9);
+						$costo_pas2=$ro9['pas_costo'];
+						
+						$costo_pas3=$costo_pas2*$cantper;}
+		
+						echo("$costo_pas3 costo paseo2" );
+						
+						if ($pas3){
+						$res11=mysql_query("SELECT pas_costo FROM  paseo p, hot_pas hp  where hp.fk_hot_id=$hotel AND hp.fk_pas_id=p.pas_id AND p.pas_id=$pas3");
+						$ro11 = mysql_fetch_array($res11);
+						$costo_pas4=$ro11['pas_costo'];
+						
+						$costo_pas5=$costo_pas4*$cantper;}
+						
+						if ($pas4){
+						$res12=mysql_query("SELECT pas_costo FROM  paseo p, hot_pas hp  where hp.fk_hot_id=$hotel AND hp.fk_pas_id=p.pas_id AND p.pas_id=$pas4");
+						$ro12 = mysql_fetch_array($res12);
+						$costo_pas6=$ro12['pas_costo'];
+						
+						$costo_pas7=$costo_pas6*$cantper;}
+						
+						if ($pas5){
+						$res13=mysql_query("SELECT pas_costo FROM  paseo p, hot_pas hp  where hp.fk_hot_id=$hotel AND hp.fk_pas_id=p.pas_id AND p.pas_id=$pas5");
+						$ro13 = mysql_fetch_array($res13);
+						$costo_pas8=$ro13['pas_costo'];
+						
+						$costo_pas9=$costo_pas8*$cantper;}
+						
 						
 						if($tipoviaje=="Ida y vuelta")
 						{
-						$costo_total=($costo_total+$costo_via+$costo_hab+$costo_ser+$costo_pas1)*$cantper*2;}
+						$costo_total=($costo_total+$costo_via+$costo_hab+$costo_ser+$costo_pas1+$costo_pas3+$costo_pas5+$costo_pas7+$costo_pas9)*$cantper*2;}
 						else{
-							echo($entra);
-						$costo_total=($costo_total+$costo_via+$costo_hab+$costo_ser+$costo_pas1)*$cantper; }
+						$costo_total=($costo_total+$costo_via+$costo_hab+$costo_ser+$costo_pas1+$costo_pas3+$costo_pas5+$costo_pas7+$costo_pas9)*$cantper; }
 						
 						
 						//echo($costo_total);

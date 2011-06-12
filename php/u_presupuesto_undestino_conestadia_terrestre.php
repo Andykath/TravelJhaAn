@@ -3,7 +3,7 @@
 	$pathFix = dirname(__FILE__);
 	require_once ("../classes/Panel.php");
 	include "../db/conexion.php";
-	
+	$cedula=$_SESSION['cedula'];
 	$cedulaaux=$_SESSION['cedulaaux'];
 	$admin= new Panel("../html/usuario.html");
 	
@@ -14,7 +14,7 @@
 	
 	
 
-	$result= mysql_query("SELECT p.pre_id,p.pre_fecha,a.ter_nombre,d.des_nombre, o.des_nombre, ho.hot_nombre,p.pre_habitacion,s.ser_nombre,pa.pas_nombre,p.pre_total,p.pre_abono,p.pre_cant_per,i.via_id,f.via_id,ho.hot_id FROM via i, via f, destino d, destino o, terrestre a, hotel ho, presupuesto p,servicio s,paseo pa, habitacion ha WHERE p.fk_via_id_origen = i.via_id AND p.fk_via_id_destino = f.via_id AND i.fk_des_id = d.des_id AND f.fk_des_id = o.des_id and i.fk_ter_id=a.ter_id AND p.fk_per_cedula='$cedula' AND p.pre_habitacion=ha.hab_id AND ha.fk_hot_id=ho.hot_id AND p.pre_servicio=s.ser_id AND p.pre_paseo=pa.pas_id AND p.pre_status='No comprado' ORDER BY p.pre_id");
+	$result= mysql_query("SELECT p.pre_id,p.pre_fecha,a.ter_nombre,d.des_nombre, o.des_nombre, ho.hot_nombre,p.pre_habitacion,s.ser_nombre,p.pre_total,p.pre_abono,p.pre_cant_per,i.via_id,f.via_id,ho.hot_id FROM via i, via f, destino d, destino o, terrestre a, hotel ho, presupuesto p,servicio s, habitacion ha WHERE p.fk_via_id_origen = i.via_id AND p.fk_via_id_destino = f.via_id AND i.fk_des_id = d.des_id AND f.fk_des_id = o.des_id and i.fk_ter_id=a.ter_id AND p.fk_per_cedula='$cedula' AND p.pre_habitacion=ha.hab_id AND ha.fk_hot_id=ho.hot_id AND p.pre_servicio=s.ser_id AND p.pre_status='No comprado' and p.pre_paseo IS NULL ORDER BY p.pre_id");
 	//$result=mysql_query("SELECT cue_id,cue_numero,cue_tipo,cue_fecha_apertura,fk_ban_id FROM cuenta_bancaria");
 	
 	while($row = mysql_fetch_array($result))
@@ -30,11 +30,11 @@
 	   <td width="210"><div align="center">'.$row["hot_nombre"].'</td>
 	   <td width="210"><div align="center">'.$row["pre_habitacion"].'</td>
 	      <td width="210"><div align="center">'.$row["ser_nombre"].'</td>
-		     <td width="210"><div align="center">'.$row["pas_nombre"].'</td>
+		     
 			    <td width="210"><div align="center">'.$row["pre_cant_per"].'</td>
 				<td width="210"><div align="center">'.$row["pre_abono"].'</td>
 				<td width="210"><div align="center">'.$row["pre_total"].'</td>	
-	  <td width="200"><a href="../php/u_comprar_undestino_conestadia_terrestre.php?id='.$row['pre_id'].'&fecha='.$row['pre_fecha'].'&aerolinea='.$row['ter_nombre'].'&origen='.$row[3].'&destino='.$row[4].'&hotel='.$row['hot_nombre'].'&habitacion='.$row['pre_habitacion'].'&servicio='.$row['ser_nombre'].'&paseo='.$row['pas_nombre'].'&total='.$row['pre_total'].'&cantper='.$row['pre_cant_per'].'&origen1='.$row[11].'&destino1='.$row[12].'&hotel1='.$row[13].'">Comprar</a> </td>
+	  <td width="200"><a href="../php/u_comprar_undestino_conestadia_terrestre.php?id='.$row['pre_id'].'&fecha='.$row['pre_fecha'].'&aerolinea='.$row['ter_nombre'].'&origen='.$row[3].'&destino='.$row[4].'&hotel='.$row['hot_nombre'].'&habitacion='.$row['pre_habitacion'].'&servicio='.$row['ser_nombre'].'&paseo='.$row['pas_nombre'].'&total='.$row['pre_total'].'&cantper='.$row['pre_cant_per'].'&origen1='.$row[11].'&destino1='.$row[12].'&hotel1='.$row[13].'">Comprar</a> <a href="../php/u_verpaseo_undestino_conestadia_terrestre.php?id='.$row['pre_id'].'">Ver Paseos</a></td>
     </tr>';
 	    
 		$tabla_completa= $tabla_completa.$tabla;

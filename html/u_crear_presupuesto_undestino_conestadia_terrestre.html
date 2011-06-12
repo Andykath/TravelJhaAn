@@ -52,7 +52,10 @@ function populate5(inForm,selected,fecha,selected2,selected3,selected4,selected5
 
 location.href='u_crear_presupuesto_undestino_conestadia_terrestre.php?selected=' + selected  + '&fechai=' + fecha + '&selected2=' + selected2 +  '&selected3=' + selected3  +  '&selected4=' + selected4  +  '&selected5=' + selected5  +  '&selected6=' + selected6 + '&cantper=' + cantper  + '&tipoviaje=' + tipoviaje;
 }
-
+function populate6() {
+document.form1.action = "../php/u_crear_presupuesto_undestino_conestadia_terrestre.php?sipo=1";
+document.form1.submit();
+}
 
 </script>
 
@@ -138,22 +141,21 @@ location.href='u_crear_presupuesto_undestino_conestadia_terrestre.php?selected='
         <option>10</option>
       </select>      </td>
     </tr>
+    <tr>
+      <td>*Paseos:</td>
+      <td><input type="checkbox" name="pas0" id="0" onchange="funcion(document.form1.pas0.value)"  value="0" />Ningun paseo<br />
+      {paseos}</td>
+    </tr>
      <tr>
       <td>Tipo de viaje:</td>
- <option selected="selected">Seleccione</option>
-      <td><select name="tipoviaje" id="tipoviaje">
-         
+
+      <td><select name="tipoviaje" id="tipoviaje" onChange= "populate6()">
+         <option>Seleccione</option>
         <option>Solamente Ida</option>
         <option>Ida y vuelta</option>
       </select>      </td>
     </tr>
-    <tr>
-      <td>*Paseos:</td>
-      <td><select name="paseito" id="paseito" onChange= "populate5(document.form1,document.form1.banco.options[document.form1.banco.selectedIndex].value, document.form1.fecha.value,document.form1.banco1.options[document.form1.banco1.selectedIndex].value,document.form1.hotel.options[document.form1.hotel.selectedIndex].value,document.form1.habitacion.options[document.form1.habitacion.selectedIndex].value,document.form1.servicio.options[document.form1.servicio.selectedIndex].value,document.form1.paseito.options[document.form1.paseito.selectedIndex].value,document.form1.cantper.options[document.form1.cantper.selectedIndex].value,document.form1.tipoviaje.options[document.form1.tipoviaje.selectedIndex].value)">
-       <option selected="selected">Seleccione</option>
-      {paseos}
-      </select>      </td>
-    </tr>
+    
     
      <tr>
       <td width="203">Total Presupuesto(BsF):</td>
