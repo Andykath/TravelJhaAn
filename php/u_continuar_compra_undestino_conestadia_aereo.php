@@ -8,29 +8,29 @@
    //$cant=$_SESSION['cant'];
 	extract($_POST);
 	extract($_GET);
-	      
-		  if($viaje)
+	
+ if($viaje && !(isset($nombre1)))
+		  { 	
+$res17=mysql_query("SELECT via_cant_per FROM  viaje where via_id=$viaje");
+$ro17 = mysql_fetch_array($res17);
+$estesi7=$ro17['via_cant_per'];	
+if($estesi7==1)
+{
+mysql_query("INSERT INTO `boleto` (`bol_id`, `bol_fecha_emi`, `fk_via_id`,`fk_per_cedula`,`fk_aco_id`) VALUES (NULL ,'2011-06-18','$viaje','$cedula',NULL)");
+}
+$hola='u_verboleto_undestino_conestadia_aereo.php?viaje='.$viaje.'&mensaje=1';
+header("Location:$hola");
+}
+				      
+		  if($nombre1)
 		  {    
-		//echo("entro a insertar en aco");
-		//echo($nombre1);
-		//echo($nombre2);
-		//echo($nombre3);
-		//echo($apellido1);
-		//echo($apellido2);
-		//cho($apellido3);
-		//echo($cantper);
-		//echo($viaje);
-			  //echo($cantper);
-			 // echo($viaje);
-			  
+	  
 			  $res16=mysql_query("SELECT via_cant_per FROM  viaje where via_id=$viaje");
 			$ro16 = mysql_fetch_array($res16);
 			$estesi=$ro16['via_cant_per'];		
 			  
 			    //echo($estesi);
-				if($estesi==1)
-			  {
-			  mysql_query("INSERT INTO `boleto` (`bol_id`, `bol_fecha_emi`, `fk_via_id`,`fk_per_cedula`,`fk_aco_id`) VALUES (NULL ,'2011-06-18','$viaje','$cedula',NULL)");}
+				
 			  if($estesi==2)
 			  {
 				mysql_query("INSERT INTO `acompanante` (`aco_id`, `aco_nombre`, `aco_apellido`,`aco_cedula`,`fk_via_id`,`fk_per_cedula`) VALUES (NULL ,'$nombre1', '$apellido1','$cedula1','$viaje','$cedula')");
