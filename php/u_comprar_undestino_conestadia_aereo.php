@@ -105,12 +105,17 @@ mysql_query("INSERT INTO `viaje` (`via_id`,`via_tipo`,`via_tipoviaje`,`via_fecha
 $res11=mysql_query("SELECT via_id FROM  viaje where fk_pre_id='$id'");
 $ro11 = mysql_fetch_array($res11);
 $viaje=$ro11['via_id'];	
-//echo($viaje);
 
-//$Fecha= date('d-m-Y');
+$res12=mysql_query("SELECT fk_pas_id FROM  pre_pas where fk_pre_id='$id'");
+$ro12 = mysql_fetch_array($res12);
+while($ro12 = mysql_fetch_array($res12))
+{				
+mysql_query("INSERT INTO `pas_via` (`pas_id`,`fk_pas_id`,`fk_via_id`) VALUES(NULL,".$ro12['fk_pas_id'].",$viaje)");
+}	
 
 
-//echo($viaje);
+
+
 			mysql_query("INSERT INTO `pago` (`pag_id`,`pag_monto`,`pag_fecha`,`fk_via_id`) VALUES(NULL,'$total','2011-06-18',$viaje)");
 			//echo($viaje);
 			mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk_via_id`,`fk_hab_id`) VALUES(NULL,'$fecha','$fecha1','$viaje','$habitacion')");
