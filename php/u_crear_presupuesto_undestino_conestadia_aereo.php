@@ -500,30 +500,55 @@
 						$ro7 = mysql_fetch_array($res7);
 						$costo_ser=$ro7['ser_costo'];
 						//echo($costo_ser);
+						$costo_pas1=0;
+						$costo_pas3=0;
+						$costo_pas5=0;
+						$costo_pas7=0;
+						$costo_pas9=0;
 						
+						if ($pas1){
 						$res8=mysql_query("SELECT pas_costo FROM  paseo p, hot_pas hp  where hp.fk_hot_id=$hotel AND hp.fk_pas_id=p.pas_id AND p.pas_id=$pas1");
 						$ro8 = mysql_fetch_array($res8);
 						$costo_pas=$ro8['pas_costo'];
 						
-						$costo_pas1=$costo_pas*$cantper;
+						$costo_pas1=$costo_pas*$cantper;}
 						
+						if ($pas2){
 						$res9=mysql_query("SELECT pas_costo FROM  paseo p, hot_pas hp  where hp.fk_hot_id=$hotel AND hp.fk_pas_id=p.pas_id AND p.pas_id=$pas2");
 						$ro9 = mysql_fetch_array($res9);
 						$costo_pas2=$ro9['pas_costo'];
 						
-						$costo_pas3=$costo_pas2*$cantper;
+						$costo_pas3=$costo_pas2*$cantper;}
 		
 						echo("$costo_pas3 costo paseo2" );
 						
+						if ($pas3){
+						$res11=mysql_query("SELECT pas_costo FROM  paseo p, hot_pas hp  where hp.fk_hot_id=$hotel AND hp.fk_pas_id=p.pas_id AND p.pas_id=$pas3");
+						$ro11 = mysql_fetch_array($res11);
+						$costo_pas4=$ro11['pas_costo'];
 						
+						$costo_pas5=$costo_pas4*$cantper;}
 						
+						if ($pas4){
+						$res12=mysql_query("SELECT pas_costo FROM  paseo p, hot_pas hp  where hp.fk_hot_id=$hotel AND hp.fk_pas_id=p.pas_id AND p.pas_id=$pas4");
+						$ro12 = mysql_fetch_array($res12);
+						$costo_pas6=$ro12['pas_costo'];
+						
+						$costo_pas7=$costo_pas6*$cantper;}
+						
+						if ($pas5){
+						$res13=mysql_query("SELECT pas_costo FROM  paseo p, hot_pas hp  where hp.fk_hot_id=$hotel AND hp.fk_pas_id=p.pas_id AND p.pas_id=$pas5");
+						$ro13 = mysql_fetch_array($res13);
+						$costo_pas8=$ro13['pas_costo'];
+						
+						$costo_pas9=$costo_pas8*$cantper;}
 						
 						
 						if($tipoviaje=="Ida y vuelta")
 						{
-						$costo_total=($costo_total+$costo_via+$costo_hab+$costo_ser+$costo_pas1+$costo_pas3)*$cantper*2;}
+						$costo_total=($costo_total+$costo_via+$costo_hab+$costo_ser+$costo_pas1+$costo_pas3+$costo_pas5+$costo_pas7+$costo_pas9)*$cantper*2;}
 						else{
-						$costo_total=($costo_total+$costo_via+$costo_hab+$costo_ser+$costo_pas1+$costo_pas3)*$cantper; }
+						$costo_total=($costo_total+$costo_via+$costo_hab+$costo_ser+$costo_pas1+$costo_pas3+$costo_pas5+$costo_pas7+$costo_pas9)*$cantper; }
 						
 						
 						//echo($costo_total);
