@@ -223,7 +223,7 @@
 								$select_actual1='<option selected="selected" value="'.$row1["via_id"].'">'.$row1["cru_nombre"]."/".$row1["des_nombre"].'</option>'; }	
 							else{
 								//echo "banco es $banco";
-								$select_actual1='<option value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["cru_nombre"].'</option>'; 	}	
+								$select_actual1='<option value="'.$row1["via_id"].'">'.$row1["cru_nombre"]."/".$row1["cru_nombre"].'</option>'; 	}	
 						$select1=$select1.$select_actual1;
 						}
 						$panelcuentas->add("bancos1",$select1);
