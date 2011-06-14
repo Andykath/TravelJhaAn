@@ -282,6 +282,7 @@
 						
 						
 						
+						$select7='<option value="z">No deseo Servicios</option>';
 						$result7= mysql_query("SELECT s.ser_nombre, s.ser_descripcion,s.ser_id,s.ser_costo FROM  servicio s, hot_ser hs WHERE hs.fk_hot_id=$selected3 AND hs.fk_ser_id=s.ser_id");
 						while($row7 = mysql_fetch_array($result7))
 						{
@@ -292,6 +293,7 @@
 						
 						
 						
+						$select8='<input type="checkbox" name="pas0" id="pas0" value="a" />Ningun paseo<br />';
 						$result8= mysql_query("SELECT p.pas_nombre, p.pas_descripcion,p.pas_id,p.pas_costo FROM  paseo p, hot_pas hp WHERE hp.fk_hot_id=$selected3 AND hp.fk_pas_id=p.pas_id");
 						$cont=0;
 						while($row8 = mysql_fetch_array($result8))
@@ -303,8 +305,6 @@
 						$cont=$cont+1;
 						}
 						$panelcuentas->add("paseos",$select8);
-					   
-					   
 					    
 						
 						
@@ -421,11 +421,17 @@
 						if ($row7["ser_id"]==$servicio){
 										//echo 'if';
 										$select_actual7='<option selected="selected" value="'.$row7["ser_id"].'">'.$row7["ser_nombre"].'Descripcion:'.$row7["ser_descripcion"].'/'.$row7["ser_costo"].'</option>'; }	
-									else{
+					
+						else{
 										//echo "banco es $banco";
 										$select_actual7='<option value="'.$row7["ser_id"].'">'.$row7["ser_nombre"].'Descripcion'.$row7["ser_descripcion"].'/'.$row7["ser_costo"].'</option>'; 	}	
 						$select7=$select7.$select_actual7;
 						}
+						if ($servicio=="z"){
+						$select7=$select7.'<option selected="selected" value="z">No deseo Servicios</option>';
+						}
+						else
+						{$select7=$select7.'<option value="z">No deseo Servicios</option>';}
 						$panelcuentas->add("servicios",$select7);
 						
 						
@@ -435,42 +441,49 @@
 				{
 						if ($row8["pas_id"]==$pas1){
 						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'" checked="yes" value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
+						$select8=$select8.$select_actual8;
 						}
 						else if ($row8["pas_id"]==$pas2)
 						{
 						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'" checked="yes" value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
+						$select8=$select8.$select_actual8;
 						}
 						else if ($row8["pas_id"]==$pas3)
 						{
 						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'" checked="yes" value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
+						$select8=$select8.$select_actual8;
 						}
 						else if ($row8["pas_id"]==$pas4)
 						{
 						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'" checked="yes" value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
+						$select8=$select8.$select_actual8;
 						}
 						else if ($row8["pas_id"]==$pas5)
 						{
 						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'" checked="yes" value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
+						$select8=$select8.$select_actual8;
 						}
 						else if ($row8["pas_id"]==$pas6)
 						{
 						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'" checked="yes" value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
+						$select8=$select8.$select_actual8;
 						}
 						else if ($row8["pas_id"]==$pas7)
 						{
 						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'" checked="yes" value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
+						$select8=$select8.$select_actual8;
 						}
 						else if ($row8["pas_id"]==$pas8)
 						{
 						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'"checked="yes"  value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
-						}
-						else
-						{
-						$select_actual8='<input type="checkbox" name="pas'.($cont+1).'" id="pas'.($cont+1).'" value="'.$row8["pas_id"].'" />'.$row8["pas_nombre"].'/'.$row8["pas_descripcion"].'/'.$row8["pas_costo"].'<br />';
-						}
-						
-						
 						$select8=$select8.$select_actual8;
+						}
+						else if ($pas0)
+						{
+						$select_actual8='<input type="checkbox" name="pas0" id="pas0"  checked= "yes" value="a" />Ningun paseo<br />';
+						$select8=$select_actual8;
+						}
+				
 						
 			
 						$cont=$cont+1;
@@ -495,10 +508,11 @@
 						$ro6 = mysql_fetch_array($res6);
 						$costo_hab=$ro6['hab_costo'];
 						//echo($costo_hab);
-						
+						$costo_ser=0;
+						if ($servicio!="z"){
 						$res7=mysql_query("SELECT ser_costo FROM  servicio s, hot_ser hs  where hs.fk_hot_id=$hotel AND hs.fk_ser_id=s.ser_id AND s.ser_id=$servicio");
 						$ro7 = mysql_fetch_array($res7);
-						$costo_ser=$ro7['ser_costo'];
+						$costo_ser=$ro7['ser_costo'];}
 						//echo($costo_ser);
 						$costo_pas1=0;
 						$costo_pas3=0;

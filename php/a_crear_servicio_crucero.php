@@ -6,6 +6,7 @@
 	
 	
 	extract($_POST);
+	extract($_GET);
 	
 	      if($banco)
 		  {
@@ -20,7 +21,7 @@
 			  
 				mysql_query("INSERT INTO `cru_ser` (`cru_id` ,`fk_flo_id` ,`fk_ser_id`)VALUES (NULL ,'$hot_id','$banco')");
 			    
-				$hola='a_servicios_cruceros.php?mensaje=1';
+				$hola='a_cruceros.php?mensaje=1';
 				header("Location:$hola");
 			  
 			  

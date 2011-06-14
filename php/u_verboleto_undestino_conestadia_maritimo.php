@@ -7,7 +7,7 @@
 	$admin= new Panel("../html/usuario.html");
 	$admin->add("body",'<body onLoad = "actual(3)" >');
 	$paneldetallefactura = new Panel("../html/u_verboleto_undestino_conestadia_maritimo.html");
-	
+	$cedula=$_SESSION['cedula'];
 	extract ($_REQUEST);
 	
 	$tabla_completa = "";

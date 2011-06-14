@@ -6,6 +6,7 @@
 	
 	
 	extract($_POST);
+	extract($_GET);
 	
 	      if($banco)
 		  {

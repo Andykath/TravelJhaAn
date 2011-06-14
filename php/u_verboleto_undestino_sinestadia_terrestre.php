@@ -27,9 +27,9 @@
 	
 	
 	
-	$result2= mysql_query("SELECT v.via_id,v.fk_flo_id, v.via_fecha_ini, v.via_fecha_fin, v.via_hora_ini, v.via_hora_fin, d.des_nombre, vi.via_terminal, a.aer_nombre FROM viaje v, via vi, destino d, aerolinea a
+	$result2= mysql_query("SELECT v.via_id,v.fk_flo_id, v.via_fecha_ini, v.via_fecha_fin, v.via_hora_ini, v.via_hora_fin, d.des_nombre, vi.via_terminal, a.ter_nombre FROM viaje v, via vi, destino d, terrestre a
 WHERE v.via_id = '$viaje' AND v.fk_via_id_destino = vi.via_id AND vi.fk_des_id = d.des_id
-AND vi.fk_aer_id=a.aer_id ORDER BY v.via_id");
+AND vi.fk_ter_id=a.ter_id ORDER BY v.via_id");
 
 $row2 = mysql_fetch_array($result2);
 	
@@ -40,7 +40,7 @@ $row2 = mysql_fetch_array($result2);
 	$horallegada = $row2["via_hora_fin"];
 	$destino = $row2["des_nombre"];
 	$aeropuerto = $row2["via_terminal"];
-    $aerolinea = $row2["aer_nombre"];
+    $aerolinea = $row2["ter_nombre"];
 	
 	
 

@@ -40,13 +40,12 @@ body {
 <script language="javascript" type="text/javascript" src="../js/datetimepicker_css.js"></script> 
 
 <script language="javascript">
-
-/*function validar()
-{
-document.getElementByid('mensaje3').innerHTML='PUTA';
-if (document.form.usuario.value.length==0 || document.form.pw.value.length==0) {document.getElementByid('mensaje3').innterHTML='PUTA'; return 0;}
-document.form.submit();
-}*/
+- 
+function abrir_ventana() 
+{ 
+propiedades="width=450,height=300,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO"; 
+window.open("../php/busqueda.php","_blank",propiedades); 
+} 
 
 function validar1()
 {
@@ -94,6 +93,7 @@ return (key <= 13 || (key >= 48 && key <= 57));
     <td width="547" height="20" align="left"><span class="style16">Siguenos en </span> <img src="../imagenes/twitter_logo.png" width="90" height="80" /> <img src="../imagenes/facebook-logo-web.png" width="80" height="80" /></span> </td>
     <td width="604" height="76" align="right">
       <label></label>
+      
 <form action="../php/validarlogin.php" method="POST" id="form" name="form">      <table width="60%" height="41" border="0" align="right" cellpadding="0" cellspacing="0">
         <tr align="right">
         
@@ -131,56 +131,28 @@ return (key <= 13 || (key >= 48 && key <= 57));
 </Marquee></td>
   </tr>
   
-    <td height="433" align="center" bgcolor="#000066"><p><img src="../imagenes/COLLAGE.gif" width="496" height="455" border="0" /></p>
-      <p>&nbsp;</p>
+      <td height="433" align="center" bgcolor="#000066"><p><img src="../imagenes/COLLAGE.gif" width="496" height="455" border="0" /></p>
+     
     <td height="200" align="right" bgcolor="#000066">
-   <form id="form3" name="form3" method="post" action="">
-     <table width="529" height="250" border="0" frame="box" bordercolor="#000066"  align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
-     <tr></tr>
-<td height="69" colspan="2" align="left"><strong><span class="style1"><span class="style2">Busqueda</span><br />
+    
+   <form id="form3" name="form3" method="post" action="../php/busqueda.php">
+
+     <table width="466" height="116" border="0" frame="box" bordercolor="#000066"  align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+<td height="71" colspan="2" align="left"><strong><span class="style1"><span class="style2">Busqueda</span><img src="../imagenes/planeta.jpg" width="33" height="26" /><br />
   </span></strong><span class="style1"><span class="style3"> Consulta los costos de los multiples destinos que ofrecemos.<br />
     <br />
-  </span></span></td>
+    </span></span></td>
 </tr>
+
+
 <tr>
-  <td width="137" height="30" align="right"><span class="style6">Pais Destino:</span></td>
-  <td width="270"><label><select name='pais' id='pais' onChange='cargaContenido(this.id)'>
-              <option value='0'>[Seleccione opcion]</option>
-              
-     {pais}
-            
-            </select>
-  </label>
-  </td>
-</tr>
-<tr>
-  <td height="30" align="right"><span class="style6">Ciudad Destino:</span></td>
-  <td><label><select  name="ficha" id="ficha">
-            <option value="0">[Seleccione opcion]</option>
-          </select> 
-         
-    <img src="../imagenes/planeta.jpg" width="33" height="26" /></label></td>
-</tr>
-<tr>
-  <td height="30" align="right"><span class="style6">Transporte:</span></td>
-  <td><label>
-    <input type="text" name="transporte" id="transporte" onkeypress="return acceptLetr(event)" />
-    <img src="../imagenes/avion.jpg" width="28" height="23" /></label></td>
-</tr>
-<tr>
-  <td height="30" align="right"><span class="style6">Fecha partida:</span></td>
-  <td><input name="fecha" id="fecha" type="text" readonly="readonly" value="{cue_fecha_apertura}" ><a href="javascript:NewCssCal('fecha','YYYYMMDD')"><img src="../js/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></td>
-</tr>
-<tr>
-  <td height="30" align="right">&nbsp;</td>
-  <td align="center"><input type="button" name="aceptar" id="aceptar" value="Aceptar" onclick="" /></td>
-</tr>
-<tr>
-  <td height="61" align="right">&nbsp;</td>
-  <td align="center" id="mensaje"><label></label></td>
+  <td width="55" height="43" align="right"><img src="../imagenes/avion.jpg" width="28" height="23" /></td>
+  <td width="411" align="left"><p>Elige un destino y conpañia de transporte
+    <input type="button" name="aceptar" id="aceptar" value="Buscar" onclick="window.open('../php/busqueda_presupuesto.php','ventana','width=620, height=450,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO')"/>
+ </td>
 </tr>
      </table>
-    <table width="466" height="250" border="0" frame="box" bordercolor="#000066"  align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+    <table width="466" height="250" border="0" frame="box" bordercolor="#000066"  align="center" cellpadding="0" cellpacing="0" bgcolor="#FFFFFF">
          <td height="69" colspan="2" align="left"><p><strong><span class="style2">Promociones</span></strong></p>
            <p><span class="style3">Los mejores precios en el hotel que buscas. </span></span></p>
          <table width="532" height="56" border="1">
@@ -206,6 +178,5 @@ return (key <= 13 || (key >= 48 && key <= 57));
     <td height="45" colspan="2"><span class="style13">© Copyright Viajes UCAB| Todos los derechos reservados | Producciones SzcoPa.</span></td>
   </tr>
 </table>
-
 </body>
 </html> 

@@ -169,7 +169,7 @@
 						$devuelve3=$ro3['fk_des_id'];	
 						//echo "$devuelve3 dev";
 							
-						$result4= mysql_query("SELECT ho.flo_nombre, ho.flo_id FROM  flota ho ");
+						$result4= mysql_query("SELECT ho.flo_nombre, ho.flo_id FROM  flota ho, via v, crucero c where v.via_id=$selected2 and v.fk_cru_id=c.cru_id and ho.fk_cru_id=c.cru_id");
 						while($row4 = mysql_fetch_array($result4))
 						{
 						$select_actual4='<option value="'.$row4["flo_id"].'">'.$row4["flo_nombre"].'</option>'; 
@@ -236,7 +236,7 @@
 						//echo "$devuelve3 dev";
 						
 							
-						$result4= mysql_query("SELECT ho.flo_nombre, ho.flo_id FROM  flota ho");
+						$result4= mysql_query("SELECT ho.flo_nombre, ho.flo_id FROM  flota ho, via v, crucero c where v.via_id=$selected2 and v.fk_cru_id=c.cru_id and ho.fk_cru_id=c.cru_id");
 						while($row4 = mysql_fetch_array($result4))
 						{
 						if ($row4["flo_id"]==$selected3){
@@ -356,7 +356,7 @@
 						//echo "$devuelve3 dev";
 						
 							
-						$result4= mysql_query("SELECT ho.flo_nombre, ho.flo_id FROM  flota ho");
+						$result4= mysql_query("SELECT ho.flo_nombre, ho.flo_id FROM  flota ho, via v, crucero c where v.via_id=$selected2 and v.fk_cru_id=c.cru_id and ho.fk_cru_id=c.cru_id");
 						while($row4 = mysql_fetch_array($result4))
 						{
 						if ($row4["flo_id"]==$selected3){

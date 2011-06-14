@@ -13,13 +13,14 @@ if($viaje && !(isset($nombre1)))
 $res17=mysql_query("SELECT via_cant_per FROM  viaje where via_id=$viaje");
 $ro17 = mysql_fetch_array($res17);
 $estesi7=$ro17['via_cant_per'];	
+//echo "$estesi7";
 if($estesi7==1)
 {
 mysql_query("INSERT INTO `boleto` (`bol_id`, `bol_fecha_emi`, `fk_via_id`,`fk_per_cedula`,`fk_aco_id`) VALUES (NULL ,'2011-06-18','$viaje','$cedula',NULL)");
-}
 $hola='u_verboleto_undestino_sinestadia_terrestre.php?viaje='.$viaje.'&mensaje=1';
 header("Location:$hola");
-}	      
+}
+}   
 		  if($nombre1)
 		  {    
 		//echo("entro a insertar en aco");
@@ -71,7 +72,7 @@ header("Location:$hola");
 				
 				mysql_query("INSERT INTO `boleto` (`bol_id`, `bol_fecha_emi`, `fk_via_id`,`fk_per_cedula`,`fk_aco_id`) VALUES (NULL ,'2011-06-18','$viaje',NULL,'$a')");
 				
-				mysql_query("INSERT INTO `boleto` (`bol_id`, `bol_fecha_emi`, `fk_via_id`,`fk_per_cedula`,`fk_aco_id`) VALUES (NULL ,'2011-06-18','$viaje','$b')");
+				mysql_query("INSERT INTO `boleto` (`bol_id`, `bol_fecha_emi`, `fk_via_id`,`fk_per_cedula`,`fk_aco_id`) VALUES (NULL ,'2011-06-18','$viaje',NULL,'$b')");
 				mysql_query("INSERT INTO `boleto` (`bol_id`, `bol_fecha_emi`, `fk_via_id`,`fk_per_cedula`,`fk_aco_id`) VALUES (NULL ,'2011-06-18','$viaje','$cedula',NULL)");
 				
 				
@@ -479,8 +480,8 @@ header("Location:$hola");
 			
 			$admin= new Panel("../html/usuario.html");
 			$admin->add("body",'<body onLoad = "actual(3)" >');
-			$panelestadios = new Panel("../html/u_continuar_compra_undestino_sinestadia_terrestre.html");
-			$panelestadios->add("form",'<form name="form1" method="post" action="../php/u_continuar_compra_undestino_sinestadia_terrestre.php?viaje='.$viaje.'">');
+			$panelestadios = new Panel("../html/u_continuar_compra_undestino_sinestadia_aereo.html");
+			$panelestadios->add("form",'<form name="form1" method="post" action="../php/u_continuar_compra_undestino_sinestadia_aereo.php?viaje='.$viaje.'">');
 	
 	      // echo($cantper);
 		   //echo($viaje);
