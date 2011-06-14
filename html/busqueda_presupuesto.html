@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+</head>
+
+<style type="text/css">
+<!--
+body {
+	background-image:url(../imagenes/prueba.jpg)
+}
+.style16 {color: #FFFFFF}
+</style></head>
+
+
+
+<script language="javascript" type="text/javascript" src="../js/datetimepicker_css.js"></script> 
+<script language="javascript">
+
+
+function validar()
+{
+// el if lo puse ||
+if (document.form1.hotel.value == 'Seleccione' || document.form1.banco.value == 'Seleccione' || document.form1.banco1.value == 'Seleccione' || document.form1.habitacion.value == 'Seleccione'|| document.form1.fecha.value.length == 0 || document.form1.fecha2.value.length == 0 || document.form1.servicio.value == 'Seleccione' )
+{
+document.getElementById('mensaje').innerHTML = 'Debe llenar todos los campos!';
+return 0;
+
+}
+
+document.form1.submit();
+
+}
+
+function check(checkbox) {var elCampo = document.getElementById('retiro');
+elCampo.disabled = checkbox.checked;
+var campo2 = document.getElementById('otro2');
+campo2.enabled = checkbox.checked;}
+
+function check2(checkbox) {var elCampo = document.getElementById('otro');
+elCampo.disabled = checkbox.checked;
+var campo2 = document.getElementById('otro2');
+campo2.disabled = checkbox.checked;}
+
+var nav4 = window.Event ? true : false;
+function acceptNum(evt){	
+// NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57	
+var key = nav4 ? evt.which : evt.keyCode;	
+return (key <= 13 || (key >= 48 && key <= 57));
+}
+
+function populate(inForm,selected) {
+
+location.href='busqueda_presupuesto.php?selected=' + selected +  '&selected2=k' +'&selected3=a';
+}
+
+function populate1(inForm,selected,selected2) {
+
+location.href='busqueda_presupuesto.php?selected=' + selected + '&selected2=' + selected2 +'&selected3=a';
+}
+
+function populate2(inForm,selected,selected2,selected3) {
+
+location.href='busqueda_presupuesto.php?selected=' + selected + '&selected2=' + selected2 +  '&selected3=' + selected3;
+}
+
+
+function populate5(inForm,selected,selected2,selected3,selected4,selected5) {
+
+location.href='busqueda_presupuesto.php?selected=' + selected + '&selected2=' + selected2 +  '&selected3=' + selected3  +  '&selected4=' + selected4  +  '&selected5=' + selected5;
+}
+
+
+</script>
+
+<body>
+
+
+<p>{form}
+	
+  <input type="hidden" name="id" id="id" value="{id}" />
+   
+  <input type="hidden" name="ciudad_vieja" id="ciudad_vieja" value="{banco}" />
+  <input type="hidden" name="ciudad1_vieja" id="ciudad1_vieja" value="{banco1}" />
+    
+  <input type="hidden" name="fecha_vieja" id="fecha_vieja" value="{fecha}" />
+    
+  <input type="hidden" name="fecha1_vieja1" id="fecha1_vieja1" value="{servicio}" />
+  <input type="hidden" name="fecha1_vieja1" id="fecha1_vieja1" value="{hotel}" />
+  <input type="hidden" name="fecha1_viejae1" id="fecha1_viejae1" value="{habitacion}" />
+ 
+
+  <table width="520" height="322" border="0" align="center" frame="box" bgcolor="#FFFFFF">
+    
+    <tr>
+      <td height="31" colspan="2" align="center"><strong>Consulta los nuestros precios </strong></td>
+    </tr>
+   
+     <tr>
+     
+     <th width="27%" height="35" align="justify" >Pais(Origen):</p></td>
+      <td width="64%"><select name="banco" id="banco" onChange="populate(document.form1,document.form1.banco.options[document.form1.banco.selectedIndex].value)">
+     <option selected="selected">Seleccione</option>
+      {bancos}
+      </select>      </td>
+    </tr>
+     <tr>
+     
+      <th width="27%" height="35" align="justify" >Ciudad(Origen):</td>
+      <td><select name="banco1" id="banco1" onChange="populate1(document.form1,document.form1.banco.options[document.form1.banco.selectedIndex].value,document.form1.banco1.options[document.form1.banco1.selectedIndex].value)">
+      <option selected="selected">Seleccione</option>
+      {bancos1}
+      </select>      </td>
+    </tr>
+    
+    <tr>
+    
+      <th width="27%" height="35" align="justify" >Pais(Destino):</td>
+      <td><select name="hotel" id="hotel" onChange="populate2(document.form1,document.form1.banco.options[document.form1.banco.selectedIndex].value,document.form1.banco1.options[document.form1.banco1.selectedIndex].value,document.form1.hotel.options[document.form1.hotel.selectedIndex].value)">
+    <option selected="selected">Seleccione</option>
+      {hoteles}
+      </select>      </td>
+    </tr>
+    <tr>
+   
+      <th width="27%" height="35" align="justify" >Ciudad(Destino):</td>
+      <td><select name="habitacion" id="habitacion">
+      <option selected="selected">Seleccione</option>
+      {habitaciones}
+      </select>      </td>
+    </tr>
+    <tr>
+   <th width="27%" height="35" align="justify" >Transporte:</td>
+      <td><select name="servicio" id="servicio">
+     <option selected="selected">Seleccione</option>
+      {servicios}
+      </select>      </td>
+    <tr>
+    <tr>
+     <th width="27%" height="35" align="justify" >Partida:</div></th>
+      <td><input name="fecha" id="fecha" type="text" readonly="readonly" value="" ><a href="javascript:NewCssCal('fecha','YYYYMMDD')"><img src="../js/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></td>
+    </tr>
+     <tr>
+     <th width="27%" height="27" align="justify" >Regreso:</div></th>
+      <td><input name="fecha2" id="fecha2" type="text" readonly="readonly" ><a href="javascript:NewCssCal('fecha2','YYYYMMDD')"><img src="../js/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></td>
+    </tr>
+    <th width="27%" height="34" align="justify" ><div align="left">Tipo de Viaje:</div></th>
+      <td><label for="dur">
+            <input type="checkbox" name="retiro" id="retiro" value="checkbox" onchange="check2(this)"/>
+            Ida y vuelta
+      </label>	
+          	<input type="checkbox" name="otro" id="otro" value="checkbox" onchange="check(this)"/>
+   	  <label for="otro"></label>
+   	  Solamente Ida   	  </td>
+    </tr>
+    <tr>
+     <th width="27%" height="27" align="justify" >Cantidad de Personas:<td><select name="cantper" id="cantper">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+      </select>      </td>
+    </tr>
+    
+    </td>
+     <td> </td>
+      <td colspan="2" align="center"><input type="button" name="agregar" id="agregar" value="{tipo_boton}" onclick="validar()" /></td>
+    </tr>
+    <tr>
+    <td>{Aqui}</td><td width="9%" colspan="2" align="center" id="mensaje">{error}</td>
+     <td>
+     </td>
+      
+    </tr>
+  </table>
+</form>
+
+</body>
+</html>
