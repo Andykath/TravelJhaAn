@@ -58,8 +58,8 @@ function populate5(inForm,selected,fecha,selected2,selected3,selected4,selected5
 location.href='u_crear_presupuesto_undestino_sinestadia_aereo.php?selected=' + selected  + '&fechai=' + fecha + '&selected2=' + selected2 +  '&selected3=' + selected3  +  '&selected4=' + selected4  +  '&selected5=' + selected5  +  '&selected6=' + selected6 + '&cantper=' + cantper  + '&tipoviaje=' + tipoviaje;
 }
 
-function populate6() {
-document.form1.action = "../php/u_crear_presupuesto_multi_sinestadia_aereo.php?sipo=1";
+function populate6(nombre1) {
+document.form1.action = "../php/u_crear_presupuesto_multi_sinestadia.php?sipo=1&mivariable="+nombre1;
 document.form1.submit();
 }
 
@@ -93,7 +93,7 @@ document.form1.submit();
     </tr>
     <tr>
       <td width="203">Id:</td>
-      <td width="202"><input type="text" name="nombre1" id="nombre1" value="{nombre1}"></td>
+      <td width="202"><input type="text" name="mivariable" id="mivariable" value="{mivariable}"></td>
     </tr>
     
     <tr>

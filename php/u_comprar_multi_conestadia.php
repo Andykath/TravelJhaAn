@@ -963,9 +963,9 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 				 }//del if inserto
 				 
 				 else// si no llego a la totalidad dell monto
-				 {
-					if($montoaux && $montoaux1 && $montoaux2)
-					 {
+				 {   echo "montos $montoaux, $montoaux1, $montoaux2";
+					 if($montoaux && $montoaux1 && $montoaux2)
+					 {echo "primer if";
 					
 						mysql_query("INSERT INTO `tarjeta` (`tar_id`,`tar_num`,`tar_cvv2`,`tar_nombre`,`tar_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$nombre','$fechapago','$cedula','$combo')");
 						
@@ -974,14 +974,14 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
                        $tarjeta=$rof['tar_id'];		
 			           //echo($tarjeta);
 					   
-					   	mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$nombre','$fechapago','$cedula','$combo')");
+					   	mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero1','$cvv21','$nombre1','$fechapago1','$cedula','$combo1')");
 						
 						$resg=mysql_query("SELECT che_id FROM  cheque where che_num='$numero'");
                        $rog = mysql_fetch_array($resg);
                        $cheque=$rog['che_id'];		
 			           //echo($cheque);	
 					   
-					   mysql_query("INSERT INTO `deposito` (`dep_id`,`dep_numero`,`dep_cuenta`,`dep_fecha`,`fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$fechapago','$cedula','$combo')");	
+					   mysql_query("INSERT INTO `deposito` (`dep_id`,`dep_numero`,`dep_cuenta`,`dep_fecha`,`fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero2','$cvv22','$fechapago2','$cedula','$combo2')");	
 						
 						$resh=mysql_query("SELECT dep_id FROM  deposito where dep_numero='$numero'");
                        $roh = mysql_fetch_array($resh);
@@ -1032,13 +1032,13 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						 mysql_query("UPDATE `presupuesto` SET  `pre_abono` = ($antes1+$montoaux+$montoaux1+$montoaux2) WHERE  `presupuesto`.`pre_id` = $id");
 						 
 						 
-						  $hola1='u_presupuesto_multi_conestadia1.php?mensaje=2';
+						 $hola1='u_presupuesto_multi_conestadia1.php?mensaje=2';
 				           header("Location:$hola1");
 						 
 						 }
 						 
-						 if ($montoaux && $montoaux1 )
-						 {
+						 if ($montoaux && $montoaux1&& ($montoaux2==NULL) )
+						 {echo "segundo if if";
 							 
 							 mysql_query("INSERT INTO `tarjeta` (`tar_id`,`tar_num`,`tar_cvv2`,`tar_nombre`,`tar_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$nombre','$fechapago','$cedula','$combo')");
 						
@@ -1047,7 +1047,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
                        $tarjeta=$rof['tar_id'];		
 			           //echo($tarjeta);
 					   
-					   	mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$nombre','$fechapago','$cedula','$combo')");
+					   	mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero1','$cvv21','$nombre1','$fechapago1','$cedula','$combo1')");
 						
 						$resg=mysql_query("SELECT che_id FROM  cheque where che_num='$numero'");
                        $rog = mysql_fetch_array($resg);
@@ -1077,14 +1077,14 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 							  $antes=mysql_query("SELECT `pre_abono` FROM  presupuesto WHERE pre_id='$id'");
 			                 $antesb = mysql_fetch_array($antes);
 		                     $antes1=$antesb['pre_abono'];
-							 
+							 echo "antes $antes1";
 							 
 							 
 							 
 							  mysql_query("UPDATE `presupuesto` SET  `pre_abono` = ($antes1+$montoaux+$montoaux1) WHERE  `presupuesto`.`pre_id` = $id");
 							  
 							  
-							   $hola1='u_presupuesto_multi_conestadia1.php?mensaje=2';
+							  $hola1='u_presupuesto_multi_conestadia1.php?mensaje=2';
 				           header("Location:$hola1");
 						 
 						 
@@ -1094,8 +1094,8 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 							 
 							 
 							 
-							  if ($montoaux && $montoaux2 )
-						 {
+							  if ($montoaux && $montoaux2 && ($montoaux1==NULL))
+						 {echo "tercer if if";
 							 
 							  
 							 mysql_query("INSERT INTO `tarjeta` (`tar_id`,`tar_num`,`tar_cvv2`,`tar_nombre`,`tar_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$nombre','$fechapago','$cedula','$combo')");
@@ -1105,7 +1105,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
                        $tarjeta=$rof['tar_id'];
 					   
 					     
-					   mysql_query("INSERT INTO `deposito` (`dep_id`,`dep_numero`,`dep_cuenta`,`dep_fecha`,`fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$fechapago','$cedula','$combo')");	
+					   mysql_query("INSERT INTO `deposito` (`dep_id`,`dep_numero`,`dep_cuenta`,`dep_fecha`,`fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero2','$cvv22','$fechapago2','$cedula','$combo2')");	
 						
 						$resh=mysql_query("SELECT dep_id FROM  deposito where dep_numero='$numero'");
                        $roh = mysql_fetch_array($resh);
@@ -1141,7 +1141,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 										 
 							  mysql_query("UPDATE `presupuesto` SET  `pre_abono` = ($antes1+$montoaux+$montoaux2) WHERE  `presupuesto`.`pre_id` = $id");
 							  
-							   $hola1='u_presupuesto_multi_conestadia1.php?mensaje=2';
+							$hola1='u_presupuesto_multi_conestadia1.php?mensaje=2';
 				           header("Location:$hola1");
 						 
 						 
@@ -1150,17 +1150,17 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 							 
 							 
 							 
-							  if ($montoaux1 && $montoaux2 )
-						 {
+							  if ($montoaux1 && $montoaux2 && ($montoaux==NULL))
+						 {echo "cuarto if if";
 							  
-							  	mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$nombre','$fechapago','$cedula','$combo')");
+							  	mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero1','$cvv21','$nombre1','$fechapago1','$cedula','$combo1')");
 						
 						$resg=mysql_query("SELECT che_id FROM  cheque where che_num='$numero'");
                        $rog = mysql_fetch_array($resg);
                        $cheque=$rog['che_id'];		
 			           //echo($cheque);	
 					   
-					   mysql_query("INSERT INTO `deposito` (`dep_id`,`dep_numero`,`dep_cuenta`,`dep_fecha`,`fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$fechapago','$cedula','$combo')");	
+					   mysql_query("INSERT INTO `deposito` (`dep_id`,`dep_numero`,`dep_cuenta`,`dep_fecha`,`fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero2','$cvv22','$fechapago2','$cedula','$combo2')");	
 						
 						$resh=mysql_query("SELECT dep_id FROM  deposito where dep_numero='$numero'");
                        $roh = mysql_fetch_array($resh);
@@ -1202,13 +1202,13 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 							  
 							  mysql_query("UPDATE `presupuesto` SET  `pre_abono` = ($antes1+$montoaux1+$montoaux2) WHERE  `presupuesto`.`pre_id` = $id");
 							  
-							   $hola1='u_presupuesto_multi_conestadia1.php?mensaje=2';
+							$hola1='u_presupuesto_multi_conestadia1.php?mensaje=2';
 				           header("Location:$hola1");
 						 
 						 
 							 }
 							 
-							 if ($montoaux )
+							 if ($montoaux && ($montoaux1==NULL) && ($montoaux2==NULL))
 						 {
 							 
 							  mysql_query("INSERT INTO `tarjeta` (`tar_id`,`tar_num`,`tar_cvv2`,`tar_nombre`,`tar_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$nombre','$fechapago','$cedula','$combo')");
@@ -1240,17 +1240,17 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					
 							  mysql_query("UPDATE `presupuesto` SET  `pre_abono` = ($antes1+$montoaux) WHERE  `presupuesto`.`pre_id` = $id");
 							  
-							   $hola1='u_presupuesto_multi_conestadia1.php?mensaje=2';
+							$hola1='u_presupuesto_multi_conestadia1.php?mensaje=2';
 				           header("Location:$hola1");
 						 
 						 
 							 }
 							 
-							  if ($montoaux1 )
+							  if ($montoaux1 && ($montoaux==NULL) && ($montoaux2==NULL))
 						 {
 							 
 							 
-							  	mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$nombre','$fechapago','$cedula','$combo')");
+							  	mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero1','$cvv21','$nombre1','$fechapago1','$cedula','$combo1')");
 						
 						$resg=mysql_query("SELECT che_id FROM  cheque where che_num='$numero'");
                        $rog = mysql_fetch_array($resg);
@@ -1279,19 +1279,19 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 							 
 							  mysql_query("UPDATE `presupuesto` SET  `pre_abono` = ($antes1+$montoaux1) WHERE  `presupuesto`.`pre_id` = $id");
 							  
-							   $hola1='u_presupuesto_multi_conestadia1.php?mensaje=2';
+							$hola1='u_presupuesto_multi_conestadia1.php?mensaje=2';
 				           header("Location:$hola1");
 						 
 						 
 							 }
 							 
-							  if ($montoaux2 )
+							  if ($montoaux2 && ($montoaux1==NULL) && ($montoaux==NULL))
 						 {
 							 
 							 
 							  	
 					   
-					   mysql_query("INSERT INTO `deposito` (`dep_id`,`dep_numero`,`dep_cuenta`,`dep_fecha`,`fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$fechapago','$cedula','$combo')");	
+					   mysql_query("INSERT INTO `deposito` (`dep_id`,`dep_numero`,`dep_cuenta`,`dep_fecha`,`fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero2','$cvv22','$fechapago2','$cedula','$combo2')");	
 						
 						$resh=mysql_query("SELECT dep_id FROM  deposito where dep_numero='$numero'");
                        $roh = mysql_fetch_array($resh);
@@ -1327,7 +1327,6 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						 
 						 
 							 }
-					 
 					 
 					 
 					 } 

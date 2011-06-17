@@ -10,7 +10,7 @@
 	extract($_POST);
 	//<!--//print_r($_POST); -->
 	$locura=$_POST['formapago'];
-	//echo($locura);
+	////echo($locura);
 
 
 	
@@ -18,14 +18,14 @@
 		  if($fechapago || $fechapago1 || $fechapago2)
 		  {// aqui validar que los datos esten bien y hacer update
 		
-		  //echo($fecha);
-		   //echo($fecha1);
-		    //echo($des);
-			 //echo($dur);
-			  //echo($fkvia);
+		  ////echo($fecha);
+		   ////echo($fecha1);
+		    ////echo($des);
+			 ////echo($dur);
+			  ////echo($fkvia);
 	
-		//echo($formapago);
-		//echo($locura);
+		////echo($formapago);
+		////echo($locura);
 		if($formapago=="Pago Unico")
 		{
 			  
@@ -42,41 +42,41 @@
 				    $hola="En familia";}
 				  	
 					
-					//echo('entro a insertar');
-					//echo($hotel);
+					////echo('entro a insertar');
+					////echo($hotel);
 				       $res3=mysql_query("SELECT hot_id FROM  hotel where hot_nombre='$hotel'");
 						$ro3 = mysql_fetch_array($res3);
 						$hotel1=$ro3['hot_id'];	
-						//echo "$hotel1 hotel1";
+						////echo "$hotel1 hotel1";
 						
 						$res4=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
 						$ro4 = mysql_fetch_array($res4);
 						$devuelve3=$ro4['aer_id'];	
-						//echo "$devuelve3 aerolinea";
+						////echo "$devuelve3 aerolinea";
 						
 						$res6=mysql_query("SELECT des_id FROM  destino where des_nombre='$origen'");
 						$ro6 = mysql_fetch_array($res6);
 						$origen1=$ro6['des_id'];	
-						//echo "$origen1 origen1";
+						////echo "$origen1 origen1";
 						
 						$res5=mysql_query("SELECT des_id FROM  destino where des_nombre='$destino'");
 						$ro5 = mysql_fetch_array($res5);
 						$destino1=$ro5['des_id'];	
-						//echo "$destino1 destino1";
+						////echo "$destino1 destino1";
 						
 						$res7=mysql_query("SELECT via_id FROM  via where fk_des_id='$origen1' AND fk_aer_id='$devuelve3'");
 						$ro7 = mysql_fetch_array($res7);
 						$viaorigen=$ro7['via_id'];	
-						//echo "$viaorigen viao";
+						////echo "$viaorigen viao";
 						
 						$res8=mysql_query("SELECT via_id FROM  via where fk_des_id='$destino1' AND fk_aer_id='$devuelve3'");
 						$ro8 = mysql_fetch_array($res8);
 						$viadestino=$ro8['via_id'];	
-						//echo "$viadestino viad";
-						//echo "$id , id";
-						//echo "$cantper , cantper";
-						//echo($alo);
-						//echo($fecha1);
+						////echo "$viadestino viad";
+						////echo "$id , id";
+						////echo "$cantper , cantper";
+						////echo($alo);
+						////echo($fecha1);
 						$reschao=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
 						$rochao = mysql_fetch_array($reschao);
 						$aerid1=$rochao['aer_id'];	
@@ -85,7 +85,7 @@
 						$reshola=mysql_query("SELECT flo_id FROM  flota f , viaje v where  f.fk_aer_id='$aerid1'");
 						$rohola = mysql_fetch_array($reshola);
 						$flota1=$rohola['flo_id'];	
-			          //echo($flota1);
+			          ////echo($flota1);
 					  
 					  mysql_query("UPDATE `flota` SET  `flo_actual` =(flo_actual-1)  WHERE  `flota`.`flo_id` = $flota1");
 					  
@@ -105,26 +105,26 @@ mysql_query("INSERT INTO `viaje` (`via_id`,`via_tipo`,`via_tipoviaje`,`via_fecha
 $res11=mysql_query("SELECT via_id FROM  viaje where fk_pre_id='$id'");
 $ro11 = mysql_fetch_array($res11);
 $viaje=$ro11['via_id'];	
-//echo($viaje);
+////echo($viaje);
 
 //$Fecha= date('d-m-Y');
 
  $millas=mysql_query("SELECT via_millas FROM  via v where  via_id='$viadestino'");
 						$romillas = mysql_fetch_array($millas);
 						$millitas=$romillas['via_millas'];
-						//echo($millitas);
+						////echo($millitas);
 						
 					$millas2=mysql_query("SELECT per_cant_millas FROM  persona  where  per_cedula='$cedula'");
 						$romillas2 = mysql_fetch_array($millas2);
 						$actualmi=$romillas2['per_cant_millas'];	
-					//echo($actualmi);
+					////echo($actualmi);
 						
 				 mysql_query("UPDATE `persona` SET  `per_cant_millas` = ($actualmi+$millitas) WHERE  `persona`.`per_cedula` = '$cedula'");	
 
 
-//echo($viaje);
+////echo($viaje);
 			mysql_query("INSERT INTO `pago` (`pag_id`,`pag_monto`,`pag_fecha`,`fk_via_id`) VALUES(NULL,'$total','2011-06-18',$viaje)");
-			//echo($viaje);
+			////echo($viaje);
 			mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk_via_id`,`fk_hab_id`) VALUES(NULL,'$fecha','$fecha1','$viaje','$habitacion')");
 			
 			
@@ -136,8 +136,8 @@ $viaje=$ro11['via_id'];
 			
 			
 			
-			//echo($pago);
-							//echo($cedula);		
+			////echo($pago);
+							////echo($cedula);		
 							
 					if($tipo=="Tarjeta")
 					{
@@ -146,7 +146,7 @@ $viaje=$ro11['via_id'];
 					  $resf=mysql_query("SELECT tar_id FROM  tarjeta where tar_num='$numero' AND fk_per_cedula='$cedula'");
                        $rof = mysql_fetch_array($resf);
                        $tarjeta=$rof['tar_id'];		
-			           //echo($tarjeta);
+			           ////echo($tarjeta);
 					   
 					   mysql_query("INSERT INTO `tip_pag` (`tip_id`,`fk_pag_id`,`fk_tar_id`,`fk_che_id`,`fk_dep_id`,`fk_mil_id`) VALUES(NULL,'$pago','$tarjeta',NULL,NULL,NULL)");		
 						
@@ -160,7 +160,7 @@ $viaje=$ro11['via_id'];
 						$resg=mysql_query("SELECT che_id FROM  cheque where che_num='$numero'");
                        $rog = mysql_fetch_array($resg);
                        $cheque=$rog['che_id'];		
-			           //echo($cheque);	
+			           ////echo($cheque);	
 					   
 					   mysql_query("INSERT INTO `tip_pag` (`tip_id`,`fk_pag_id`,`fk_tar_id`,`fk_che_id`,`fk_dep_id`,`fk_mil_id`) VALUES(NULL,'$pago',NULL,'$cheque',NULL,NULL)");		
 						
@@ -173,7 +173,7 @@ $viaje=$ro11['via_id'];
 						$resh=mysql_query("SELECT dep_id FROM  deposito where dep_numero='$numero'");
                        $roh = mysql_fetch_array($resh);
                        $deposito=$roh['dep_id'];		
-			           //echo($deposito);
+			           ////echo($deposito);
 					   
 					   mysql_query("INSERT INTO `tip_pag` (`tip_id`,`fk_pag_id`,`fk_tar_id`,`fk_che_id`,`fk_dep_id`,`fk_mil_id`) VALUES(NULL,'$pago',NULL,NULL,'$deposito',NULL)");
 						
@@ -188,7 +188,7 @@ $viaje=$ro11['via_id'];
 					
 					
 					
-					//echo($cantper);
+					////echo($cantper);
 					
 				$hola='u_continuar_compra_undestino_conestadia_aereo.php?viaje='.$viaje.'&cantper='.$cantper.'&cedula='.$cedula.'&mensaje=2';
 				header("Location:$hola");// hasta aqui esta bien 
@@ -198,14 +198,14 @@ $viaje=$ro11['via_id'];
 			
 			if ($formapago=='Pago en cuotas' || $formapago=='Pago en Cuotas')
 		$verifica=$_POST['monto']+$_POST['monto1']+$_POST['monto2'];
-	// echo("entra");
-	  //echo $_POST['monto'];
-	  // echo "post";
-	   //echo $_GET['monto'];
-	  // echo "get";
+	// //echo("entra");
+	  ////echo $_POST['monto'];
+	  // //echo "post";
+	   ////echo $_GET['monto'];
+	  // //echo "get";
 	   
-	   //echo($verifica);
-	   //echo($total);
+	   ////echo($verifica);
+	   ////echo($total);
 	    if($verifica==$total)
 	      {
 		  $inserto=1;
@@ -214,8 +214,8 @@ $viaje=$ro11['via_id'];
 		    {
 			$inserto=0;
 			}
-	//echo("entra a cuotas");
-		//echo($inserto);
+	////echo("entra a cuotas");
+		////echo($inserto);
 		
 		$montoaux=$_POST['monto'];
 					     $montoaux1=$_POST['monto1'];
@@ -244,46 +244,46 @@ $viaje=$ro11['via_id'];
 											$cvv2aux2=$_POST['cvv22'];
 		
 		
-		//echo($inserto);
+		////echo($inserto);
 		if($inserto==1){
-						//echo("aqui $comboaux1, $comboaux2,   $fechapagoaux1, $fechapagoaux2, $numeroaux1,  $numeroaux2,   , $nombreaux1,  , $cvv2aux1, $cvv2aux2,  $montoaux1 , $montoaux2 ");
+						////echo("aqui $comboaux1, $comboaux2,   $fechapagoaux1, $fechapagoaux2, $numeroaux1,  $numeroaux2,   , $nombreaux1,  , $cvv2aux1, $cvv2aux2,  $montoaux1 , $montoaux2 ");
 			// cheque y deposito
-			//echo("aqui $comboaux1, $comboaux2, $comboaux, $fechapagoaux, $fechapagoaux1, $fechapagoaux2, $numeroaux1,  $numeroaux2, $numeroaux ,  $nombreaux, $nombreaux1,  $nombreaux2, $cvv2aux, $cvv2aux1, $cvv2aux2, $montoaux, $montoaux1 , $montoaux2 ");
+			////echo("aqui $comboaux1, $comboaux2, $comboaux, $fechapagoaux, $fechapagoaux1, $fechapagoaux2, $numeroaux1,  $numeroaux2, $numeroaux ,  $nombreaux, $nombreaux1,  $nombreaux2, $cvv2aux, $cvv2aux1, $cvv2aux2, $montoaux, $montoaux1 , $montoaux2 ");
 			if($comboaux1 && $comboaux2 && $comboaux && $fechapagoaux && $fechapagoaux1 && $fechapagoaux2 && $numeroaux1 && $numeroaux2 && $numeroaux && $nombreaux && $nombreaux1 && $cvv2aux && $cvv2aux1 && $cvv2aux2 && $montoaux && $montoaux1 && $montoaux2) {
-				// echo("if");
+				// //echo("if");
                  $res3=mysql_query("SELECT hot_id FROM  hotel where hot_nombre='$hotel'");
 						$ro3 = mysql_fetch_array($res3);
 						$hotel1=$ro3['hot_id'];	
-						//echo "$hotel1 hotel1";
+						////echo "$hotel1 hotel1";
 						
 						$res4=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
 						$ro4 = mysql_fetch_array($res4);
 						$devuelve3=$ro4['aer_id'];	
-						//echo "$devuelve3 aerolinea";
-						//echo "$origen origen";
+						////echo "$devuelve3 aerolinea";
+						////echo "$origen origen";
 						$res6=mysql_query("SELECT des_id FROM  destino where des_nombre='$origen'");
 						$ro6 = mysql_fetch_array($res6);
 						$origen1=$ro6['des_id'];	
-						//echo "$origen1 origen1";
+						////echo "$origen1 origen1";
 						
 						$res5=mysql_query("SELECT des_id FROM  destino where des_nombre='$destino'");
 						$ro5 = mysql_fetch_array($res5);
 						$destino1=$ro5['des_id'];	
-						//echo "$destino1 destino1";
+						////echo "$destino1 destino1";
 						
 						$res7=mysql_query("SELECT via_id FROM  via where fk_des_id='$origen1' AND fk_aer_id='$devuelve3'");
 						$ro7 = mysql_fetch_array($res7);
 						$viaorigen=$ro7['via_id'];	
-						//echo "$viaorigen viao";
+						////echo "$viaorigen viao";
 						
 						$res8=mysql_query("SELECT via_id FROM  via where fk_des_id='$destino1' AND fk_aer_id='$devuelve3'");
 						$ro8 = mysql_fetch_array($res8);
 						$viadestino=$ro8['via_id'];	
-						//echo "$viadestino viad";
-						//echo "$id , id";
-						//echo "$cantper , cantper";
-						//echo($alo);
-						//echo($fecha1);
+						////echo "$viadestino viad";
+						////echo "$id , id";
+						////echo "$cantper , cantper";
+						////echo($alo);
+						////echo($fecha1);
 						$reschao=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
 						$rochao = mysql_fetch_array($reschao);
 						$aerid1=$rochao['aer_id'];	
@@ -292,7 +292,7 @@ $viaje=$ro11['via_id'];
 						$reshola=mysql_query("SELECT flo_id FROM  flota f , viaje v where  f.fk_aer_id='$aerid1'");
 						$rohola = mysql_fetch_array($reshola);
 						$flota1=$rohola['flo_id'];	
-			          //echo($flota1);
+			          ////echo($flota1);
 					  
 					  mysql_query("UPDATE `flota` SET  `flo_actual` =(flo_actual-1)  WHERE  `flota`.`flo_id` = $flota1");
 				   if($cantper==1)
@@ -313,12 +313,12 @@ $viaje=$ro11['via_id'];
 				  $millas=mysql_query("SELECT via_millas FROM  via v where  via_id='$viadestino'");
 						$romillas = mysql_fetch_array($millas);
 						$millitas=$romillas['via_millas'];
-						//echo($millitas);
+						////echo($millitas);
 						
 					$millas2=mysql_query("SELECT per_cant_millas FROM  persona  where  per_cedula='$cedula'");
 						$romillas2 = mysql_fetch_array($millas2);
 						$actualmi=$romillas2['per_cant_millas'];	
-						//echo($actualmi);
+						////echo($actualmi);
 						
 			mysql_query("UPDATE `persona` SET  `per_cant_millas` = ($actualmi+$millitas) WHERE  `persona`.`per_cedula` = '$cedula'");	
 				  
@@ -326,7 +326,7 @@ $viaje=$ro11['via_id'];
 $res11=mysql_query("SELECT via_id FROM  viaje where fk_pre_id='$id'");
 $ro11 = mysql_fetch_array($res11);
 $viaje=$ro11['via_id'];	
-//echo($viaje);
+////echo($viaje);
 
 mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk_via_id`,`fk_hab_id`) VALUES(NULL,'$fecha','$fecha1','$viaje','$habitacion')");
 
@@ -340,8 +340,8 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 		    $pago=$roa['max'];
 			
 			
-			//echo($pago);
-			//echo("pago");
+			////echo($pago);
+			////echo("pago");
 			 mysql_query("INSERT INTO `pago` (`pag_id`,`pag_monto`,`pag_fecha`,`fk_via_id`) VALUES(NULL,'$montoaux1','2011-06-18',$viaje)");
 			 
 				$resb=mysql_query("SELECT MAX(pag_id) AS max  FROM  pago");
@@ -349,8 +349,8 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 		    $pago1=$rob['max'];
 			
 			
-			//echo($pago1);
-			//echo("pago1");
+			////echo($pago1);
+			////echo("pago1");
 			   mysql_query("INSERT INTO `pago` (`pag_id`,`pag_monto`,`pag_fecha`,`fk_via_id`) VALUES(NULL,'$montoaux2','2011-06-18',$viaje)");
 			
 				$resc=mysql_query("SELECT MAX(pag_id) AS max  FROM  pago");
@@ -358,8 +358,8 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 		    $pago2=$roc['max'];
 			
 			
-		//	echo($pago2);
-			//echo("pago2");
+		//	//echo($pago2);
+			////echo("pago2");
 			
 			  
 			
@@ -369,23 +369,23 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					 $resf=mysql_query("SELECT tar_id FROM  tarjeta where tar_num='$numeroaux' AND fk_per_cedula='$cedula'");
                        $rof = mysql_fetch_array($resf);
                        $tarjeta=$rof['tar_id'];		
-			          //echo($tarjeta);
+			          ////echo($tarjeta);
 					   
 					   mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numeroaux1','$cvv2aux1','$nombreaux1','$fechapagoaux1','$cedula','$comboaux1')");
 						
 						$resg=mysql_query("SELECT che_id FROM  cheque where che_num='$numeroaux1'");
                        $rog = mysql_fetch_array($resg);
                        $cheque=$rog['che_id'];		
-			           //echo($cheque);	
-					   //echo($cheque);
+			           ////echo($cheque);	
+					   ////echo($cheque);
 					   
 					   mysql_query("INSERT INTO `deposito` (`dep_id`,`dep_numero`,`dep_cuenta`,`dep_fecha`,`fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numeroaux2','$cvv2aux2','$fechapagoaux2','$cedula','$comboaux2')");	
 						
 						$resh=mysql_query("SELECT dep_id FROM  deposito where dep_numero='$numeroaux2'");
                        $roh = mysql_fetch_array($resh);
                        $deposito=$roh['dep_id'];		
-			           //echo($deposito);
-					   //echo($deposito);
+			           ////echo($deposito);
+					   ////echo($deposito);
 					   
 					   
 					   mysql_query("INSERT INTO `tip_pag` (`tip_id`,`fk_pag_id`,`fk_tar_id`,`fk_che_id`,`fk_dep_id`,`fk_mil_id`) VALUES(NULL,'$pago','$tarjeta',NULL,NULL,NULL)");
@@ -408,40 +408,40 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 			{
 				
 					if($comboaux1  && $comboaux && $fechapagoaux && $fechapagoaux1  && $numeroaux1 && $numeroaux && $nombreaux && $nombreaux1 && $cvv2aux && $cvv2aux1  && $montoaux && $montoaux1 ) {
-				// echo("if el segundo");
+				// //echo("if el segundo");
                  $res3=mysql_query("SELECT hot_id FROM  hotel where hot_nombre='$hotel'");
 						$ro3 = mysql_fetch_array($res3);
 						$hotel1=$ro3['hot_id'];	
-						//echo "$hotel1 hotel1";
+						////echo "$hotel1 hotel1";
 						
 						$res4=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
 						$ro4 = mysql_fetch_array($res4);
 						$devuelve3=$ro4['aer_id'];	
-						//echo "$devuelve3 aerolinea";
-						//echo "$origen origen";
+						////echo "$devuelve3 aerolinea";
+						////echo "$origen origen";
 						$res6=mysql_query("SELECT des_id FROM  destino where des_nombre='$origen'");
 						$ro6 = mysql_fetch_array($res6);
 						$origen1=$ro6['des_id'];	
-						//echo "$origen1 origen1";
+						////echo "$origen1 origen1";
 						
 						$res5=mysql_query("SELECT des_id FROM  destino where des_nombre='$destino'");
 						$ro5 = mysql_fetch_array($res5);
 						$destino1=$ro5['des_id'];	
-						//echo "$destino1 destino1";
+						////echo "$destino1 destino1";
 						
 						$res7=mysql_query("SELECT via_id FROM  via where fk_des_id='$origen1' AND fk_aer_id='$devuelve3'");
 						$ro7 = mysql_fetch_array($res7);
 						$viaorigen=$ro7['via_id'];	
-						//echo "$viaorigen viao";
+						////echo "$viaorigen viao";
 						
 						$res8=mysql_query("SELECT via_id FROM  via where fk_des_id='$destino1' AND fk_aer_id='$devuelve3'");
 						$ro8 = mysql_fetch_array($res8);
 						$viadestino=$ro8['via_id'];	
-						//echo "$viadestino viad";
-						//echo "$id , id";
-						//echo "$cantper , cantper";
-						//echo($alo);
-						//echo($fecha1);
+						////echo "$viadestino viad";
+						////echo "$id , id";
+						////echo "$cantper , cantper";
+						////echo($alo);
+						////echo($fecha1);
 						$reschao=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
 						$rochao = mysql_fetch_array($reschao);
 						$aerid1=$rochao['aer_id'];	
@@ -450,7 +450,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						$reshola=mysql_query("SELECT flo_id FROM  flota f , viaje v where  f.fk_aer_id='$aerid1'");
 						$rohola = mysql_fetch_array($reshola);
 						$flota1=$rohola['flo_id'];	
-			          //echo($flota1);
+			          ////echo($flota1);
 					  
 					  mysql_query("UPDATE `flota` SET  `flo_actual` =(flo_actual-1)  WHERE  `flota`.`flo_id` = $flota1");
 				   if($cantper==1)
@@ -471,17 +471,17 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 $res11=mysql_query("SELECT via_id FROM  viaje where fk_pre_id='$id'");
 $ro11 = mysql_fetch_array($res11);
 $viaje=$ro11['via_id'];	
-//echo($viaje);
+////echo($viaje);
 
   $millas=mysql_query("SELECT via_millas FROM  via v where  via_id='$viadestino'");
 						$romillas = mysql_fetch_array($millas);
 						$millitas=$romillas['via_millas'];
-						//echo($millitas);
+						////echo($millitas);
 						
 					$millas2=mysql_query("SELECT per_cant_millas FROM  persona  where  per_cedula='$cedula'");
 						$romillas2 = mysql_fetch_array($millas2);
 						$actualmi=$romillas2['per_cant_millas'];	
-						//echo($actualmi);
+						////echo($actualmi);
 						
 				mysql_query("UPDATE `persona` SET  `per_cant_millas` = ($actualmi+$millitas) WHERE  `persona`.`per_cedula` = '$cedula'");	
 				  
@@ -493,25 +493,25 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					
 
 					  
-				//echo($montoaux);
-				//echo($montoaux1);
-				//echo($montoaux2);	   
+				////echo($montoaux);
+				////echo($montoaux1);
+				////echo($montoaux2);	   
 					   
 			 $resa=mysql_query("SELECT MAX(pag_id) AS max  FROM  pago");
 			$roa = mysql_fetch_array($resa);
 		    $pago=$roa['max'];
 			
 			
-			//echo($pago);
-			//echo("pago");
+			////echo($pago);
+			////echo("pago");
 			  mysql_query("INSERT INTO `pago` (`pag_id`,`pag_monto`,`pag_fecha`,`fk_via_id`) VALUES(NULL,'$montoaux1','2011-06-18',$viaje)");
 				$resb=mysql_query("SELECT MAX(pag_id) AS max  FROM  pago");
 			$rob = mysql_fetch_array($resb);
 		    $pago1=$rob['max'];
 			
 			
-			//echo($pago1);
-			//echo("pago1");
+			////echo($pago1);
+			////echo("pago1");
 			
 			
 			 			   mysql_query("INSERT INTO `tarjeta` (`tar_id`,`tar_num`,`tar_cvv2`,`tar_nombre`,`tar_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numeroaux','$cvv2aux','$nombreaux','$fechapagoaux','$cedula','$comboaux')");
@@ -519,15 +519,15 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					 $resf=mysql_query("SELECT tar_id FROM  tarjeta where tar_num='$numeroaux' AND fk_per_cedula='$cedula'");
                        $rof = mysql_fetch_array($resf);
                        $tarjeta=$rof['tar_id'];		
-			          //echo($tarjeta);
+			          ////echo($tarjeta);
 					  
 					  mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numeroaux1','$cvv2aux1','$nombreaux1','$fechapagoaux1','$cedula','$comboaux1')");
 						
 						$resg=mysql_query("SELECT che_id FROM  cheque where che_num='$numeroaux1'");
                        $rog = mysql_fetch_array($resg);
                        $cheque=$rog['che_id'];		
-			           //echo($cheque);	
-					   //echo($cheque);
+			           ////echo($cheque);	
+					   ////echo($cheque);
 					   
 					
 					   				   
@@ -547,40 +547,40 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 			}// if solo esta lleno tarjeta y cheque
 				// tarjeta y deposito
 				if($comboaux2  && $comboaux && $fechapagoaux && $fechapagoaux2  && $numeroaux2 && $numeroaux && $nombreaux  && $cvv2aux && $cvv2aux2  && $montoaux && $montoaux2 ) {
-				// echo("if el segundo");
+				// //echo("if el segundo");
                  $res3=mysql_query("SELECT hot_id FROM  hotel where hot_nombre='$hotel'");
 						$ro3 = mysql_fetch_array($res3);
 						$hotel1=$ro3['hot_id'];	
-						//echo "$hotel1 hotel1";
+						////echo "$hotel1 hotel1";
 						
 						$res4=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
 						$ro4 = mysql_fetch_array($res4);
 						$devuelve3=$ro4['aer_id'];	
-						//echo "$devuelve3 aerolinea";
-						//echo "$origen origen";
+						////echo "$devuelve3 aerolinea";
+						////echo "$origen origen";
 						$res6=mysql_query("SELECT des_id FROM  destino where des_nombre='$origen'");
 						$ro6 = mysql_fetch_array($res6);
 						$origen1=$ro6['des_id'];	
-						//echo "$origen1 origen1";
+						////echo "$origen1 origen1";
 						
 						$res5=mysql_query("SELECT des_id FROM  destino where des_nombre='$destino'");
 						$ro5 = mysql_fetch_array($res5);
 						$destino1=$ro5['des_id'];	
-						//echo "$destino1 destino1";
+						////echo "$destino1 destino1";
 						
 						$res7=mysql_query("SELECT via_id FROM  via where fk_des_id='$origen1' AND fk_aer_id='$devuelve3'");
 						$ro7 = mysql_fetch_array($res7);
 						$viaorigen=$ro7['via_id'];	
-						//echo "$viaorigen viao";
+						////echo "$viaorigen viao";
 						
 						$res8=mysql_query("SELECT via_id FROM  via where fk_des_id='$destino1' AND fk_aer_id='$devuelve3'");
 						$ro8 = mysql_fetch_array($res8);
 						$viadestino=$ro8['via_id'];	
-						//echo "$viadestino viad";
-						//echo "$id , id";
-						//echo "$cantper , cantper";
-						//echo($alo);
-						//echo($fecha1);
+						////echo "$viadestino viad";
+						////echo "$id , id";
+						////echo "$cantper , cantper";
+						////echo($alo);
+						////echo($fecha1);
 						$reschao=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
 						$rochao = mysql_fetch_array($reschao);
 						$aerid1=$rochao['aer_id'];	
@@ -589,7 +589,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						$reshola=mysql_query("SELECT flo_id FROM  flota f , viaje v where  f.fk_aer_id='$aerid1'");
 						$rohola = mysql_fetch_array($reshola);
 						$flota1=$rohola['flo_id'];	
-			          //echo($flota1);
+			          ////echo($flota1);
 					  
 					  mysql_query("UPDATE `flota` SET  `flo_actual` =(flo_actual-1)  WHERE  `flota`.`flo_id` = $flota1");
 				   if($cantper==1)
@@ -610,17 +610,17 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 $res11=mysql_query("SELECT via_id FROM  viaje where fk_pre_id='$id'");
 $ro11 = mysql_fetch_array($res11);
 $viaje=$ro11['via_id'];	
-//echo($viaje);
+////echo($viaje);
 
   $millas=mysql_query("SELECT via_millas FROM  via v where  via_id='$viadestino'");
 						$romillas = mysql_fetch_array($millas);
 						$millitas=$romillas['via_millas'];
-						//echo($millitas);
+						////echo($millitas);
 						
 					$millas2=mysql_query("SELECT per_cant_millas FROM  persona  where  per_cedula='$cedula'");
 						$romillas2 = mysql_fetch_array($millas2);
 						$actualmi=$romillas2['per_cant_millas'];	
-						//echo($actualmi);
+						////echo($actualmi);
 						
 				mysql_query("UPDATE `persona` SET  `per_cant_millas` = ($actualmi+$millitas) WHERE  `persona`.`per_cedula` = '$cedula'");	
 				  
@@ -651,7 +651,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					 $resf=mysql_query("SELECT tar_id FROM  tarjeta where tar_num='$numeroaux' AND fk_per_cedula='$cedula'");
                        $rof = mysql_fetch_array($resf);
                        $tarjeta=$rof['tar_id'];		
-			          //echo($tarjeta);
+			          ////echo($tarjeta);
 					   
 					   
 					   
@@ -660,8 +660,8 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						$resh=mysql_query("SELECT dep_id FROM  deposito where dep_numero='$numeroaux2'");
                        $roh = mysql_fetch_array($resh);
                        $deposito=$roh['dep_id'];		
-			           //echo($deposito);
-					   //echo($deposito);
+			           ////echo($deposito);
+					   ////echo($deposito);
 					   
 					   
 					   				   
@@ -682,40 +682,40 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 			
 			// cheque y deposito
 			if($comboaux2  && $comboaux1 && $fechapagoaux1 && $fechapagoaux2  && $numeroaux2 && $numeroaux1 && $nombreaux1  && $cvv2aux1 && $cvv2aux2  && $montoaux1 && $montoaux2 ) {
-				 //echo("if el chequedep");
+				 ////echo("if el chequedep");
                  $res3=mysql_query("SELECT hot_id FROM  hotel where hot_nombre='$hotel'");
 						$ro3 = mysql_fetch_array($res3);
 						$hotel1=$ro3['hot_id'];	
-						//echo "$hotel1 hotel1";
+						////echo "$hotel1 hotel1";
 						
 						$res4=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
 						$ro4 = mysql_fetch_array($res4);
 						$devuelve3=$ro4['aer_id'];	
-						//echo "$devuelve3 aerolinea";
-						//echo "$origen origen";
+						////echo "$devuelve3 aerolinea";
+						////echo "$origen origen";
 						$res6=mysql_query("SELECT des_id FROM  destino where des_nombre='$origen'");
 						$ro6 = mysql_fetch_array($res6);
 						$origen1=$ro6['des_id'];	
-						//echo "$origen1 origen1";
+						////echo "$origen1 origen1";
 						
 						$res5=mysql_query("SELECT des_id FROM  destino where des_nombre='$destino'");
 						$ro5 = mysql_fetch_array($res5);
 						$destino1=$ro5['des_id'];	
-						//echo "$destino1 destino1";
+						////echo "$destino1 destino1";
 						
 						$res7=mysql_query("SELECT via_id FROM  via where fk_des_id='$origen1' AND fk_aer_id='$devuelve3'");
 						$ro7 = mysql_fetch_array($res7);
 						$viaorigen=$ro7['via_id'];	
-						//echo "$viaorigen viao";
+						////echo "$viaorigen viao";
 						
 						$res8=mysql_query("SELECT via_id FROM  via where fk_des_id='$destino1' AND fk_aer_id='$devuelve3'");
 						$ro8 = mysql_fetch_array($res8);
 						$viadestino=$ro8['via_id'];	
-						//echo "$viadestino viad";
-						//echo "$id , id";
-						//echo "$cantper , cantper";
-						//echo($alo);
-						//echo($fecha1);
+						////echo "$viadestino viad";
+						////echo "$id , id";
+						////echo "$cantper , cantper";
+						////echo($alo);
+						////echo($fecha1);
 						$reschao=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
 						$rochao = mysql_fetch_array($reschao);
 						$aerid1=$rochao['aer_id'];	
@@ -724,7 +724,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						$reshola=mysql_query("SELECT flo_id FROM  flota f , viaje v where  f.fk_aer_id='$aerid1'");
 						$rohola = mysql_fetch_array($reshola);
 						$flota1=$rohola['flo_id'];	
-			          //echo($flota1);
+			          ////echo($flota1);
 					  
 					  mysql_query("UPDATE `flota` SET  `flo_actual` =(flo_actual-1)  WHERE  `flota`.`flo_id` = $flota1");
 				   if($cantper==1)
@@ -745,17 +745,17 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 $res11=mysql_query("SELECT via_id FROM  viaje where fk_pre_id='$id'");
 $ro11 = mysql_fetch_array($res11);
 $viaje=$ro11['via_id'];	
-//echo($viaje);
+////echo($viaje);
 
   $millas=mysql_query("SELECT via_millas FROM  via v where  via_id='$viadestino'");
 						$romillas = mysql_fetch_array($millas);
 						$millitas=$romillas['via_millas'];
-						//echo($millitas);
+						////echo($millitas);
 						
 					$millas2=mysql_query("SELECT per_cant_millas FROM  persona  where  per_cedula='$cedula'");
 						$romillas2 = mysql_fetch_array($millas2);
 						$actualmi=$romillas2['per_cant_millas'];	
-						//echo($actualmi);
+						////echo($actualmi);
 						
 				mysql_query("UPDATE `persona` SET  `per_cant_millas` = ($actualmi+$millitas) WHERE  `persona`.`per_cedula` = '$cedula'");		
 				  
@@ -765,9 +765,9 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					 mysql_query("INSERT INTO `pago` (`pag_id`,`pag_monto`,`pag_fecha`,`fk_via_id`) VALUES(NULL,'$montoaux1','2011-06-18',$viaje)");
 					
 					  
-				//echo($montoaux);
-				//echo($montoaux1);
-				//echo($montoaux2);	   
+				////echo($montoaux);
+				////echo($montoaux1);
+				////echo($montoaux2);	   
 					   
 			$resb=mysql_query("SELECT MAX(pag_id) AS max  FROM  pago");
 			$rob = mysql_fetch_array($resb);
@@ -779,8 +779,8 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 			$resc=mysql_query("SELECT MAX(pag_id) AS max  FROM  pago");
 			$roc = mysql_fetch_array($resc);
 		    $pago2=$roc['max'];
-			//echo($pago1);
-			//echo("pago1");
+			////echo($pago1);
+			////echo("pago1");
 			
 			            
 					  mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numeroaux1','$cvv2aux1','$nombreaux1','$fechapagoaux1','$cedula','$comboaux1')");
@@ -788,8 +788,8 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						$resg=mysql_query("SELECT che_id FROM  cheque where che_num='$numeroaux1'");
                        $rog = mysql_fetch_array($resg);
                        $cheque=$rog['che_id'];		
-			           //echo($cheque);	
-					   //echo($cheque);
+			           ////echo($cheque);	
+					   ////echo($cheque);
 			 			  
 					   
 					   
@@ -799,8 +799,8 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						$resh=mysql_query("SELECT dep_id FROM  deposito where dep_numero='$numeroaux2'");
                        $roh = mysql_fetch_array($resh);
                        $deposito=$roh['dep_id'];		
-			           //echo($deposito);
-					   //echo($deposito);
+			           ////echo($deposito);
+					   ////echo($deposito);
 					   
 					   
 					   				   
@@ -836,30 +836,30 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 				 }//del if inserto
 				 
 				 else// si no llego a la totalidad dell monto
-				 {
+				 {   //echo "montos $montoaux, $montoaux1, $montoaux2";
 					 if($montoaux && $montoaux1 && $montoaux2)
-					 {
+					 {//echo "primer if";
 					
 						mysql_query("INSERT INTO `tarjeta` (`tar_id`,`tar_num`,`tar_cvv2`,`tar_nombre`,`tar_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$nombre','$fechapago','$cedula','$combo')");
 						
 					  $resf=mysql_query("SELECT tar_id FROM  tarjeta where tar_num='$numero' AND fk_per_cedula='$cedula'");
                        $rof = mysql_fetch_array($resf);
                        $tarjeta=$rof['tar_id'];		
-			           //echo($tarjeta);
+			           ////echo($tarjeta);
 					   
-					   	mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$nombre','$fechapago','$cedula','$combo')");
+					   	mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero1','$cvv21','$nombre1','$fechapago1','$cedula','$combo1')");
 						
 						$resg=mysql_query("SELECT che_id FROM  cheque where che_num='$numero'");
                        $rog = mysql_fetch_array($resg);
                        $cheque=$rog['che_id'];		
-			           //echo($cheque);	
+			           ////echo($cheque);	
 					   
-					   mysql_query("INSERT INTO `deposito` (`dep_id`,`dep_numero`,`dep_cuenta`,`dep_fecha`,`fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$fechapago','$cedula','$combo')");	
+					   mysql_query("INSERT INTO `deposito` (`dep_id`,`dep_numero`,`dep_cuenta`,`dep_fecha`,`fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero2','$cvv22','$fechapago2','$cedula','$combo2')");	
 						
 						$resh=mysql_query("SELECT dep_id FROM  deposito where dep_numero='$numero'");
                        $roh = mysql_fetch_array($resh);
                        $deposito=$roh['dep_id'];		
-			           //echo($deposito);
+			           ////echo($deposito);
 					   
 					   	
 					 mysql_query("INSERT INTO `pago` (`pag_id`,`pag_monto`,`pag_fecha`,`fk_via_id`) VALUES(NULL,'$montoaux','2011-06-18',$viaje)");
@@ -910,22 +910,22 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						 
 						 }
 						 
-						 if ($montoaux && $montoaux1 )
-						 {
+						 if ($montoaux && $montoaux1&& ($montoaux2==NULL) )
+						 {//echo "segundo if if";
 							 
 							 mysql_query("INSERT INTO `tarjeta` (`tar_id`,`tar_num`,`tar_cvv2`,`tar_nombre`,`tar_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$nombre','$fechapago','$cedula','$combo')");
 						
 					  $resf=mysql_query("SELECT tar_id FROM  tarjeta where tar_num='$numero' AND fk_per_cedula='$cedula'");
                        $rof = mysql_fetch_array($resf);
                        $tarjeta=$rof['tar_id'];		
-			           //echo($tarjeta);
+			           ////echo($tarjeta);
 					   
-					   	mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$nombre','$fechapago','$cedula','$combo')");
+					   	mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero1','$cvv21','$nombre1','$fechapago1','$cedula','$combo1')");
 						
 						$resg=mysql_query("SELECT che_id FROM  cheque where che_num='$numero'");
                        $rog = mysql_fetch_array($resg);
                        $cheque=$rog['che_id'];		
-			           //echo($cheque);	
+			           ////echo($cheque);	
 					   
 							   mysql_query("INSERT INTO `pago` (`pag_id`,`pag_monto`,`pag_fecha`,`fk_via_id`) VALUES(NULL,'$montoaux','2011-06-18',$viaje)");
 					 
@@ -950,7 +950,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 							  $antes=mysql_query("SELECT `pre_abono` FROM  presupuesto WHERE pre_id='$id'");
 			                 $antesb = mysql_fetch_array($antes);
 		                     $antes1=$antesb['pre_abono'];
-							 
+							 //echo "antes $antes1";
 							 
 							 
 							 
@@ -967,8 +967,8 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 							 
 							 
 							 
-							  if ($montoaux && $montoaux2 )
-						 {
+							  if ($montoaux && $montoaux2 && ($montoaux1==NULL))
+						 {//echo "tercer if if";
 							 
 							  
 							 mysql_query("INSERT INTO `tarjeta` (`tar_id`,`tar_num`,`tar_cvv2`,`tar_nombre`,`tar_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$nombre','$fechapago','$cedula','$combo')");
@@ -978,12 +978,12 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
                        $tarjeta=$rof['tar_id'];
 					   
 					     
-					   mysql_query("INSERT INTO `deposito` (`dep_id`,`dep_numero`,`dep_cuenta`,`dep_fecha`,`fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$fechapago','$cedula','$combo')");	
+					   mysql_query("INSERT INTO `deposito` (`dep_id`,`dep_numero`,`dep_cuenta`,`dep_fecha`,`fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero2','$cvv22','$fechapago2','$cedula','$combo2')");	
 						
 						$resh=mysql_query("SELECT dep_id FROM  deposito where dep_numero='$numero'");
                        $roh = mysql_fetch_array($resh);
                        $deposito=$roh['dep_id'];		
-			           //echo($deposito);
+			           ////echo($deposito);
 					   
 					   	
 					 mysql_query("INSERT INTO `pago` (`pag_id`,`pag_monto`,`pag_fecha`,`fk_via_id`) VALUES(NULL,'$montoaux','2011-06-18',$viaje)");
@@ -1023,22 +1023,22 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 							 
 							 
 							 
-							  if ($montoaux1 && $montoaux2 )
-						 {
+							  if ($montoaux1 && $montoaux2 && ($montoaux==NULL))
+						 {//echo "cuarto if if";
 							  
-							  	mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$nombre','$fechapago','$cedula','$combo')");
+							  	mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero1','$cvv21','$nombre1','$fechapago1','$cedula','$combo1')");
 						
 						$resg=mysql_query("SELECT che_id FROM  cheque where che_num='$numero'");
                        $rog = mysql_fetch_array($resg);
                        $cheque=$rog['che_id'];		
-			           //echo($cheque);	
+			           ////echo($cheque);	
 					   
-					   mysql_query("INSERT INTO `deposito` (`dep_id`,`dep_numero`,`dep_cuenta`,`dep_fecha`,`fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$fechapago','$cedula','$combo')");	
+					   mysql_query("INSERT INTO `deposito` (`dep_id`,`dep_numero`,`dep_cuenta`,`dep_fecha`,`fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero2','$cvv22','$fechapago2','$cedula','$combo2')");	
 						
 						$resh=mysql_query("SELECT dep_id FROM  deposito where dep_numero='$numero'");
                        $roh = mysql_fetch_array($resh);
                        $deposito=$roh['dep_id'];		
-			           //echo($deposito);
+			           ////echo($deposito);
 					   
 					   	
 					
@@ -1081,7 +1081,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						 
 							 }
 							 
-							 if ($montoaux )
+							 if ($montoaux && ($montoaux1==NULL) && ($montoaux2==NULL))
 						 {
 							 
 							  mysql_query("INSERT INTO `tarjeta` (`tar_id`,`tar_num`,`tar_cvv2`,`tar_nombre`,`tar_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$nombre','$fechapago','$cedula','$combo')");
@@ -1119,16 +1119,16 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						 
 							 }
 							 
-							  if ($montoaux1 )
+							  if ($montoaux1 && ($montoaux==NULL) && ($montoaux2==NULL))
 						 {
 							 
 							 
-							  	mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$nombre','$fechapago','$cedula','$combo')");
+							  	mysql_query("INSERT INTO `cheque` (`che_id`,`che_num`,`che_cuenta`,`che_nombre`,`che_fechaven`, `fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero1','$cvv21','$nombre1','$fechapago1','$cedula','$combo1')");
 						
 						$resg=mysql_query("SELECT che_id FROM  cheque where che_num='$numero'");
                        $rog = mysql_fetch_array($resg);
                        $cheque=$rog['che_id'];		
-			           //echo($cheque);	
+			           ////echo($cheque);	
 					   
 					  
 					   	
@@ -1158,18 +1158,18 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						 
 							 }
 							 
-							  if ($montoaux2 )
+							  if ($montoaux2 && ($montoaux1==NULL) && ($montoaux==NULL))
 						 {
 							 
 							 
 							  	
 					   
-					   mysql_query("INSERT INTO `deposito` (`dep_id`,`dep_numero`,`dep_cuenta`,`dep_fecha`,`fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero','$cvv2','$fechapago','$cedula','$combo')");	
+					   mysql_query("INSERT INTO `deposito` (`dep_id`,`dep_numero`,`dep_cuenta`,`dep_fecha`,`fk_per_cedula`,`fk_ban_id`) VALUES(NULL,'$numero2','$cvv22','$fechapago2','$cedula','$combo2')");	
 						
 						$resh=mysql_query("SELECT dep_id FROM  deposito where dep_numero='$numero'");
                        $roh = mysql_fetch_array($resh);
                        $deposito=$roh['dep_id'];		
-			           //echo($deposito);
+			           ////echo($deposito);
 					   
 					 
 					  
@@ -1229,7 +1229,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 							 
 							 $total1=$total-$mete;
 					
-					//echo($cantper);
+					////echo($cantper);
 					//$panelestadios->add("cue_numero",$tipoviaje);
 					$panelestadios->add("fecha",$fechai);
 					$panelestadios->add("aerolinea",$aerolinea);
@@ -1418,7 +1418,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
       <td width="202"><input type="text" name="monto2" id="monto2" value="{monto2}" onKeyPress="return acceptNum(event)"></td>
     </tr>');
 	
-	//echo($combo);
+	////echo($combo);
 						
 						
 						
@@ -1569,7 +1569,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					
 					
 					
-					//echo($tipo);
+					////echo($tipo);
 					$panelestadios->add("tipo_boton",'Procesar');
 					$admin->add("contenido",$panelestadios);
 					$admin->show();

@@ -11,8 +11,8 @@
 	      if($cue_numero)
 		  {
 		  
-			    //echo "$hot_id, $cue_numero , $fecha, $banco";
-				mysql_query("INSERT INTO `habitacion` (`hab_id` ,`hab_piso` ,`hab_tipo` ,`hab_capacidad` ,`hab_costo`,`hab_status`,`fk_cru_id`, `fk_hot_id`)VALUES (NULL ,  '$cue_numero',  'Hotel',  '$fecha',  '$banco','No ocupada', NULL, '$hot_id')");
+			    
+				mysql_query("INSERT INTO `habitacion` (`hab_id` ,`hab_piso` ,`hab_tipo` ,`hab_capacidad` ,`hab_costo`,`hab_status`,`fk_cru_id`, `fk_hot_id`,`hab_categoria`)VALUES (NULL ,  '$cue_numero',  'Hotel',  '$fecha',  '$banco','No ocupada', NULL, '$hot_id', '$categoria')");
 			    
 				$hola='a_hoteles.php?mensaje=1';
 				header("Location:$hola");

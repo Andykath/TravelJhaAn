@@ -14,6 +14,10 @@
 								 
     global $mivariable;
 	$mivariable=$devuelve5;
+	if(!(isset($_GET['pregunta'])))
+	{
+	$mivariable=$mivariable+1;
+	}
 	if($_GET['pregunta']=='Si')
 	{
 	$mivariable=$mivariable+1;

@@ -17,9 +17,10 @@
 		  {
 			   $aqui=$_GET['mivariable'];
 			  
-	                          $res3=mysql_query("SELECT via_costo FROM  via where via_id=$combotra1");
+			  
+	                          $res3=mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$combotra AND c.fk_via_destino=$combotra1");
 								$ro3 = mysql_fetch_array($res3);
-								$devuelve3=$ro3['via_costo'];	
+								$devuelve3=$ro3['cos_costo'];	
 								//secho($devuelve3);	
 								//echo($cant1);
 								$devuelvetodo=$devuelve3*$cant1;
@@ -272,7 +273,9 @@
 						$result1= mysql_query("SELECT v.*, a.aer_nombre, d.des_nombre FROM  via v, aerolinea a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_aer_id=a.aer_id AND v.fk_aer_id=$devuelve AND v.fk_des_id<>$devuelve1 AND v.fk_cru_id IS NULL AND v.fk_ter_id IS NULL");
 						while($row1 = mysql_fetch_array($result1))
 						{
-						$select_actual1='<option value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"].'</option>'; 
+						$result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$selected2 AND c.fk_via_destino=".$row1["via_id"]."");
+							 $row6 = mysql_fetch_array($result6);
+						$select_actual1='<option value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"]."/".$row6["cos_costo"].'</option>'; 
 						$select1=$select1.$select_actual1;
 						}
 						
@@ -349,7 +352,9 @@
 						$result1= mysql_query("SELECT v.*, a.cru_nombre, d.des_nombre FROM  via v, crucero a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_cru_id=a.cru_id AND v.fk_cru_id=$devuelve AND v.fk_des_id<>$devuelve1 AND  v.fk_cru_id IS NOT NULL AND v.fk_aer_id IS NULL AND v.fk_ter_id IS NULL");
 						while($row1 = mysql_fetch_array($result1))
 						{
-						$select_actual1='<option value="'.$row1["via_id"].'">'.$row1["cru_nombre"]."/".$row1["des_nombre"].'</option>'; 
+						$result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$selected2 AND c.fk_via_destino=".$row1["via_id"]."");
+						$row6 = mysql_fetch_array($result6);
+						$select_actual1='<option value="'.$row1["via_id"].'">'.$row1["cru_nombre"]."/".$row1["des_nombre"]."/".$row6["cos_costo"].'</option>'; 
 						$select1=$select1.$select_actual1;
 						}
 						
@@ -426,7 +431,9 @@
 						$result1= mysql_query("SELECT v.*, a.ter_nombre, d.des_nombre FROM  via v, terrestre a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_ter_id=a.ter_id AND v.fk_ter_id=$devuelve AND v.fk_des_id<>$devuelve1 AND v.fk_cru_id IS NULL AND v.fk_aer_id IS NULL");
 						while($row1 = mysql_fetch_array($result1))
 						{
-						$select_actual1='<option value="'.$row1["via_id"].'">'.$row1["ter_nombre"]."/".$row1["des_nombre"].'</option>'; 
+						$result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$selected2 AND c.fk_via_destino=".$row1["via_id"]."");
+							 $row6 = mysql_fetch_array($result6);
+						$select_actual1='<option value="'.$row1["via_id"].'">'.$row1["ter_nombre"]."/".$row1["des_nombre"]."/".$row6["cos_costo"].'</option>'; 
 						$select1=$select1.$select_actual1;
 						}
 						
@@ -494,14 +501,16 @@
 					    
 						$result12= mysql_query("SELECT v.*, a.aer_nombre, d.des_nombre FROM  via v, aerolinea a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_aer_id=a.aer_id AND v.fk_aer_id=$devuelve AND v.fk_des_id<>$devuelve1 AND v.fk_cru_id IS NULL AND v.fk_ter_id IS NULL");
 						while($row12 = mysql_fetch_array($result12))
-								{				
+								{
+								$result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$selected2 AND c.fk_via_destino=".$row12["via_id"]."");
+							 $row6 = mysql_fetch_array($result6);				
 									
 									if ($row12["via_id"]==$selected3){
 										//echo 'if';
-										$select_actual12='<option selected="selected" value="'.$row12["via_id"].'">'.$row12["aer_nombre"]."/".$row12["des_nombre"].'</option>'; }	
+										$select_actual12='<option selected="selected" value="'.$row12["via_id"].'">'.$row12["aer_nombre"]."/".$row12["des_nombre"]."/".$row6["cos_costo"].'</option>'; }	
 									else{
 										//echo "banco es $banco";
-										$select_actual12='<option value="'.$row12["via_id"].'">'.$row12["aer_nombre"]."/".$row12["des_nombre"].'</option>'; 	}	
+										$select_actual12='<option value="'.$row12["via_id"].'">'.$row12["aer_nombre"]."/".$row12["des_nombre"]."/".$row6["cos_costo"].'</option>'; 	}	
 									$select12=$select12.$select_actual12;
 								}
 						$panelcuentas->add("combotra1",' <tr><td>Aerolinea/Destino:</td><td><select name="combotra1" id="combotra1"onChange="populate3(document.form1,document.form1.fecha.value,document.form1.combo.options[document.form1.combo.selectedIndex].value,document.form1.combotra.options[document.form1.combotra.selectedIndex].value,document.form1.combotra1.options[document.form1.combotra1.selectedIndex].value,document.form1.cant1.options[document.form1.cant1.selectedIndex].value,document.form1.nombre1.value)">'.$select12.'</td></tr>');
@@ -519,9 +528,9 @@
         <option>10</option>
       </select>      </td></tr>');
 
-						        $res3=mysql_query("SELECT via_costo FROM  via where via_id=$selected3");
+						        $res3=mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$selected2 AND c.fk_via_destino=$selected3");
 								$ro3 = mysql_fetch_array($res3);
-								$devuelve3=$ro3['via_costo'];	
+								$devuelve3=$ro3['cos_costo'];	
 								//secho($devuelve3);	
 								//echo($cant1);
 								$devuelvetodo=$devuelve3*$selected4;
@@ -589,14 +598,16 @@
 					    
 						$result12= mysql_query("SELECT v.*, a.cru_nombre, d.des_nombre FROM  via v, crucero a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_cru_id=a.cru_id AND v.fk_cru_id=$devuelve AND v.fk_des_id<>$devuelve1 AND v.fk_cru_id IS NOT NULL AND v.fk_aer_id IS NULL AND v.fk_ter_id IS NULL");
 						while($row12 = mysql_fetch_array($result12))
-								{				
+								{	
+								$result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$selected2 AND c.fk_via_destino=".$row12["via_id"]."");
+							 $row6 = mysql_fetch_array($result6);			
 									
 									if ($row12["via_id"]==$selected3){
 										//echo 'if';
-										$select_actual12='<option selected="selected" value="'.$row12["via_id"].'">'.$row12["cru_nombre"]."/".$row12["des_nombre"].'</option>'; }	
+										$select_actual12='<option selected="selected" value="'.$row12["via_id"].'">'.$row12["cru_nombre"]."/".$row12["des_nombre"]."/".$row6["cos_costo"].'</option>'; }	
 									else{
 										//echo "banco es $banco";
-										$select_actual12='<option value="'.$row12["via_id"].'">'.$row12["cru_nombre"]."/".$row12["des_nombre"].'</option>'; 	}	
+										$select_actual12='<option value="'.$row12["via_id"].'">'.$row12["cru_nombre"]."/".$row12["des_nombre"]."/".$row6["cos_costo"].'</option>'; 	}	
 									$select12=$select12.$select_actual12;
 								}
 						$panelcuentas->add("combotra1",' <tr><td>Crucero/Destino:</td><td><select name="combotra1" id="combotra1"onChange="populate3(document.form1,document.form1.fecha.value,document.form1.combo.options[document.form1.combo.selectedIndex].value,document.form1.combotra.options[document.form1.combotra.selectedIndex].value,document.form1.combotra1.options[document.form1.combotra1.selectedIndex].value,document.form1.cant1.options[document.form1.cant1.selectedIndex].value,document.form1.nombre1.value)">'.$select12.'</td></tr>');
@@ -614,9 +625,9 @@
         <option>10</option>
       </select>      </td></tr>');
 
-						        $res3=mysql_query("SELECT via_costo FROM  via where via_id=$selected3");
+						        $res3=mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$selected2 AND c.fk_via_destino=$selected3");
 								$ro3 = mysql_fetch_array($res3);
-								$devuelve3=$ro3['via_costo'];	
+								$devuelve3=$ro3['cos_costo'];	
 								//secho($devuelve3);	
 								//echo($cant1);
 								$devuelvetodo=$devuelve3*$selected4;
@@ -685,14 +696,16 @@
 					    
 						$result12= mysql_query("SELECT v.*, a.ter_nombre, d.des_nombre FROM  via v, terrestre a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_ter_id=a.ter_id AND v.fk_ter_id=$devuelve AND v.fk_des_id<>$devuelve1 AND v.fk_cru_id IS NULL AND v.fk_aer_id IS NULL");
 						while($row12 = mysql_fetch_array($result12))
-								{				
+								{	
+								$result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$selected2 AND c.fk_via_destino=".$row12["via_id"]."");
+							 $row6 = mysql_fetch_array($result6);			
 									
 									if ($row12["via_id"]==$selected3){
 										//echo 'if';
-										$select_actual12='<option selected="selected" value="'.$row12["via_id"].'">'.$row12["ter_nombre"]."/".$row12["des_nombre"].'</option>'; }	
+										$select_actual12='<option selected="selected" value="'.$row12["via_id"].'">'.$row12["ter_nombre"]."/".$row12["des_nombre"]."/".$row6["cos_costo"].'</option>'; }	
 									else{
 										//echo "banco es $banco";
-										$select_actual12='<option value="'.$row12["via_id"].'">'.$row12["ter_nombre"]."/".$row12["des_nombre"].'</option>'; 	}	
+										$select_actual12='<option value="'.$row12["via_id"].'">'.$row12["ter_nombre"]."/".$row12["des_nombre"]."/".$row6["cos_costo"].'</option>'; 	}	
 									$select12=$select12.$select_actual12;
 								}
 						$panelcuentas->add("combotra1",' <tr><td>T.Terrestre/Destino:</td><td><select name="combotra1" id="combotra1"onChange="populate3(document.form1,document.form1.fecha.value,document.form1.combo.options[document.form1.combo.selectedIndex].value,document.form1.combotra.options[document.form1.combotra.selectedIndex].value,document.form1.combotra1.options[document.form1.combotra1.selectedIndex].value,document.form1.cant1.options[document.form1.cant1.selectedIndex].value,document.form1.nombre1.value)">'.$select12.'</td></tr>');
@@ -710,9 +723,9 @@
         <option>10</option>
       </select>      </td></tr>');
 
-						        $res3=mysql_query("SELECT via_costo FROM  via where via_id=$selected3");
+						        $res3=mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$selected2 AND c.fk_via_destino=$selected3");
 								$ro3 = mysql_fetch_array($res3);
-								$devuelve3=$ro3['via_costo'];	
+								$devuelve3=$ro3['cos_costo'];	
 								//secho($devuelve3);	
 								//echo($cant1);
 								$devuelvetodo=$devuelve3*$selected4;

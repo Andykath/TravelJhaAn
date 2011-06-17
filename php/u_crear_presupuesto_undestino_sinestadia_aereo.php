@@ -101,7 +101,9 @@
 						$result1= mysql_query("SELECT v.*, a.aer_nombre, d.des_nombre FROM  via v, aerolinea a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_aer_id=a.aer_id AND v.fk_aer_id=$devuelve AND v.fk_des_id<>$devuelve1 AND v.fk_cru_id IS NULL AND v.fk_ter_id IS NULL");
 						while($row1 = mysql_fetch_array($result1))
 						{
-						$select_actual1='<option value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"].'</option>'; 
+						$result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$banco AND c.fk_via_destino=".$row1["via_id"]."");
+						$row6 = mysql_fetch_array($result6);
+						$select_actual1='<option value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"]."/".$row6["cos_costo"].'</option>'; 
 						$select1=$select1.$select_actual1;
 						}
 						$panelcuentas->add("bancos1",$select1);//hasta ahi lo hi  es q no entra en ninguno chama tienes q hacer uno como el d abajo pero sin cantper ni tipoviaje ah? porke???:S:S pa  kpoerq ahi le estas mandando selected2 diferente de k y selected 3 es a pero no le mnadndas cantper ni tipociaje yab=va
@@ -158,13 +160,15 @@
 						$result1= mysql_query("SELECT v.*, a.aer_nombre, d.des_nombre FROM  via v, aerolinea a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_aer_id=a.aer_id AND v.fk_aer_id=$devuelve AND v.fk_des_id<>$devuelve1 AND v.fk_cru_id IS NULL AND v.fk_ter_id IS NULL");
 						while($row1 = mysql_fetch_array($result1))
 						{
+						$result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$banco AND c.fk_via_destino=".$row1["via_id"]."");
+						$row6 = mysql_fetch_array($result6);
 						    
 							if ($row1["via_id"]==$selected2){
 								//echo 'if';
-								$select_actual1='<option selected="selected" value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"].'</option>'; }	
+								$select_actual1='<option selected="selected" value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"]."/".$row6["cos_costo"].'</option>'; }	
 							else{
 								//echo "banco es $banco";
-								$select_actual1='<option value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"].'</option>'; 	}	
+								$select_actual1='<option value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"]."/".$row6["cos_costo"].'</option>'; 	}	
 						$select1=$select1.$select_actual1;
 						}
 						$panelcuentas->add("bancos1",$select1);
@@ -218,13 +222,14 @@
 						$result1= mysql_query("SELECT v.*, a.aer_nombre, d.des_nombre FROM  via v, aerolinea a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_aer_id=a.aer_id AND v.fk_aer_id=$devuelve AND v.fk_des_id<>$devuelve1 AND v.fk_cru_id IS NULL AND v.fk_ter_id IS NULL");
 						while($row1 = mysql_fetch_array($result1))
 						{
-						    
+						    $result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$banco AND c.fk_via_destino=".$row1["via_id"]."");
+						$row6 = mysql_fetch_array($result6);
 							if ($row1["via_id"]==$selected2){
 								//echo 'if';
-								$select_actual1='<option selected="selected" value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"].'</option>'; }	
+								$select_actual1='<option selected="selected" value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"]."/".$row6["cos_costo"].'</option>'; }	
 							else{
 								//echo "banco es $banco";
-								$select_actual1='<option value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"].'</option>'; 	}	
+								$select_actual1='<option value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"]."/".$row6["cos_costo"].'</option>'; 	}	
 						$select1=$select1.$select_actual1;
 						}
 						$panelcuentas->add("bancos1",$select1);
@@ -382,13 +387,15 @@
 						$result1= mysql_query("SELECT v.*, a.aer_nombre, d.des_nombre FROM  via v, aerolinea a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_aer_id=a.aer_id AND v.fk_aer_id=$devuelve AND v.fk_des_id<>$devuelve1 AND v.fk_cru_id IS NULL AND v.fk_ter_id IS NULL");
 						while($row1 = mysql_fetch_array($result1))
 						{
+						$result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$banco AND c.fk_via_destino=".$row1["via_id"]."");
+						$row6 = mysql_fetch_array($result6);
 						    
 							if ($row1["via_id"]==$selected2){
 								//echo 'if';
-								$select_actual1='<option selected="selected" value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"].'</option>'; }	
+								$select_actual1='<option selected="selected" value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"]."/".$row6["cos_costo"].'</option>'; }	
 							else{
 								//echo "banco es $banco";
-								$select_actual1='<option value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"].'</option>'; 	}	
+								$select_actual1='<option value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"]."/".$row6["cos_costo"].'</option>'; 	}	
 						$select1=$select1.$select_actual1;
 						}
 						$panelcuentas->add("bancos1",$select1);
@@ -511,9 +518,9 @@
 						
 						$costo_total=0;
 						
-						$res5=mysql_query("SELECT via_costo FROM  via where via_id=$selected2");
+						$res5= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$banco AND c.fk_via_destino=$banco1");
 						$ro5 = mysql_fetch_array($res5);
-						$costo_via=$ro5['via_costo'];
+						$costo_via=$ro5['cos_costo'];
 						//echo($costo_via);
 						
 						
