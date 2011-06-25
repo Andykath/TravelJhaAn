@@ -79,7 +79,7 @@
 			$panelcuentas->add("form",'<form name="form1" method="post" action="../php/u_crear_presupuesto_multi_conestadia.php?&combotra='.$selected2.'&combotra1='.$selected3.'&cant1='.$selected4.'&fecha='.$fechai.'&mivariable1='.$_GET['mivariable'].'">'); //mnio variable ? pero no se ponla con get okis pero sirvio? r// no porque cuando la mande mi variable es nada:S le puse nombre1
 	
 	       //echo($_GET['mivariable']);
-		   	   $panelcuentas->add("nombre1",$_GET['mivariable']);     
+		   	   //$panelcuentas->add("nombre1",$_GET['mivariable']);     
 			
       $panelcuentas->add("combo",'<tr><td>*Tipo de Transporte:</td><td><select name="combo" id="combo" onChange="populate(document.form1,document.form1.fecha.value,document.form1.combo.options[document.form1.combo.selectedIndex].value,document.form1.nombre1.value)"><option selected="selected">Seleccione</option><option>Aereo</option><option>Maritimo</option><option>Terrestre</option></select></td></tr>');
 			

@@ -11,7 +11,8 @@
 	$panelcuentas = new Panel("../html/a_general_aerolineas.html");
 	$panelcuentas->add("crear",'<a href="../php/a_crear_aerolinea.php">Crear Aerolinea</a>');
 	$panelcuentas->add("crear2",'<a href="../php/a_flotas_aerolineas.php">Gestionar Flotas</a>');
-	$panelcuentas->add("crear4",'<a href="../php/a_costos_aerolineas.php">Gestionar Costos</a>');
+	$panelcuentas->add("crear4",'<a href="../php/a_costos_aerolineas.php">Gestionar Vias</a>');
+	$panelcuentas->add("crear5",'<a href="../php/a_costos1_aerolineas.php">Gestionar Costos</a>');
 	$tabla_completa="";
 	
 	$mensaje = $_REQUEST['mensaje'];

@@ -32,25 +32,20 @@ var key = nav4 ? evt.which : evt.keyCode;
 return (key <= 13 || (key >= 48 && key <= 57));
 }
 
-function populate(inForm,selected,fecha) {
+function populate(inForm,crucero,fecha) {
 
-location.href='u_crear_presupuesto_undestino_conestadia_maritimo.php?selected=' + selected  + '&fechai=' + fecha +  '&selected2=k' +'&selected3=a' ;
+location.href='u_crear_presupuesto_undestino_conestadia_maritimo.php?crucero=' + crucero  + '&fechai=' + fecha +  '&ruta=k' +'&habitacion=a' ;
 }
 
-function populate1(inForm,selected,fecha,selected2) {
+function populate1(inForm,crucero,fecha,ruta) {
 
-location.href='u_crear_presupuesto_undestino_conestadia_maritimo.php?selected=' + selected  + '&fechai=' + fecha + '&selected2=' + selected2 +'&selected3=a';
-}
-
-function populate2(inForm,selected,fecha,selected2,selected3) {
-
-location.href='u_crear_presupuesto_undestino_conestadia_maritimo.php?selected=' + selected  + '&fechai=' + fecha + '&selected2=' + selected2 +  '&selected3=' + selected3;
+location.href='u_crear_presupuesto_undestino_conestadia_maritimo.php?crucero=' + crucero  + '&fechai=' + fecha + '&ruta=' + ruta +'&habitacion=a';
 }
 
 
-function populate5(inForm,selected,fecha,selected2,selected3,selected4,selected5,cantper,tipoviaje) {
+function populate5(inForm,crucero,fecha,ruta,habitacion,servicio,cantper,tipoviaje) {
 
-location.href='u_crear_presupuesto_undestino_conestadia_maritimo.php?selected=' + selected  + '&fechai=' + fecha + '&selected2=' + selected2 +  '&selected3=' + selected3  +  '&selected4=' + selected4  +  '&selected5=' + selected5   + '&cantper=' + cantper  + '&tipoviaje=' + tipoviaje;
+location.href='u_crear_presupuesto_undestino_conestadia_maritimo.php?crucero=' + crucero  + '&fechai=' + fecha + '&ruta=' + ruta +  '&habitacion=' + habitacion  +  '&servicio=' + servicio  + '&cantper=' + cantper  + '&tipoviaje=' + tipoviaje;
 }
 
 
@@ -88,25 +83,17 @@ location.href='u_crear_presupuesto_undestino_conestadia_maritimo.php?selected=' 
       <td><input name="fecha" id="fecha" type="text" readonly="readonly" value="{fecha}" ><a href="javascript:NewCssCal('fecha','YYYYMMDD')"><img src="../js/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></td>
     </tr>
      <tr>
-      <td>Crucero/Origen:</td>
-      <td><select name="banco" id="banco" onChange="populate(document.form1,document.form1.banco.options[document.form1.banco.selectedIndex].value, document.form1.fecha.value)">
+      <td>Crucero:</td>
+      <td><select name="crucero" id="crucero" onChange="populate(document.form1,document.form1.crucero.options[document.form1.crucero.selectedIndex].value, document.form1.fecha.value)">
      <option selected="selected">Seleccione</option>
-      {bancos}
+      {cruceros}
       </select>      </td>
     </tr>
      <tr>
-      <td>Crucero/Destino:</td>
-      <td><select name="banco1" id="banco1" onChange="populate1(document.form1,document.form1.banco.options[document.form1.banco.selectedIndex].value, document.form1.fecha.value,document.form1.banco1.options[document.form1.banco1.selectedIndex].value)">
+      <td>Barco/Ruta:</td>
+      <td><select name="ruta" id="ruta" onChange="populate1(document.form1,document.form1.crucero.options[document.form1.crucero.selectedIndex].value, document.form1.fecha.value,document.form1.ruta.options[document.form1.ruta.selectedIndex].value)">
       <option selected="selected">Seleccione</option>
-      {bancos1}
-      </select>      </td>
-    </tr>
-    
-    <tr>
-      <td>Barco:</td>
-      <td><select name="hotel" id="hotel" onChange="populate2(document.form1,document.form1.banco.options[document.form1.banco.selectedIndex].value, document.form1.fecha.value,document.form1.banco1.options[document.form1.banco1.selectedIndex].value,document.form1.hotel.options[document.form1.hotel.selectedIndex].value)">
-    <option selected="selected">Seleccione</option>
-      {hoteles}
+      {rutas}
       </select>      </td>
     </tr>
     <tr>
@@ -142,7 +129,7 @@ location.href='u_crear_presupuesto_undestino_conestadia_maritimo.php?selected=' 
     </tr>
     <tr>
       <td>*Servicios:</td>
-      <td><select name="servicio" id="servicio" onChange= "populate5(document.form1,document.form1.banco.options[document.form1.banco.selectedIndex].value, document.form1.fecha.value,document.form1.banco1.options[document.form1.banco1.selectedIndex].value,document.form1.hotel.options[document.form1.hotel.selectedIndex].value,document.form1.habitacion.options[document.form1.habitacion.selectedIndex].value,document.form1.servicio.options[document.form1.servicio.selectedIndex].value,document.form1.cantper.options[document.form1.cantper.selectedIndex].value,document.form1.tipoviaje.options[document.form1.tipoviaje.selectedIndex].value)">>
+      <td><select name="servicio" id="servicio" onChange= "populate5(document.form1,document.form1.crucero.options[document.form1.crucero.selectedIndex].value, document.form1.fecha.value,document.form1.ruta.options[document.form1.ruta.selectedIndex].value,document.form1.habitacion.options[document.form1.habitacion.selectedIndex].value,document.form1.servicio.options[document.form1.servicio.selectedIndex].value,document.form1.cantper.options[document.form1.cantper.selectedIndex].value,document.form1.tipoviaje.options[document.form1.tipoviaje.selectedIndex].value)">
      <option selected="selected">Seleccione</option>
       {servicios}
       </select>      </td>

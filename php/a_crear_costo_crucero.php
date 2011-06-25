@@ -69,7 +69,7 @@
 			  }
 			  else
 			  {
-				mysql_query("INSERT INTO `via` (`via_id` ,`via_costo` ,`via_terminal` ,`via_millas`, `fk_des_id`, `fk_aer_id`, `fk_cru_id` , `fk_ter_id`)VALUES (NULL ,'$tipo', '$cue_numero',  '$fecha', '$destino',NULL, '$banco', NULL)");
+				mysql_query("INSERT INTO `via` (`via_id` ,`via_costo` ,`via_terminal` ,`via_millas`, `fk_des_id`, `fk_aer_id`, `fk_cru_id` , `fk_ter_id`)VALUES (NULL ,null, '$cue_numero',  '$fecha', '$destino',NULL, '$banco', NULL)");
 			    
 				$hola='a_cruceros.php?mensaje=1';
 				header("Location:$hola");

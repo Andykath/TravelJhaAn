@@ -6,7 +6,7 @@
 	
 	extract($_GET);
 
-	mysql_query("DELETE FROM aerolinea WHERE aer_id =$cue_id");
+	mysql_query("DELETE FROM crucero WHERE cru_id =$cue_id");
 
 	//echo mysql_errno();
 	

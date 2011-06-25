@@ -13,7 +13,7 @@
 		  
 			    //echo "$hot_id, $cue_numero , $fecha, $banco";
 				mysql_query("INSERT INTO `habitacion` (`hab_id` ,`hab_piso` ,`hab_tipo` ,`hab_capacidad` ,`hab_costo`,`fk_cru_id`, `fk_hot_id`,
-	`hab_categoria`)VALUES (NULL ,  '$cue_numero',  'Crucero',  '$fecha',  '$banco', '$hot_id', NULL, '$categoria')");
+	`hab_categoria`, `hab_status`)VALUES (NULL ,  '$cue_numero',  'Crucero',  '$fecha',  '$banco', '$hot_id', NULL, '$categoria', 'No ocupada')");
 			    
 				$hola='a_camarotes.php?cue_id='.$hot_id.'';
 				header("Location:$hola");

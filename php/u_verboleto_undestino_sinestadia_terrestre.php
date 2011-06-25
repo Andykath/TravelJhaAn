@@ -33,7 +33,7 @@ AND vi.fk_ter_id=a.ter_id ORDER BY v.via_id");
 
 $row2 = mysql_fetch_array($result2);
 	
-	$flota = $row2["fk_flo_id"];
+	$flota = $row2[1];
 	$fechasalida = $row2["via_fecha_ini"];
 	$fechallegada = $row2["via_fecha_fin"];
 	$horasalida = $row2["via_hora_ini"];
@@ -42,7 +42,7 @@ $row2 = mysql_fetch_array($result2);
 	$aeropuerto = $row2["via_terminal"];
     $aerolinea = $row2["ter_nombre"];
 	
-	
+if ($preg=="Si"){	
 
 	$paneldetallefactura->add("emisor",'<table width="500" style="border:2px solid #0033CC"; cellpadding="0" cellspacing="0">
    <tr>
@@ -76,7 +76,7 @@ $row2 = mysql_fetch_array($result2);
   </table>');
 	
 	
-	
+	}
 	
 	
 	

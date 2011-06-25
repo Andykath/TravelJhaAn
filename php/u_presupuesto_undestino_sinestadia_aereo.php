@@ -3,8 +3,8 @@
 	$pathFix = dirname(__FILE__);
 	require_once ("../classes/Panel.php");
 	include "../db/conexion.php";
-	
 	$cedula=$_SESSION['cedula'];
+	$cedulaaux=$_SESSION['cedulaaux'];
 	$admin= new Panel("../html/usuario.html");
 	
 	$admin->add("body",'<body onLoad = "actual(3)" >');
@@ -23,16 +23,14 @@
 	$tabla='
     <tr align="center">
       <td width="81" height="21">'.$row["pre_id"].'</td>
-	  <td width="210"><div align="center">'.$row["pre_fecha"].'</td>
-	  <td width="210"><div align="center">'.$row["aer_nombre"].'</td>
+	  <td width="306"><div align="center">'.$row["pre_fecha"].'</td>
+	  <td width="181"><div align="center">'.$row["aer_nombre"].'</td>
       <td width="210"><div align="center">'.$row[3].'</td>
 	  <td width="210"><div align="center">'.$row[4].'</td>
-	 
 			    <td width="210"><div align="center">'.$row["pre_cant_per"].'</td>
 				<td width="210"><div align="center">'.$row["pre_abono"].'</td>
 				<td width="210"><div align="center">'.$row["pre_total"].'</td>	
-	  <td width="200"><a href="../php/u_comprar_undestino_sinestadia_aereo.php?id='.$row['pre_id'].'&fecha='.$row['pre_fecha'].'&aerolinea='.$row['aer_nombre'].'&origen='.$row[3].'&destino='.$row[4].'&total='.$row['pre_total'].'&cantper='.$row['pre_cant_per'].'&origen1='.$row[11].'&destino1='.$row[12].'&hotel1='.$row[13].'">Comprar</a> </td>
-    </tr>';
+	  <td width="300"><a href="../php/u_comprar_undestino_sinestadia_aereo.php?id='.$row['pre_id'].'&fecha='.$row['pre_fecha'].'&aerolinea='.$row[2].'&origen='.$row[3].'&destino='.$row[4].'&hotel='.$row['hot_nombre'].'&habitacion='.$row['pre_habitacion'].'&servicio='.$row['ser_nombre'].'&paseo='.$row['pas_nombre'].'&total='.$row['pre_total'].'&cantper='.$row['pre_cant_per'].'&origen1='.$row[11].'&destino1='.$row[12].'&hotel1='.$row[13].'">Comprar</a> <a href="../php/u_verpaseo_undestino_sinestadia_aereo.php?id='.$row['pre_id'].'">Ver Paseos</a><a href="../php/u_reservar_presupuesto_undestino_sinestadia_aereo.php?id='.$row['pre_id'].'&fecha='.$row['pre_fecha'].'&aerolinea='.$row['aer_nombre'].'&origen='.$row[3].'&destino='.$row[4].'&servicio='.$row['ser_nombre'].'&habitacion='.$row['pre_habitacion'].'&cantper='.$row['pre_cant_per'].'&origen1='.$row[8].'&destino1='.$row[9].'&total='.$row['pre_total'].'&hotel='.$row['hot_nombre'].'">Reserva</a><a href="../php/u_eliminar_presupuesto_undestino_sinestadia_aereo.php?id='.$row["pre_id"].'" onclick="return confirmar()">  Eliminar</a></td></tr>';
 	    
 		$tabla_completa= $tabla_completa.$tabla;
 		//$_SESSION['cant']=$row['pre_cant_per'];

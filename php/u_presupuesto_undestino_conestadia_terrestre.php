@@ -30,12 +30,10 @@
 	   <td width="210"><div align="center">'.$row["hot_nombre"].'</td>
 	   <td width="210"><div align="center">'.$row["pre_habitacion"].'</td>
 	      <td width="210"><div align="center">'.$row["ser_nombre"].'</td>
-		     
 			    <td width="210"><div align="center">'.$row["pre_cant_per"].'</td>
 				<td width="210"><div align="center">'.$row["pre_abono"].'</td>
 				<td width="210"><div align="center">'.$row["pre_total"].'</td>	
-	  <td width="200"><a href="../php/u_comprar_undestino_conestadia_terrestre.php?id='.$row['pre_id'].'&fecha='.$row['pre_fecha'].'&aerolinea='.$row['ter_nombre'].'&origen='.$row[3].'&destino='.$row[4].'&hotel='.$row['hot_nombre'].'&habitacion='.$row['pre_habitacion'].'&servicio='.$row['ser_nombre'].'&paseo='.$row['pas_nombre'].'&total='.$row['pre_total'].'&cantper='.$row['pre_cant_per'].'&origen1='.$row[11].'&destino1='.$row[12].'&hotel1='.$row[13].'">Comprar</a> <a href="../php/u_verpaseo_undestino_conestadia_terrestre.php?id='.$row['pre_id'].'">Ver Paseos</a></td>
-    </tr>';
+	  <td width="300"><a href="../php/u_comprar_undestino_conestadia_terrestre.php?id='.$row['pre_id'].'&fecha='.$row['pre_fecha'].'&aerolinea='.$row[2].'&origen='.$row[3].'&destino='.$row[4].'&hotel='.$row['hot_nombre'].'&habitacion='.$row['pre_habitacion'].'&servicio='.$row['ser_nombre'].'&paseo='.$row['pas_nombre'].'&total='.$row['pre_total'].'&cantper='.$row['pre_cant_per'].'&origen1='.$row[11].'&destino1='.$row[12].'&hotel1='.$row[13].'">Comprar</a> <a href="../php/u_verpaseo_undestino_conestadia_terrestre.php?id='.$row['pre_id'].'">Ver Paseos</a><a href="../php/u_reservar_presupuesto_undestino_conestadia_terrestre.php?id='.$row['pre_id'].'&fecha='.$row['pre_fecha'].'&aerolinea='.$row['aer_nombre'].'&origen='.$row[3].'&destino='.$row[4].'&servicio='.$row['ser_nombre'].'&habitacion='.$row['pre_habitacion'].'&cantper='.$row['pre_cant_per'].'&origen1='.$row[11].'&destino1='.$row[12].'&total='.$row['pre_total'].'&hotel='.$row['hot_nombre'].'">Reserva</a></td></tr>';
 	    
 		$tabla_completa= $tabla_completa.$tabla;
 		//$_SESSION['cant']=$row['pre_cant_per'];

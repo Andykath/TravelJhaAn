@@ -11,7 +11,8 @@
 	$panelcuentas = new Panel("../html/a_general_cruceros.html");
 	$panelcuentas->add("crear",'<a href="../php/a_crear_crucero.php">Crear Crucero</a>');
 	$panelcuentas->add("crear2",'<a href="../php/a_flotas_cruceros.php">Gestionar Flotas</a>');
-	$panelcuentas->add("crear4",'<a href="../php/a_costos_cruceros.php">Gestionar Costos</a>');
+	$panelcuentas->add("crear4",'<a href="../php/a_costos_cruceros.php">Gestionar Vias</a>');
+	$panelcuentas->add("crear5",'<a href="../php/a_costos1_cruceros.php">Gestionar Costos</a>');
 	$tabla_completa="";
 	
 	$mensaje = $_REQUEST['mensaje'];
@@ -31,7 +32,7 @@
 	  <td width="306"><div align="center">'.$row["cru_nombre"].'</td>
 	  <td width="181"><div align="center">'.$row["cru_fecha_inicio"].'</td>
       <td width="210"><div align="center">'.$row["des_nombre"].'</td>
-	  <td width="200"><a href="../php/a_editar_crucero.php?cue_numero='.$row['cru_nombre'].'&id='.$row['cru_id'].'&banco='.$row['fk_des_id'].'&fecha='.$row['cru_fecha_inicio'].'">Modificar</a> <a href="../php/a_eliminar_crucero.php?cue_id='.$row["cru_id"].'" onclick="return confirmar()">Eliminar</a></td>
+	  <td width="200"><a href="../php/a_editar_crucero.php?cue_numero='.$row['cru_nombre'].'&id='.$row['cru_id'].'&banco='.$row['fk_des_id'].'&fecha='.$row['cru_fecha_inicio'].'">Modificar</a> <a href="../php/a_eliminar_crucero.php?cue_id='.$row["cru_id"].'" onclick="return confirmar()">Eliminar</a>  <a href="../php/a_rutas.php?cru_id='.$row["cru_id"].'">Rutas</a></td>
     </tr>';
 		$tabla_completa= $tabla_completa.$tabla;
 	

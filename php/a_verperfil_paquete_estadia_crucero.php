@@ -51,7 +51,7 @@
    
   //$panelmiperfil->add("modif",'<a href="../php/u_telefonos.php?&cedula='.$row['per_cedula'].'">Gestionar</a>');
 		
-   $result6=mysql_query("SELECT d.des_nombre FROM via v , destino d WHERE v.via_id='$fkvia' AND v.fk_des_id=d.des_id");
+   $result6=mysql_query("SELECT d.des_nombre FROM destino d WHERE d.des_id='$fkvia'");
 	
 
 		
@@ -67,7 +67,7 @@
 							$panelmiperfil->add("telefonos",$tablaequipos);
 					}			
 
- $result7=mysql_query("SELECT d.des_nombre FROM via v , destino d WHERE v.via_id='$fkvia2' AND v.fk_des_id=d.des_id");
+ $result7=mysql_query("SELECT d.des_nombre FROM destino d WHERE d.des_id='$fkvia2'");
 	
 
 		

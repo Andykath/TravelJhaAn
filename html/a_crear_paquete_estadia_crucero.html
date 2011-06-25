@@ -32,14 +32,14 @@ var key = nav4 ? evt.which : evt.keyCode;
 return (key <= 13 || (key >= 48 && key <= 57));
 }
 
-function populate(inForm,selected,cue_numero,fecha,fecha1,millas,tipopaq,cantper) {
+function populate(inForm,crucero,cue_numero,fecha,fecha1,millas,tipopaq,cantper) {
 
-location.href='a_crear_paquete_estadia_crucero.php?selected=' + selected + '&formaviaje=' + cue_numero + '&fechai=' + fecha + '&fechaf=' + fecha1 + '&millas=' + millas + '&tipopaq=' + tipopaq + '&cantper=' + cantper+  '&selected2=k';
+location.href='a_crear_paquete_estadia_crucero.php?crucero=' + crucero + '&formaviaje=' + cue_numero + '&fechai=' + fecha + '&fechaf=' + fecha1 + '&millas=' + millas + '&tipopaq=' + tipopaq + '&cantper=' + cantper+  '&ruta=k';
 }
 
-function populate1(inForm,selected,cue_numero,fecha,fecha1,millas,tipopaq,cantper,selected2) {
+function populate1(inForm,crucero,cue_numero,fecha,fecha1,millas,tipopaq,cantper,ruta) {
 
-location.href='a_crear_paquete_estadia_crucero.php?selected=' + selected + '&formaviaje=' + cue_numero + '&fechai=' + fecha + '&fechaf=' + fecha1 + '&millas=' + millas + '&tipopaq=' + tipopaq + '&cantper=' + cantper+ '&selected2=' + selected2;
+location.href='a_crear_paquete_estadia_crucero.php?crucero=' + crucero + '&formaviaje=' + cue_numero + '&fechai=' + fecha + '&fechaf=' + fecha1 + '&millas=' + millas + '&tipopaq=' + tipopaq + '&cantper=' + cantper+ '&ruta=' + ruta;
 }
 
 
@@ -94,6 +94,7 @@ location.href='a_crear_paquete_estadia_crucero.php?selected=' + selected + '&for
     <tr>
       <td>Cant Personas permitidas:</td>
       <td><select name="cantper" id="cantper">
+        <option>1</option>
         <option>2</option>
         <option>3</option>
         <option>4</option>
@@ -106,27 +107,20 @@ location.href='a_crear_paquete_estadia_crucero.php?selected=' + selected + '&for
       </select>      </td>
     </tr>
      <tr>
-      <td>Crucero/Origen:</td>
-      <td><select name="banco" id="banco" onChange="populate(document.form1,document.form1.banco.options[document.form1.banco.selectedIndex].value, document.form1.cue_numero.value, document.form1.fecha.value, document.form1.fecha1.value, document.form1.millas.value, document.form1.tipopaq.value,document.form1.cantper.value)">
+      <td>Crucero:</td>
+      <td><select name="crucero" id="crucero" onChange="populate(document.form1,document.form1.crucero.options[document.form1.crucero.selectedIndex].value, document.form1.cue_numero.value, document.form1.fecha.value, document.form1.fecha1.value, document.form1.millas.value, document.form1.tipopaq.value,document.form1.cantper.value)">
       <option selected="selected">Seleccione</option>
-      {bancos}
+      {cruceros}
       </select>      </td>
     </tr>
      <tr>
-      <td>Crucero/Destino:</td>
-      <td><select name="banco1" id="banco1" onChange="populate1(document.form1,document.form1.banco.options[document.form1.banco.selectedIndex].value, document.form1.cue_numero.value, document.form1.fecha.value, document.form1.fecha1.value, document.form1.millas.value, document.form1.tipopaq.value,document.form1.cantper.value,document.form1.banco1.options[document.form1.banco1.selectedIndex].value)">
+      <td>Barco/Ruta:</td>
+      <td><select name="ruta" id="ruta" >
       <option selected="selected">Seleccione</option>
-      {bancos1}
+      {rutas}
       </select>      </td>
     </tr>
-    <tr>
-      <td>Barco:</td>
-      <td><select name="hotel" id="hotel">
-      <option selected="selected">Seleccione</option>
-      {hoteles}
-      </select>      </td>
-    </tr>
-    
+
     
     {id}
     

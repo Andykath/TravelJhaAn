@@ -43,8 +43,7 @@ body {
 - 
 function abrir_ventana() 
 { 
-propiedades="width=450,height=300,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO"; 
-window.open("../php/busqueda.php","_blank",propiedades); 
+propiedades="width=450,height=300,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO"; ("../php/busqueda.php"); 
 } 
 
 function validar1()
@@ -68,6 +67,9 @@ return 0;
 document.form2.submit();
 }
 
+
+
+
 var nav4 = window.Event ? true : false;
 
 function acceptLetr(evt){
@@ -83,9 +85,22 @@ var key = nav4 ? evt.which : evt.keyCode;
 return (key <= 13 || (key >= 48 && key <= 57));
 }
 
+function populate(inForm,selected) {
+
+location.href='login.php?selected=' + selected;  
+}
+
+function validar()
+{
+
+
+document.form3.submit();
+
+}
+
 
 </script>
-<table width="1151" height="1092"  border="0" align="center"  cellpadding="0" cellspacing="0">
+<table width="1151" height="1062"  border="0" align="center"  cellpadding="0" cellspacing="0">
 <tr bgcolor="#000066">
     <td height="130" colspan="8" align="center"><img src="../imagenes/todo.jpg" /></td>
   </tr>
@@ -135,36 +150,49 @@ return (key <= 13 || (key >= 48 && key <= 57));
      
     <td height="200" align="right" bgcolor="#000066">
     
-   <form id="form3" name="form3" method="post" action="../php/busqueda.php">
+   <form id="form3" name="form3" method="post" action="../php/u_busquedad_tra1.php">
 
-     <table width="466" height="116" border="0" frame="box" bordercolor="#000066"  align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+     <table width="564" height="199" border="0" frame="box" bordercolor="#000066"  align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
 <td height="71" colspan="2" align="left"><strong><span class="style1"><span class="style2">Busqueda</span><img src="../imagenes/planeta.jpg" width="33" height="26" /><br />
   </span></strong><span class="style1"><span class="style3"> Consulta los costos de los multiples destinos que ofrecemos.<br />
     <br />
+    </span></span>Tipo de viaje: <select name="tipo" id="tipo" onChange="populate(document.form3,document.form3.tipo.options[document.form3.tipo.selectedIndex].value)"> 
+    <option selected="selected">Seleccione</option><option>Solamente Ida</option><option>Ida y vuelta</option>
+    {forma}
+    </select>
+    {tra}
+    {combo}
+    {combo1}
+    {fecha}
+    {fecha1}
+    {cantper}
+    
     </span></span></td>
 </tr>
-
-
 <tr>
   <td width="55" height="43" align="right"><img src="../imagenes/avion.jpg" width="28" height="23" /></td>
   <td width="411" align="left"><p>Elige un destino y conpañia de transporte
-    <input type="button" name="aceptar" id="aceptar" value="Buscar" onclick="window.open('../php/busqueda_presupuesto.php','ventana','width=620, height=450,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO')"/>
+   <input type="button" name="agregar" id="agregar" value="{tipo_boton}" onclick="validar()" />
  </td>
 </tr>
      </table>
-    <table width="466" height="250" border="0" frame="box" bordercolor="#000066"  align="center" cellpadding="0" cellpacing="0" bgcolor="#FFFFFF">
-         <td height="69" colspan="2" align="left"><p><strong><span class="style2">Promociones</span></strong></p>
+    <table width="568" height="289" border="6" frame="box" bordercolor="#000066"  align="center" cellpadding="0" cellpacing="0" bgcolor="#FFFFFF">
+         <td height="69" colspan="3" align="left"><p><strong><span class="style2"><b>Promociones</b></span></strong></p>
            <p><span class="style3">Los mejores precios en el hotel que buscas. </span></span></p>
-         <table width="532" height="56" border="1">
+         <table width="532" height="200" border="1">
            <tr>
-    <td height="23">Descripcion</td>
-    <td>Precios</td>
-    <td>Hotel</td>
+     <td>Nombre</td>
+    <td>Fecha Inicio</td>
+    <td>Fecha Fin</td>
+    <td width="64" aling=center>Duracion Viaje</td>
+    <td width="66">Transporte</td>
+    <td width="48">Destino</td>
+    <td width="98">Hotel(Opcional)</td>
+    <td width="52" >Costo</td>
  
   <tr>
-    <td width="318" height="25">{informacion}</td>
-    <td width="96">&nbsp;</td>
-    <td width="96">&nbsp;</td>
+   {informacion}
+
   </tr>
 </table>
         </table>
@@ -175,7 +203,7 @@ return (key <= 13 || (key >= 48 && key <= 57));
      
    
   <tr align="right" bgcolor="#000000">
-    <td height="45" colspan="2"><span class="style13">© Copyright Viajes UCAB| Todos los derechos reservados | Producciones SzcoPa.</span></td>
+    <td height="15" colspan="2"><span class="style13">© Copyright Viajes UCAB| Todos los derechos reservados | Producciones SzcoPa.</span></td>
   </tr>
 </table>
 </body>

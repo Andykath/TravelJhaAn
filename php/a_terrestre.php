@@ -11,7 +11,8 @@
 	$panelcuentas = new Panel("../html/a_general_terrestre.html");
 	$panelcuentas->add("crear",'<a href="../php/a_crear_terrestre.php">Crear Transporte Terrestre</a>');
 	$panelcuentas->add("crear2",'<a href="../php/a_flotas_terrestres.php">Gestionar Flotas</a>');
-	$panelcuentas->add("crear4",'<a href="../php/a_costos_terrestre.php">Gestionar Costos</a>');
+	$panelcuentas->add("crear4",'<a href="../php/a_costos_terrestre.php">Gestionar Vias</a>');
+	$panelcuentas->add("crear5",'<a href="../php/a_costos1_terrestres.php">Gestionar Costos</a>');
 	$tabla_completa="";
 	
 	$mensaje = $_REQUEST['mensaje'];

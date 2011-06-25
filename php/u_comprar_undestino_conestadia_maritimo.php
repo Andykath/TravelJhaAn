@@ -21,7 +21,18 @@
 	
 	      
 		  if($fechapago || $fechapago1 || $fechapago2)
-		  {// aqui validar que los datos esten bien y hacer update
+		  {
+		  
+		   $reschaot=mysql_query("SELECT cru_id FROM  crucero where cru_nombre='$aerolinea'");
+							$rochaot = mysql_fetch_array($reschaot);
+							$aerid10=$rochaot['cru_id'];	
+							$resholat=mysql_query("SELECT flo_actual FROM  flota f  where  f.fk_cru_id='$aerid10' and (f.flo_actual>0)");
+							$roholat = mysql_fetch_array($resholat);
+							$flota10=$roholat[0];
+	
+			if ($flota10!= NULL){
+
+		// aqui validar que los datos esten bien y hacer update
 		
 		  ////echo($fecha);
 		   ////echo($fecha1);
@@ -54,9 +65,9 @@
 						$hotel1=$ro3['hot_id'];	
 						////echo "$hotel1 hotel1";
 						
-						$res4=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
+						$res4=mysql_query("SELECT cru_id FROM  crucero where cru_nombre='$aerolinea'");
 						$ro4 = mysql_fetch_array($res4);
-						$devuelve3=$ro4['aer_id'];	
+						$devuelve3=$ro4['cru_id'];	
 						////echo "$devuelve3 aerolinea";
 						
 						$res6=mysql_query("SELECT des_id FROM  destino where des_nombre='$origen'");
@@ -69,12 +80,12 @@
 						$destino1=$ro5['des_id'];	
 						////echo "$destino1 destino1";
 						
-						$res7=mysql_query("SELECT via_id FROM  via where fk_des_id='$origen1' AND fk_aer_id='$devuelve3'");
+						$res7=mysql_query("SELECT via_id FROM  via where fk_des_id='$origen1' AND fk_cru_id='$devuelve3'");
 						$ro7 = mysql_fetch_array($res7);
 						$viaorigen=$ro7['via_id'];	
 						////echo "$viaorigen viao";
 						
-						$res8=mysql_query("SELECT via_id FROM  via where fk_des_id='$destino1' AND fk_aer_id='$devuelve3'");
+						$res8=mysql_query("SELECT via_id FROM  via where fk_des_id='$destino1' AND fk_cru_id='$devuelve3'");
 						$ro8 = mysql_fetch_array($res8);
 						$viadestino=$ro8['via_id'];	
 						////echo "$viadestino viad";
@@ -82,17 +93,17 @@
 						////echo "$cantper , cantper";
 						////echo($alo);
 						////echo($fecha1);
-						$reschao=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
+						$reschao=mysql_query("SELECT cru_id FROM  crucero where cru_nombre='$aerolinea'");
 						$rochao = mysql_fetch_array($reschao);
-						$aerid1=$rochao['aer_id'];	
+						$aerid1=$rochao['cru_id'];	
 						
 						
-						$reshola=mysql_query("SELECT flo_id FROM  flota f , viaje v where  f.fk_aer_id='$aerid1'");
+						$reshola=mysql_query("SELECT flo_id FROM  flota f where  f.fk_cru_id='$aerid1' and (f.flo_actual>0)");
 						$rohola = mysql_fetch_array($reshola);
 						$flota1=$rohola['flo_id'];	
 			          ////echo($flota1);
 					  
-					  mysql_query("UPDATE `flota` SET  `flo_actual` =(flo_actual-1)  WHERE  `flota`.`flo_id` = $flota1");
+					  mysql_query("UPDATE `flota` SET  `flo_actual` =(flo_actual-$cantper)  WHERE  `flota`.`flo_id` = $flota1");
 					  
 					  if($cantper==1)
 			  {
@@ -104,8 +115,10 @@
 				   if($cantper>2)
 			  {
 				    $hola="En familia";}
-								
-mysql_query("INSERT INTO `viaje` (`via_id`,`via_tipo`,`via_tipoviaje`,`via_fecha_ini`,`via_fecha_fin`,`via_hora_ini`,`via_hora_fin`,`via_millas`,`via_tipo_paq`,`via_cant_per`,`fk_pre_id`,`fk_via_id_origen`,`fk_via_id_destino`,`fk_flo_id`) VALUES(NULL,'Viaje','$hola','$fecha','$fecha1','20:40:00','10:00:00',NULL,NULL,'$cantper','$id','$viaorigen','$viadestino','$flota1')");
+$result6= mysql_query("SELECT c.cos_hora FROM  costo c WHERE c.fk_via_origen=$viaorigen AND c.fk_via_destino=$viadestino");
+$row6 = mysql_fetch_array($result6);
+$horita=$row6['cos_hora'];									
+mysql_query("INSERT INTO `viaje` (`via_id`,`via_tipo`,`via_tipoviaje`,`via_fecha_ini`,`via_fecha_fin`,`via_hora_ini`,`via_hora_fin`,`via_millas`,`via_tipo_paq`,`via_cant_per`,`fk_pre_id`,`fk_via_id_origen`,`fk_via_id_destino`,`fk_flo_id`) VALUES(NULL,'Viaje','$hola','$fecha','$fecha1','$horita','10:00:00',NULL,NULL,'$cantper','$id','$viaorigen','$viadestino','$flota1')");
 					
 $res11=mysql_query("SELECT via_id FROM  viaje where fk_pre_id='$id'");
 $ro11 = mysql_fetch_array($res11);
@@ -195,7 +208,7 @@ $viaje=$ro11['via_id'];
 					
 					////echo($cantper);
 					
-				$hola='u_continuar_compra_undestino_conestadia_maritimo.php?viaje='.$viaje.'&cantper='.$cantper.'&cedula='.$cedula.'&mensaje=2';
+				$hola='u_continuar_compra_undestino_conestadia_maritimo.php?viaje='.$viaje.'&cantper='.$cantper.'&cedula='.$cedula.'&mensaje=2&preg='.$preg.'';
 				header("Location:$hola");// hasta aqui esta bien 
 		}
 		else
@@ -206,10 +219,10 @@ $viaje=$ro11['via_id'];
 	// //echo("entra");
 	  ////echo $_POST['monto'];
 	  // //echo "post";
-	   ////echo $_GET['monto'];
-	  // //echo "get";
-	   
-	   ////echo($verifica);
+	  $reg1=mysql_query("SELECT pre_abono from presupuesto where pre_id='$id' and fk_per_cedula='$cedula'");
+	  $rowg1=mysql_fetch_array($reg1);
+	  $abono1=$rowg1['pre_abono'];
+	  $suma=$abono1+$verifica;
 	   ////echo($total);
 	    if($verifica==$total)
 	      {
@@ -261,9 +274,9 @@ $viaje=$ro11['via_id'];
 						$hotel1=$ro3['hot_id'];	
 						////echo "$hotel1 hotel1";
 						
-						$res4=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
+						$res4=mysql_query("SELECT cru_id FROM  crucero where cru_nombre='$aerolinea'");
 						$ro4 = mysql_fetch_array($res4);
-						$devuelve3=$ro4['aer_id'];	
+						$devuelve3=$ro4['cru_id'];	
 						////echo "$devuelve3 aerolinea";
 						////echo "$origen origen";
 						$res6=mysql_query("SELECT des_id FROM  destino where des_nombre='$origen'");
@@ -276,12 +289,12 @@ $viaje=$ro11['via_id'];
 						$destino1=$ro5['des_id'];	
 						////echo "$destino1 destino1";
 						
-						$res7=mysql_query("SELECT via_id FROM  via where fk_des_id='$origen1' AND fk_aer_id='$devuelve3'");
+						$res7=mysql_query("SELECT via_id FROM  via where fk_des_id='$origen1' AND fk_cru_id='$devuelve3'");
 						$ro7 = mysql_fetch_array($res7);
 						$viaorigen=$ro7['via_id'];	
 						////echo "$viaorigen viao";
 						
-						$res8=mysql_query("SELECT via_id FROM  via where fk_des_id='$destino1' AND fk_aer_id='$devuelve3'");
+						$res8=mysql_query("SELECT via_id FROM  via where fk_des_id='$destino1' AND fk_cru_id='$devuelve3'");
 						$ro8 = mysql_fetch_array($res8);
 						$viadestino=$ro8['via_id'];	
 						////echo "$viadestino viad";
@@ -289,17 +302,17 @@ $viaje=$ro11['via_id'];
 						////echo "$cantper , cantper";
 						////echo($alo);
 						////echo($fecha1);
-						$reschao=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
+						$reschao=mysql_query("SELECT cru_id FROM  crucero where cru_nombre='$aerolinea'");
 						$rochao = mysql_fetch_array($reschao);
-						$aerid1=$rochao['aer_id'];	
+						$aerid1=$rochao['cru_id'];	
 						
 						
-						$reshola=mysql_query("SELECT flo_id FROM  flota f , viaje v where  f.fk_aer_id='$aerid1'");
+						$reshola=mysql_query("SELECT flo_id FROM  flota f , viaje v where  f.fk_cru_id='$aerid1' and (f.flo_actual>0)");
 						$rohola = mysql_fetch_array($reshola);
 						$flota1=$rohola['flo_id'];	
 			          ////echo($flota1);
 					  
-					  mysql_query("UPDATE `flota` SET  `flo_actual` =(flo_actual-1)  WHERE  `flota`.`flo_id` = $flota1");
+					  mysql_query("UPDATE `flota` SET  `flo_actual` =(flo_actual-$cantper)  WHERE  `flota`.`flo_id` = $flota1");
 				   if($cantper==1)
 			  {
 				  $hola="Solo";}
@@ -312,8 +325,10 @@ $viaje=$ro11['via_id'];
 				    $hola="En familia";}
 				  
 								
-				 
-				  mysql_query("INSERT INTO `viaje` (`via_id`,`via_tipo`,`via_tipoviaje`,`via_fecha_ini`,`via_fecha_fin`,`via_hora_ini`,`via_hora_fin`,`via_millas`,`via_tipo_paq`,`via_cant_per`,`fk_pre_id`,`fk_via_id_origen`,`fk_via_id_destino`,`fk_flo_id`) VALUES(NULL,'Viaje','$hola','$fecha','$fecha1','20:40:00','10:00:00',NULL,NULL,'$cantper','$id','$viaorigen','$viadestino','$flota1')");
+	$result6= mysql_query("SELECT c.cos_hora FROM  costo c WHERE c.fk_via_origen=$viaorigen AND c.fk_via_destino=$viadestino");
+$row6 = mysql_fetch_array($result6);
+$horita=$row6['cos_hora'];				 
+				  mysql_query("INSERT INTO `viaje` (`via_id`,`via_tipo`,`via_tipoviaje`,`via_fecha_ini`,`via_fecha_fin`,`via_hora_ini`,`via_hora_fin`,`via_millas`,`via_tipo_paq`,`via_cant_per`,`fk_pre_id`,`fk_via_id_origen`,`fk_via_id_destino`,`fk_flo_id`) VALUES(NULL,'Viaje','$hola','$fecha','$fecha1','$horita','10:00:00',NULL,NULL,'$cantper','$id','$viaorigen','$viadestino','$flota1')");
 				  
 				  $millas=mysql_query("SELECT via_millas FROM  via v where  via_id='$viadestino'");
 						$romillas = mysql_fetch_array($millas);
@@ -402,7 +417,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					    mysql_query("UPDATE `habitacion` SET  `hab_status` = 'Ocupada' WHERE  `habitacion`.`hab_id` = $habitacion");
 					mysql_query("UPDATE `presupuesto` SET  `pre_status` = 'Comprado' WHERE  `presupuesto`.`pre_id` = $id");
 					   
-					   $hola1='u_continuar_compra_undestino_conestadia_maritimo.php?viaje='.$viaje.'&cantper='.$cantper.'&cedula='.$cedula.'&mensaje=2';
+					   $hola1='u_continuar_compra_undestino_conestadia_maritimo.php?viaje='.$viaje.'&cantper='.$cantper.'&cedula='.$cedula.'&mensaje=2&preg='.$preg.'';
 				 header("Location:$hola1");// esta bien 
 				 
 				
@@ -419,9 +434,9 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						$hotel1=$ro3['hot_id'];	
 						////echo "$hotel1 hotel1";
 						
-						$res4=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
+						$res4=mysql_query("SELECT cru_id FROM  crucero where cru_nombre='$aerolinea'");
 						$ro4 = mysql_fetch_array($res4);
-						$devuelve3=$ro4['aer_id'];	
+						$devuelve3=$ro4['cru_id'];	
 						////echo "$devuelve3 aerolinea";
 						////echo "$origen origen";
 						$res6=mysql_query("SELECT des_id FROM  destino where des_nombre='$origen'");
@@ -434,12 +449,12 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						$destino1=$ro5['des_id'];	
 						////echo "$destino1 destino1";
 						
-						$res7=mysql_query("SELECT via_id FROM  via where fk_des_id='$origen1' AND fk_aer_id='$devuelve3'");
+						$res7=mysql_query("SELECT via_id FROM  via where fk_des_id='$origen1' AND fk_cru_id='$devuelve3'");
 						$ro7 = mysql_fetch_array($res7);
 						$viaorigen=$ro7['via_id'];	
 						////echo "$viaorigen viao";
 						
-						$res8=mysql_query("SELECT via_id FROM  via where fk_des_id='$destino1' AND fk_aer_id='$devuelve3'");
+						$res8=mysql_query("SELECT via_id FROM  via where fk_des_id='$destino1' AND fk_cru_id='$devuelve3'");
 						$ro8 = mysql_fetch_array($res8);
 						$viadestino=$ro8['via_id'];	
 						////echo "$viadestino viad";
@@ -447,17 +462,17 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						////echo "$cantper , cantper";
 						////echo($alo);
 						////echo($fecha1);
-						$reschao=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
+						$reschao=mysql_query("SELECT cru_id FROM  crucero where cru_nombre='$aerolinea'");
 						$rochao = mysql_fetch_array($reschao);
-						$aerid1=$rochao['aer_id'];	
+						$aerid1=$rochao['cru_id'];	
 						
 						
-						$reshola=mysql_query("SELECT flo_id FROM  flota f , viaje v where  f.fk_aer_id='$aerid1'");
+						$reshola=mysql_query("SELECT flo_id FROM  flota f , viaje v where  f.fk_cru_id='$aerid1' and (f.flo_actual>0)");
 						$rohola = mysql_fetch_array($reshola);
 						$flota1=$rohola['flo_id'];	
 			          ////echo($flota1);
 					  
-					  mysql_query("UPDATE `flota` SET  `flo_actual` =(flo_actual-1)  WHERE  `flota`.`flo_id` = $flota1");
+					  mysql_query("UPDATE `flota` SET  `flo_actual` =(flo_actual-$cantper)  WHERE  `flota`.`flo_id` = $flota1");
 				   if($cantper==1)
 			  {
 				  $hola="Solo";}
@@ -469,9 +484,11 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 			  {
 				    $hola="En familia";}
 				  
-								
+	$result6= mysql_query("SELECT c.cos_hora FROM  costo c WHERE c.fk_via_origen=$viaorigen AND c.fk_via_destino=$viadestino");
+$row6 = mysql_fetch_array($result6);
+$horita=$row6['cos_hora'];								
 				 
-				  mysql_query("INSERT INTO `viaje` (`via_id`,`via_tipo`,`via_tipoviaje`,`via_fecha_ini`,`via_fecha_fin`,`via_hora_ini`,`via_hora_fin`,`via_millas`,`via_tipo_paq`,`via_cant_per`,`fk_pre_id`,`fk_via_id_origen`,`fk_via_id_destino`,`fk_flo_id`) VALUES(NULL,'Viaje','$hola','$fecha','$fecha1','20:40:00','10:00:00',NULL,NULL,'$cantper','$id','$viaorigen','$viadestino','$flota1')");
+				  mysql_query("INSERT INTO `viaje` (`via_id`,`via_tipo`,`via_tipoviaje`,`via_fecha_ini`,`via_fecha_fin`,`via_hora_ini`,`via_hora_fin`,`via_millas`,`via_tipo_paq`,`via_cant_per`,`fk_pre_id`,`fk_via_id_origen`,`fk_via_id_destino`,`fk_flo_id`) VALUES(NULL,'Viaje','$hola','$fecha','$fecha1','$horita','10:00:00',NULL,NULL,'$cantper','$id','$viaorigen','$viadestino','$flota1')");
 					
 $res11=mysql_query("SELECT via_id FROM  viaje where fk_pre_id='$id'");
 $ro11 = mysql_fetch_array($res11);
@@ -544,7 +561,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					    mysql_query("UPDATE `habitacion` SET  `hab_status` = 'Ocupada' WHERE  `habitacion`.`hab_id` = $habitacion");
 					mysql_query("UPDATE `presupuesto` SET  `pre_status` = 'Comprado' WHERE  `presupuesto`.`pre_id` = $id");
 					   
-					   $hola1='u_continuar_compra_undestino_conestadia_maritimo.php?viaje='.$viaje.'&cantper='.$cantper.'&cedula='.$cedula.'&mensaje=2';
+					   $hola1='u_continuar_compra_undestino_conestadia_maritimo.php?viaje='.$viaje.'&cantper='.$cantper.'&cedula='.$cedula.'&mensaje=2&preg='.$preg.'';
 				 header("Location:$hola1");
 				 
 				
@@ -558,9 +575,9 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						$hotel1=$ro3['hot_id'];	
 						////echo "$hotel1 hotel1";
 						
-						$res4=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
+						$res4=mysql_query("SELECT cru_id FROM  crucero where cru_nombre='$aerolinea'");
 						$ro4 = mysql_fetch_array($res4);
-						$devuelve3=$ro4['aer_id'];	
+						$devuelve3=$ro4['cru_id'];	
 						////echo "$devuelve3 aerolinea";
 						////echo "$origen origen";
 						$res6=mysql_query("SELECT des_id FROM  destino where des_nombre='$origen'");
@@ -573,12 +590,12 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						$destino1=$ro5['des_id'];	
 						////echo "$destino1 destino1";
 						
-						$res7=mysql_query("SELECT via_id FROM  via where fk_des_id='$origen1' AND fk_aer_id='$devuelve3'");
+						$res7=mysql_query("SELECT via_id FROM  via where fk_des_id='$origen1' AND fk_cru_id='$devuelve3'");
 						$ro7 = mysql_fetch_array($res7);
 						$viaorigen=$ro7['via_id'];	
 						////echo "$viaorigen viao";
 						
-						$res8=mysql_query("SELECT via_id FROM  via where fk_des_id='$destino1' AND fk_aer_id='$devuelve3'");
+						$res8=mysql_query("SELECT via_id FROM  via where fk_des_id='$destino1' AND fk_cru_id='$devuelve3'");
 						$ro8 = mysql_fetch_array($res8);
 						$viadestino=$ro8['via_id'];	
 						////echo "$viadestino viad";
@@ -586,17 +603,17 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						////echo "$cantper , cantper";
 						////echo($alo);
 						////echo($fecha1);
-						$reschao=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
+						$reschao=mysql_query("SELECT cru_id FROM  crucero where cru_nombre='$aerolinea'");
 						$rochao = mysql_fetch_array($reschao);
-						$aerid1=$rochao['aer_id'];	
+						$aerid1=$rochao['cru_id'];	
 						
 						
-						$reshola=mysql_query("SELECT flo_id FROM  flota f , viaje v where  f.fk_aer_id='$aerid1'");
+						$reshola=mysql_query("SELECT flo_id FROM  flota f , viaje v where  f.fk_cru_id='$aerid1' and (f.flo_actual>0)");
 						$rohola = mysql_fetch_array($reshola);
 						$flota1=$rohola['flo_id'];	
 			          ////echo($flota1);
 					  
-					  mysql_query("UPDATE `flota` SET  `flo_actual` =(flo_actual-1)  WHERE  `flota`.`flo_id` = $flota1");
+					  mysql_query("UPDATE `flota` SET  `flo_actual` =(flo_actual-$cantper)  WHERE  `flota`.`flo_id` = $flota1");
 				   if($cantper==1)
 			  {
 				  $hola="Solo";}
@@ -609,8 +626,10 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 				    $hola="En familia";}
 				  
 								
-				 
-				  mysql_query("INSERT INTO `viaje` (`via_id`,`via_tipo`,`via_tipoviaje`,`via_fecha_ini`,`via_fecha_fin`,`via_hora_ini`,`via_hora_fin`,`via_millas`,`via_tipo_paq`,`via_cant_per`,`fk_pre_id`,`fk_via_id_origen`,`fk_via_id_destino`,`fk_flo_id`) VALUES(NULL,'Viaje','$hola','$fecha','$fecha1','20:40:00','10:00:00',NULL,NULL,'$cantper','$id','$viaorigen','$viadestino','$flota1')");
+	$result6= mysql_query("SELECT c.cos_hora FROM  costo c WHERE c.fk_via_origen=$viaorigen AND c.fk_via_destino=$viadestino");
+$row6 = mysql_fetch_array($result6);
+$horita=$row6['cos_hora'];				 
+				  mysql_query("INSERT INTO `viaje` (`via_id`,`via_tipo`,`via_tipoviaje`,`via_fecha_ini`,`via_fecha_fin`,`via_hora_ini`,`via_hora_fin`,`via_millas`,`via_tipo_paq`,`via_cant_per`,`fk_pre_id`,`fk_via_id_origen`,`fk_via_id_destino`,`fk_flo_id`) VALUES(NULL,'Viaje','$hola','$fecha','$fecha1','$horita','10:00:00',NULL,NULL,'$cantper','$id','$viaorigen','$viadestino','$flota1')");
 					
 $res11=mysql_query("SELECT via_id FROM  viaje where fk_pre_id='$id'");
 $ro11 = mysql_fetch_array($res11);
@@ -678,7 +697,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					    mysql_query("UPDATE `habitacion` SET  `hab_status` = 'Ocupada' WHERE  `habitacion`.`hab_id` = $habitacion");
 					mysql_query("UPDATE `presupuesto` SET  `pre_status` = 'Comprado' WHERE  `presupuesto`.`pre_id` = $id");
 					   
-					   $hola1='u_continuar_compra_undestino_conestadia_maritimo.php?viaje='.$viaje.'&cantper='.$cantper.'&cedula='.$cedula.'&mensaje=2';
+					   $hola1='u_continuar_compra_undestino_conestadia_maritimo.php?viaje='.$viaje.'&cantper='.$cantper.'&cedula='.$cedula.'&mensaje=2&preg='.$preg.'';
 				 header("Location:$hola1");
 				 
 				
@@ -693,9 +712,9 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						$hotel1=$ro3['hot_id'];	
 						////echo "$hotel1 hotel1";
 						
-						$res4=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
+						$res4=mysql_query("SELECT cru_id FROM  crucero where cru_nombre='$aerolinea'");
 						$ro4 = mysql_fetch_array($res4);
-						$devuelve3=$ro4['aer_id'];	
+						$devuelve3=$ro4['cru_id'];	
 						////echo "$devuelve3 aerolinea";
 						////echo "$origen origen";
 						$res6=mysql_query("SELECT des_id FROM  destino where des_nombre='$origen'");
@@ -708,12 +727,12 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						$destino1=$ro5['des_id'];	
 						////echo "$destino1 destino1";
 						
-						$res7=mysql_query("SELECT via_id FROM  via where fk_des_id='$origen1' AND fk_aer_id='$devuelve3'");
+						$res7=mysql_query("SELECT via_id FROM  via where fk_des_id='$origen1' AND fk_cru_id='$devuelve3'");
 						$ro7 = mysql_fetch_array($res7);
 						$viaorigen=$ro7['via_id'];	
 						////echo "$viaorigen viao";
 						
-						$res8=mysql_query("SELECT via_id FROM  via where fk_des_id='$destino1' AND fk_aer_id='$devuelve3'");
+						$res8=mysql_query("SELECT via_id FROM  via where fk_des_id='$destino1' AND fk_cru_id='$devuelve3'");
 						$ro8 = mysql_fetch_array($res8);
 						$viadestino=$ro8['via_id'];	
 						////echo "$viadestino viad";
@@ -721,17 +740,17 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						////echo "$cantper , cantper";
 						////echo($alo);
 						////echo($fecha1);
-						$reschao=mysql_query("SELECT aer_id FROM  aerolinea where aer_nombre='$aerolinea'");
+						$reschao=mysql_query("SELECT cru_id FROM  crucero where cru_nombre='$aerolinea'");
 						$rochao = mysql_fetch_array($reschao);
-						$aerid1=$rochao['aer_id'];	
+						$aerid1=$rochao['cru_id'];	
 						
 						
-						$reshola=mysql_query("SELECT flo_id FROM  flota f , viaje v where  f.fk_aer_id='$aerid1'");
+						$reshola=mysql_query("SELECT flo_id FROM  flota f , viaje v where  f.fk_cru_id='$aerid1' and (f.flo_actual>0)");
 						$rohola = mysql_fetch_array($reshola);
 						$flota1=$rohola['flo_id'];	
 			          ////echo($flota1);
 					  
-					  mysql_query("UPDATE `flota` SET  `flo_actual` =(flo_actual-1)  WHERE  `flota`.`flo_id` = $flota1");
+					  mysql_query("UPDATE `flota` SET  `flo_actual` =(flo_actual-$cantper)  WHERE  `flota`.`flo_id` = $flota1");
 				   if($cantper==1)
 			  {
 				  $hola="Solo";}
@@ -744,8 +763,10 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 				    $hola="En familia";}
 				  
 								
-				 
-				  mysql_query("INSERT INTO `viaje` (`via_id`,`via_tipo`,`via_tipoviaje`,`via_fecha_ini`,`via_fecha_fin`,`via_hora_ini`,`via_hora_fin`,`via_millas`,`via_tipo_paq`,`via_cant_per`,`fk_pre_id`,`fk_via_id_origen`,`fk_via_id_destino`,`fk_flo_id`) VALUES(NULL,'Viaje','$hola','$fecha','$fecha1','20:40:00','10:00:00',NULL,NULL,'$cantper','$id','$viaorigen','$viadestino','$flota1')");
+	$result6= mysql_query("SELECT c.cos_hora FROM  costo c WHERE c.fk_via_origen=$viaorigen AND c.fk_via_destino=$viadestino");
+$row6 = mysql_fetch_array($result6);
+$horita=$row6['cos_hora'];				 
+				  mysql_query("INSERT INTO `viaje` (`via_id`,`via_tipo`,`via_tipoviaje`,`via_fecha_ini`,`via_fecha_fin`,`via_hora_ini`,`via_hora_fin`,`via_millas`,`via_tipo_paq`,`via_cant_per`,`fk_pre_id`,`fk_via_id_origen`,`fk_via_id_destino`,`fk_flo_id`) VALUES(NULL,'Viaje','$hola','$fecha','$fecha1','$horita','10:00:00',NULL,NULL,'$cantper','$id','$viaorigen','$viadestino','$flota1')");
 					
 $res11=mysql_query("SELECT via_id FROM  viaje where fk_pre_id='$id'");
 $ro11 = mysql_fetch_array($res11);
@@ -817,7 +838,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 					    mysql_query("UPDATE `habitacion` SET  `hab_status` = 'Ocupada' WHERE  `habitacion`.`hab_id` = $habitacion");
 					mysql_query("UPDATE `presupuesto` SET  `pre_status` = 'Comprado' WHERE  `presupuesto`.`pre_id` = $id");
 					   
-					   $hola1='u_continuar_compra_undestino_conestadia_maritimo.php?viaje='.$viaje.'&cantper='.$cantper.'&cedula='.$cedula.'&mensaje=2';
+					   $hola1='u_continuar_compra_undestino_conestadia_maritimo.php?viaje='.$viaje.'&cantper='.$cantper.'&cedula='.$cedula.'&mensaje=2&preg='.$preg.'';
 				 header("Location:$hola1");
 				 
 				
@@ -841,7 +862,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 				 }//del if inserto
 				 
 				 else// si no llego a la totalidad dell monto
-				 {   //echo "montos $montoaux, $montoaux1, $montoaux2";
+				 {   if ($suma<($total+$abono1)){//echo "montos $montoaux, $montoaux1, $montoaux2";
 					 if($montoaux && $montoaux1 && $montoaux2)
 					 {//echo "primer if";
 					
@@ -914,6 +935,7 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 				           header("Location:$hola1");
 						 
 						 }
+						 
 						 
 						 if ($montoaux && $montoaux1&& ($montoaux2==NULL) )
 						 {//echo "segundo if if";
@@ -1205,16 +1227,31 @@ mysql_query("INSERT INTO `estadia` (`est_id`,`est_fecha_ini`,`est_fecha_fin`,`fk
 						 
 						 
 							 }
+							  } 
+					 else
+						{
+						 $hola1='u_monto_error_conestadia_maritimo.php?mensaje=2';
+						header("Location:$hola1");
+						}
+			
 					 
 					 
-					 } 
+					 } //del else si es inserto 0 
 			
 		
 			
 			
 			}//fin del else de pago cuotas
-			
-					  
+			}
+			else
+
+		{
+
+			$hola1='u_flota_error_conestadia_maritimo.php?mensaje=2';
+
+						header("Location:$hola1");
+
+		}				  
 					  
 					
 			 	

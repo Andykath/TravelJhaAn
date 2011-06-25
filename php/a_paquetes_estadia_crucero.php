@@ -16,9 +16,22 @@
 	
 	$mensaje = $_REQUEST['mensaje'];
 
-	$result= mysql_query("SELECT v.*, d.des_nombre, o.des_nombre, a.cru_nombre, a.cru_id, ho.flo_id, ho.flo_nombre
-FROM viaje v, via i, via f, destino d, destino o, crucero a, flota ho WHERE v.fk_via_id_origen = i.via_id AND v.fk_via_id_destino = f.via_id AND i.fk_des_id = d.des_id AND f.fk_des_id = o.des_id and i.fk_cru_id=a.cru_id
-and v.via_tipo='Paquete' AND v.via_hotel=ho.flo_id ORDER BY v.via_id");
+	$result= mysql_query("SELECT r. * , ru. * , d. * , f. * , o. * , c.cru_nombre, v . *,c.cru_id 
+FROM ruta r, ruta ru, flota f, destino d, destino o, crucero c, viaje v
+WHERE r.rut_tipo =  'Origen'
+AND ru.rut_tipo =  'Destino'
+AND d.des_id = ru.fk_des_id
+AND o.des_id = r.fk_des_id
+AND r.fk_flo_id = v.fk_flo_id
+AND ru.fk_flo_id = v.fk_flo_id
+AND f.fk_cru_id = c.cru_id
+AND v.fk_via_id_origen =36
+AND v.fk_via_id_destino =36
+AND f.flo_id = r.fk_flo_id
+AND f.flo_id = ru.fk_flo_id
+AND f.flo_id = v.fk_flo_id
+AND v.via_tipo='Paquete'
+ORDER BY v.via_id");
 	//$result=mysql_query("SELECT cue_id,cue_numero,cue_tipo,cue_fecha_apertura,fk_ban_id FROM cuenta_bancaria");
 	
 	while($row = mysql_fetch_array($result))
@@ -28,7 +41,7 @@ and v.via_tipo='Paquete' AND v.via_hotel=ho.flo_id ORDER BY v.via_id");
     <tr align="center">
       <td width="81" height="21">'.$row["via_id"].'</td>
 	   <td width="306"><div align="center">'.$row["via_tipo_paq"].'</td>
-	  <td width="200"><a href="../php/a_verperfil_paquete_estadia_crucero.php?tipoviaje='.$row['via_tipoviaje'].'&id='.$row['via_id'].'&fechai='.$row['via_fecha_ini'].'&fechaf='.$row['via_fecha_fin'].'&millas='.$row['via_millas'].'&tipopaq='.$row['via_tipo_paq'].'&cantpaq='.$row['via_cant_per'].'&aernombre='.$row['cru_nombre'].'&aerid='.$row['cru_id'].'&fkvia='.$row['fk_via_id_origen'].'&fkvia2='.$row['fk_via_id_destino'].'&hotel='.$row['flo_nombre'].'&hotid='.$row['flo_id'].'">Ver mas</a>
+	  <td width="200"><a href="../php/a_verperfil_paquete_estadia_crucero.php?tipoviaje='.$row['via_tipoviaje'].'&id='.$row['via_id'].'&fechai='.$row['via_fecha_ini'].'&fechaf='.$row['via_fecha_fin'].'&millas='.$row['via_millas'].'&tipopaq='.$row['via_tipo_paq'].'&cantpaq='.$row['via_cant_per'].'&aernombre='.$row['cru_nombre'].'&aerid='.$row['cru_id'].'&fkvia='.$row[3].'&fkvia2='.$row[9].'&hotel='.$row['flo_nombre'].'&hotid='.$row['flo_id'].'">Ver mas</a>
     </tr>';
 		$tabla_completa= $tabla_completa.$tabla;
 	

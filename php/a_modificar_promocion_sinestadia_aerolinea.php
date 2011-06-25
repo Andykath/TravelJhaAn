@@ -37,14 +37,14 @@
 		              
 					$admin= new Panel("../html/admin.html");
 					$admin->add("body",'<body onLoad = "actual(9)" >');
-					$panelestadios = new Panel("../html/a_crear_promocion_sinestadia_aerolinea.html");
+					$panelestadios = new Panel("../html/a_modificar_promocion_sinestadia_aerolinea.html");
 					$panelestadios->add("form",'<form name="form1" method="post" action="../php/a_modificar_promocion_sinestadia_aerolinea.php?cue_id='.$id.'&cue_numero='.$nombrepro.'&fechai='.$fechai.'&fechaf='.$fechaf.'&des'.$descuento.'&dur='.$duracion.'&fkvia='.$banco.'">');
 					
-					$panelestadios->add("cue_numero",$nombrepro);
+					$panelestadios->add("cue_numero",$nombre);
 					$panelestadios->add("fecha",$fechai);
 					$panelestadios->add("fecha1",$fechaf);
 					$panelestadios->add("banco",$banco);
-					$panelestadios->add("id",'<tr><td>Id:</td><td>'.$id.'</td></tr>');
+					$panelestadios->add("cue_id",$id);
 					$panelestadios->add("des",$descuento);
 					 $panelestadios->add("dur",$duracion);
 					
@@ -54,15 +54,37 @@
 					while($row = mysql_fetch_array($result))
 					{				
 						
-						if ($row["via_id"]==$fkvia){
+						if ($row["via_id"]==$fkviaid){
 						    //echo 'if';
-						   $select_actual='<option value="'.$row["via_id"].'">'.$row["aer_nombre"]."/".$row["des_nombre"].'</option>'; }	
+						   $select_actual='<option selected="selected" value="'.$row["via_id"].'">'.$row["aer_nombre"]."/".$row["des_nombre"].'</option>'; }	
 						else{
 						    //echo "banco es $banco";
 						   $select_actual='<option value="'.$row["via_id"].'">'.$row["aer_nombre"]."/".$row["des_nombre"].'</option>'; 	}	
 					    $select=$select.$select_actual;
 					}
 					$panelestadios->add("bancos",$select);
+					
+					$select1='';
+					echo($fkviaid2);
+					$result1= mysql_query("SELECT v.*, a.aer_nombre, d.des_nombre FROM  via v, aerolinea a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_aer_id=a.aer_id AND v.fk_aer_id IS NOT NULL AND v.fk_cru_id IS NULL AND v.fk_ter_id IS NULL");
+					while($row1 = mysql_fetch_array($result1))
+					{				
+						
+						if ($row1["via_id"]==$fkviaid2){
+						    //echo 'if';
+						   $select_actual1='<option selected="selected" value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"].'</option>'; }	
+						else{
+						    //echo "banco es $banco";
+						   $select_actual1='<option value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"].'</option>'; 	}	
+					    $select1=$select1.$select_actual1;
+					}
+					$panelestadios->add("bancos1",$select1);
+					
+					
+					
+					
+					
+					
 					$panelestadios->add("tipo_boton",'Modificar');
 					$admin->add("contenido",$panelestadios);
 					$admin->show();

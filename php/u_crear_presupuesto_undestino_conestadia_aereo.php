@@ -344,7 +344,7 @@
 			  
 			  
 			  
-			   if ($banco && $fecha && banco1 && $hotel && $habitacion  && $servicio  && ($pas0 || $pas1 || $pas2 || $pas3 || $pas4 || $pas5 || $pas6)&& $cantper && $tipoviaje)
+			   if ($banco && $fecha && $banco1 && $hotel && $habitacion  && $servicio  && ($pas0 || $pas1 || $pas2 || $pas3 || $pas4 || $pas5 || $pas6)&& $cantper && $tipoviaje)
 			  {
 			             //echo('entra6');
 			  

@@ -26,7 +26,6 @@
 	$tabla='
     <tr align="center">
       <td width="81" height="21">'.$row["via_id"].'</td>
-	  <td width="306"><div align="center">'.$row["via_costo"].'</td>
 	  <td width="181"><div align="center">'.$row["via_terminal"].'</td>
       <td width="210"><div align="center">'.$row["via_millas"].'</td>
 	  <td width="210"><div align="center">'.$row["des_nombre"].'</td>

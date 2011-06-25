@@ -41,7 +41,8 @@
 	$panelmiperfil->add("nombrepro",$nombrepro);
 	$panelmiperfil->add("descuento",$descuento);
 	$panelmiperfil->add("duracion",$duracion);
-	$panelmiperfil->add("fkvia",$fkvia);
+	$panelmiperfil->add("fkvia",$origen);
+	$panelmiperfil->add("fkvia2",$destino);
 	$panelmiperfil->add("fechai",$fechai);
 	$panelmiperfil->add("fechaf",$fechaf);
 	$panelmiperfil->add("id",$id);
@@ -52,7 +53,7 @@
 		          
 
 	
-	$panelmiperfil->add("links",'<a href="../php/a_modificar_promocion_estadia_aerolinea.php?nombre='.$nombrepro.'&id='.$id.'&fechai='.$fechai.'&fechaf='.$fechaf.'&descuento='.$descuento.'&duracion='.$duracion.'&fkvia='.$fkvia.'&fkviaid='.$fkviaid.'&hotel='.$row6['hot_id'].'&habitacion='.$row6['hab_id'].'">Modificar</a> <a href="../php/a_eliminar_promocion_estadia_aerolinea.php?idpro='.$id.'" onclick="return confirmar()">Eliminar</a>');
+	$panelmiperfil->add("links",'<a href="../php/a_modificar_promocion_estadia_aerolinea.php?nombre='.$nombrepro.'&id='.$id.'&fechai='.$fechai.'&fechaf='.$fechaf.'&descuento='.$descuento.'&duracion='.$duracion.'&fkvia='.$origen.'&fkvia2='.$destino.'&fkviaid='.$fkviaid.'&fkviaid2='.$fkviaid2.'&hotel='.$row6['hot_id'].'&habitacion='.$row6['hab_id'].'">Modificar</a> <a href="../php/a_eliminar_promocion_estadia_aerolinea.php?idpro='.$id.'" onclick="return confirmar()">Eliminar</a>');
    	
 	
 

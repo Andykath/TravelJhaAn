@@ -81,7 +81,7 @@
 					}
 					$panelestadios->add("bancos1",$select);
 					
-					echo($fkvia2);
+					//echo($fkvia2);
 					// echo($selected2);
 					   $res3=mysql_query("SELECT fk_des_id FROM  via where via_id=$fkvia2");
 						$ro3 = mysql_fetch_array($res3);

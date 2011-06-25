@@ -32,8 +32,8 @@ WHERE v.via_id = '$viaje' AND v.fk_via_id_destino = vi.via_id AND vi.fk_des_id =
 AND vi.fk_aer_id=a.aer_id ORDER BY v.via_id");
 
 $row2 = mysql_fetch_array($result2);
-	
-	$flota = $row2["fk_flo_id"];
+	//echo ($row2["fk_flo_id"]);
+	$flota = $row2[1];
 	$fechasalida = $row2["via_fecha_ini"];
 	$fechallegada = $row2["via_fecha_fin"];
 	$horasalida = $row2["via_hora_ini"];
@@ -43,7 +43,7 @@ $row2 = mysql_fetch_array($result2);
     $aerolinea = $row2["aer_nombre"];
 	
 	
-
+if ($preg=="Si"){
 	
 	$paneldetallefactura->add("emisor",'<table width="500" style="border:2px solid #0033CC"; cellpadding="0" cellspacing="0">
    <tr>
@@ -78,7 +78,7 @@ $row2 = mysql_fetch_array($result2);
 	
 	
 	
-	
+}
 	
 	
 	$result= mysql_query("SELECT b.bol_id,b.bol_fecha_emi,a.aco_nombre,a.aco_apellido,a.aco_cedula FROM acompanante a,boleto b WHERE  a.fk_via_id='$viaje'  AND a.fk_per_cedula='$cedula' AND b.fk_aco_id=a.aco_id  ORDER BY b.bol_id");

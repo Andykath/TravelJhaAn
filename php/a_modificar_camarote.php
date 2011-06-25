@@ -12,7 +12,7 @@
 		  {// aqui validar que los datos esten bien y hacer update
 
                
-					  mysql_query("UPDATE `habitacion` SET  `hab_piso` =  '$cue_numero', `hab_capacidad` =  '$fecha', `hab_costo` =  '$banco' WHERE  `habitacion`.`hab_id` = $cue_id");
+					  mysql_query("UPDATE `habitacion` SET  `hab_piso` =  '$cue_numero', `hab_capacidad` =  '$fecha', `hab_costo` =  '$banco', `hab_categoria` =  '$categoria' WHERE  `habitacion`.`hab_id` = $cue_id");
 					
 					$hola='a_camarotes.php?cue_id='.$hot_id.'';
 				    header("Location:$hola");

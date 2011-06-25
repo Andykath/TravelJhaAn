@@ -101,7 +101,7 @@
 						$result1= mysql_query("SELECT v.*, a.aer_nombre, d.des_nombre FROM  via v, aerolinea a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_aer_id=a.aer_id AND v.fk_aer_id=$devuelve AND v.fk_des_id<>$devuelve1 AND v.fk_cru_id IS NULL AND v.fk_ter_id IS NULL");
 						while($row1 = mysql_fetch_array($result1))
 						{
-						$result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$banco AND c.fk_via_destino=".$row1["via_id"]."");
+						$result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$selected AND c.fk_via_destino=".$row1["via_id"]."");
 						$row6 = mysql_fetch_array($result6);
 						$select_actual1='<option value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"]."/".$row6["cos_costo"].'</option>'; 
 						$select1=$select1.$select_actual1;
@@ -160,7 +160,7 @@
 						$result1= mysql_query("SELECT v.*, a.aer_nombre, d.des_nombre FROM  via v, aerolinea a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_aer_id=a.aer_id AND v.fk_aer_id=$devuelve AND v.fk_des_id<>$devuelve1 AND v.fk_cru_id IS NULL AND v.fk_ter_id IS NULL");
 						while($row1 = mysql_fetch_array($result1))
 						{
-						$result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$banco AND c.fk_via_destino=".$row1["via_id"]."");
+						$result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$selected AND c.fk_via_destino=".$row1["via_id"]."");
 						$row6 = mysql_fetch_array($result6);
 						    
 							if ($row1["via_id"]==$selected2){
@@ -222,7 +222,7 @@
 						$result1= mysql_query("SELECT v.*, a.aer_nombre, d.des_nombre FROM  via v, aerolinea a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_aer_id=a.aer_id AND v.fk_aer_id=$devuelve AND v.fk_des_id<>$devuelve1 AND v.fk_cru_id IS NULL AND v.fk_ter_id IS NULL");
 						while($row1 = mysql_fetch_array($result1))
 						{
-						    $result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$banco AND c.fk_via_destino=".$row1["via_id"]."");
+						    $result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$selected AND c.fk_via_destino=".$row1["via_id"]."");
 						$row6 = mysql_fetch_array($result6);
 							if ($row1["via_id"]==$selected2){
 								//echo 'if';
@@ -387,7 +387,7 @@
 						$result1= mysql_query("SELECT v.*, a.aer_nombre, d.des_nombre FROM  via v, aerolinea a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_aer_id=a.aer_id AND v.fk_aer_id=$devuelve AND v.fk_des_id<>$devuelve1 AND v.fk_cru_id IS NULL AND v.fk_ter_id IS NULL");
 						while($row1 = mysql_fetch_array($result1))
 						{
-						$result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$banco AND c.fk_via_destino=".$row1["via_id"]."");
+						$result6= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$selected AND c.fk_via_destino=".$row1["via_id"]."");
 						$row6 = mysql_fetch_array($result6);
 						    
 							if ($row1["via_id"]==$selected2){
@@ -518,7 +518,7 @@
 						
 						$costo_total=0;
 						
-						$res5= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$banco AND c.fk_via_destino=$banco1");
+						$res5= mysql_query("SELECT c.cos_costo FROM  costo c WHERE c.fk_via_origen=$selected AND c.fk_via_destino=$selected2");
 						$ro5 = mysql_fetch_array($res5);
 						$costo_via=$ro5['cos_costo'];
 						//echo($costo_via);

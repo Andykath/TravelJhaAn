@@ -33,17 +33,17 @@ AND vi.fk_ter_id=a.ter_id ORDER BY v.via_id");
 
 $row2 = mysql_fetch_array($result2);
 	
-	$flota = $row2["fk_flo_id"];
+	$flota = $row2[1];
 	$fechasalida = $row2["via_fecha_ini"];
 	$fechallegada = $row2["via_fecha_fin"];
 	$horasalida = $row2["via_hora_ini"];
 	$horallegada = $row2["via_hora_fin"];
 	$destino = $row2["des_nombre"];
 	$aeropuerto = $row2["via_terminal"];
-    $aerolinea = $row2["aer_nombre"];
+    $aerolinea = $row2["ter_nombre"];
 	
 	
-
+if ($preg=="Si"){
 	
 	$paneldetallefactura->add("emisor",'<table width="500" style="border:2px solid #0033CC"; cellpadding="0" cellspacing="0">
    <tr>
@@ -55,7 +55,7 @@ $row2 = mysql_fetch_array($result2);
           <p><strong>Apellido:</strong>'.$acoapellido1.'</p>
            <p><strong>Cedula:</strong>'.$cedula1.'</p>
           <p><strong>Fecha Emision Boleto:</strong> '.$bolfecha1.'</p>
-		  <p><strong>Aerolinea:</strong>'.$aerolinea.'</p>
+		  <p><strong>T. Terrestre:</strong>'.$aerolinea.'</p>
 		  <p><strong>Flota:</strong>'.$flota.'</p>
 		  <p><strong>Lugar destino:</strong>'.$destino.'</p>
 		  <p><strong>Terminal:</strong>'.$aeropuerto.'</p>
@@ -78,7 +78,7 @@ $row2 = mysql_fetch_array($result2);
 	
 	
 	
-	
+	}
 	
 	
 	$result= mysql_query("SELECT b.bol_id,b.bol_fecha_emi,a.aco_nombre,a.aco_apellido,a.aco_cedula FROM acompanante a,boleto b WHERE  a.fk_via_id='$viaje'  AND a.fk_per_cedula='$cedula' AND b.fk_aco_id=a.aco_id  ORDER BY b.bol_id");
@@ -104,7 +104,7 @@ $row2 = mysql_fetch_array($result2);
           <p><strong>Apellido:</strong>'.$acoapellido.'</p>
            <p><strong>Cedula:</strong>'.$acocedula.'</p>
           <p><strong>Fecha Emision Boleto:</strong> '.$bolfecha.'</p>
-		  <p><strong>Aerolinea:</strong>'.$aerolinea.'</p>
+		  <p><strong>T. Terrestre:</strong>'.$aerolinea.'</p>
 		  <p><strong>Flota:</strong>'.$flota.'</p>
 		  <p><strong>Lugar destino:</strong>'.$destino.'</p>
 		  <p><strong>Aeropuerto:</strong>'.$aeropuerto.'</p>

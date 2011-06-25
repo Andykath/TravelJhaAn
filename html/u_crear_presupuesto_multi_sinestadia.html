@@ -42,20 +42,20 @@ function populate2(inForm,fecha,selected,selected2,nombre1) {
 location.href='u_crear_presupuesto_multi_sinestadia.php?fechai=' + fecha  + '&selected=' + selected  + '&selected2=' + selected2 + '&mivariable=' + nombre1; 
 }
 
-function populate3(inForm,fecha,selected,selected2,selected3,selected4,nombre1) {
+function populate3(inForm,fecha,selected,selected2,selected3,selected4,nombre1,selected7) {
 
-location.href='u_crear_presupuesto_multi_sinestadia.php?fechai=' + fecha  + '&selected=' + selected  + '&selected2=' + selected2 + '&selected3=' + selected3 + '&selected4=' + selected4 + '&mivariable=' + nombre1;  
+location.href='u_crear_presupuesto_multi_sinestadia.php?fechai=' + fecha  + '&selected=' + selected  + '&selected2=' + selected2 + '&selected3=' + selected3 + '&selected4=' + selected4 + '&mivariable=' + nombre1  + '&selected7=' + selected7;  
 }
 
-function populate4(inForm,fecha,selected,selected2,selected3,selected4,nombre1,hotel) {
+function populate4(inForm,fecha,selected,selected2,selected3,selected4,nombre1,hotel,selected7) {
 
-location.href='u_crear_presupuesto_multi_sinestadia.php?fechai=' + fecha  + '&selected=' + selected  + '&selected2=' + selected2 + '&selected3=' + selected3 + '&selected4=' + selected4 + '&mivariable=' + nombre1 + '&hotel=' + hotel ;  
+location.href='u_crear_presupuesto_multi_sinestadia.php?fechai=' + fecha  + '&selected=' + selected  + '&selected2=' + selected2 + '&selected3=' + selected3 + '&selected4=' + selected4 + '&mivariable=' + nombre1 + '&hotel=' + hotel + '&selected7=' + selected7  ;  
 }
 
 
-function populate5(inForm,selected,fecha,selected2,selected3,selected4,selected5,selected6,cantper,tipoviaje) {
+function populate5(inForm,selected,fecha,selected2,selected3,selected4,selected5,selected6,cantper,tipoviaje,selected7) {
 
-location.href='u_crear_presupuesto_undestino_sinestadia_aereo.php?selected=' + selected  + '&fechai=' + fecha + '&selected2=' + selected2 +  '&selected3=' + selected3  +  '&selected4=' + selected4  +  '&selected5=' + selected5  +  '&selected6=' + selected6 + '&cantper=' + cantper  + '&tipoviaje=' + tipoviaje;
+location.href='u_crear_presupuesto_undestino_sinestadia_aereo.php?selected=' + selected  + '&fechai=' + fecha + '&selected2=' + selected2 +  '&selected3=' + selected3  +  '&selected4=' + selected4  +  '&selected5=' + selected5  +  '&selected6=' + selected6 + '&cantper=' + cantper  + '&tipoviaje=' + tipoviaje + '&selected7=' + selected7; 
 }
 
 function populate6(nombre1) {
@@ -102,11 +102,13 @@ document.form1.submit();
     </tr>
     
     
-     
+      
     {combo}
     {combotra}
     {cant1}
+     {estadia}
     {combotra1}
+  
     {hoteles}
     {habitaciones}
     {servicios}

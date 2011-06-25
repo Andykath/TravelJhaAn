@@ -38,9 +38,10 @@
 	$panelmiperfil->add("nombrepro",$nombrepro);
 	$panelmiperfil->add("descuento",$descuento);
 	$panelmiperfil->add("duracion",$duracion);
-	$panelmiperfil->add("fkvia",$fkvia);
+	$panelmiperfil->add("fkvia",$origen);
+		$panelmiperfil->add("fkvia2",$destino);
    $panelmiperfil->add("destino",$destino);
-	$panelmiperfil->add("links",'<a href="../php/a_modificar_promocion_sinestadia_aerolinea.php?nombrepro='.$nombrepro.'&id='.$id.'&fechai='.$fechai.'&fechaf='.$fechaf.'&descuento='.$descuento.'&duracion='.$duracion.'&fkvia='.$fkvia.'&aernombre='.$aernombre.'&aerid='.$aerid.'&destino='.$destino.'">Modificar</a> <a href="../php/a_eliminar_promocion_sinestadia_aerolinea.php?proid='.$id.'" onclick="return confirmar()">Eliminar</a>');
+	$panelmiperfil->add("links",'<a href="../php/a_modificar_promocion_sinestadia_aerolinea.php?nombre='.$nombrepro.'&id='.$id.'&fechai='.$fechai.'&fechaf='.$fechaf.'&descuento='.$descuento.'&duracion='.$duracion.'&fkvia='.$origen.'&fkvia2='.$destino.'&fkviaid='.$fkviaid.'&fkviaid2='.$fkviaid2.'">Modificar</a> <a href="../php/a_eliminar_promocion_sinestadia_aerolinea.php?proid='.$id.'" onclick="return confirmar()">Eliminar</a>');
    
    
 

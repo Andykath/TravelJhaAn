@@ -14,7 +14,7 @@
 function validar()
 {
 // el if lo puse ||
-if (document.form1.cue_numero.value.length == 0 || document.form1.fecha.value.length == 0 || document.form1.tipo.value.length == 0)
+if (document.form1.cue_numero.value.length == 0 || document.form1.fecha.value.length == 0 )
 {
 document.getElementById('mensaje').innerHTML = 'Debe llenar todos los campos!';
 return 0;
@@ -52,10 +52,7 @@ return (key <= 13 || (key >= 48 && key <= 57));
     <tr>
       <td colspan="2" align="center">Llena la informacion del costo de ese crucero para ese destino</td>
     </tr>
-     <tr>
-      <td width="203">Costo:</td>
-      <td width="202"><input type="text" name="tipo" id="tipo" value="{tipo}"></td>
-    </tr>
+    
     
     
     <tr>

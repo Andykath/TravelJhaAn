@@ -2,12 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Untitled Document</title>
+<script  type="text/javascript" src="../js/datetimepicker_css.js"></script> 
+<script  type="text/javascript" src="../js/datetimepicker_cssDomingo copy.js"></script>
+<script  type="text/javascript" src="../js/datetimepicker_cssRango.js"></script>
+<script  type="text/javascript" src="../js/datetimepicker_cssNoPast.js"></script>
 </head>
-<script language="javascript" type="text/javascript" src="../js/datetimepicker_css.js"></script> 
+
 <script language="javascript">
 function confirmar() { 
 
-    if(!confirm("Esta seguro que desea eliminar la cuenta?"))
+    if(!confirm("Esta seguro que desea eliminarel presupuesto?"))
 	{ 
 	 	return false ;
 	}  
@@ -72,51 +76,51 @@ location.href='u_comprar_undestino_conestadia_aereo.php?selected=' + selected  +
 
 
 <p align="left"><a href="../php/u_presupuesto_undestino_conestadia_aereo.php">&lt;&lt;Volver</a></p>
-<table width="382" border="0" align="center">
+<table width="407" border="0" align="center">
  <tr>
-    <th width="128" align="left" scope="row">Id</th>
+    <th width="165" align="left" scope="row">Id</th>
     <th align="left" scope="row"><div align="left" id="id">{id}</div></th>
   </tr>
 <tr>
-    <th width="128" align="left" scope="row">Aerolinea:</th>
-    <th width="244" align="left" scope="row"><div align="left" id="aerolinea">{aerolinea}</div></th>
+    <th width="165" align="left" scope="row">Aerolinea:</th>
+    <th width="232" align="left" scope="row"><div align="left" id="aerolinea">{aerolinea}</div></th>
   </tr>
   <tr>
-  <th width="128" align="left" scope="row">Origen:</th>
+  <th width="165" align="left" scope="row">Origen:</th>
     <th align="left" scope="row"><div align="left" id="origen">{origen}</div></th>
   </tr>
   <tr>
-    <th width="128" align="left" scope="row">Destino</th>
+    <th width="165" align="left" scope="row">Destino</th>
     <th align="left" scope="row"><div align="left" id="destino">{destino}</div></th>
   </tr>
   <tr>
-  <th width="128" align="left" scope="row">Hotel:</th>
+  <th width="165" align="left" scope="row">Hotel:</th>
     <th align="left" scope="row"><div align="left" id="hotel">{hotel}</div></th>
   </tr>  
   <tr>
-  <th width="128" align="left" scope="row">Nro. Habitacion:</th>
+  <th width="165" align="left" scope="row">Nro. Habitacion:</th>
     <th align="left" scope="row"><div align="left" id="habitacion">{habitacion}</div></th>
   </tr>
   <tr>
-  <th width="128" align="left" scope="row">Servicio:</th>
+  <th width="165" align="left" scope="row">Servicio:</th>
     <th align="left" scope="row"><div align="left" id="servicio">{servicio}</div></th>
   </tr>
   
   <tr>
-  <th width="128" align="left" scope="row">Cant Personas:</th>
+  <th width="165" align="left" scope="row">Cant Personas:</th>
     <th align="left" scope="row"><div align="left" id="cantper">{cantper}</div></th>
   </tr>
   <tr>
-  <th width="128" align="left" scope="row">Total-abono(Bs):</th>
+  <th width="165" align="left" scope="row">Total-abono(Bs):</th>
     <th align="left" scope="row"><div align="left" id="total">{total}</div></th>
   </tr>
+  {totalex}
   <tr>
-      <td>Fecha de salida:</td>
-      <td><input name="fecha" id="fecha" type="text" readonly="readonly" value="{fecha}" ><a href="javascript:NewCssCal('fecha','YYYYMMDD')"><img src="../js/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></td>
+      {fechasal}
     </tr>
     <tr>
       <td>Fecha de llegada:</td>
-      <td><input name="fecha1" id="fecha1" type="text" readonly="readonly" value="{fecha1}" ><a href="javascript:NewCssCal('fecha1','YYYYMMDD')"><img src="../js/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></td>
+      <td><input name="fecha1" id="fecha1" type="text" readonly="readonly" value="{fecha1}" ><a href="javascript:NewCssCalNP('fecha1','YYYYMMDD')"><img src="../js/calNP.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></td>
     </tr>
    <tr>
       <td>Forma de pago:</td>
@@ -157,7 +161,13 @@ location.href='u_comprar_undestino_conestadia_aereo.php?selected=' + selected  +
       <tr>
       <td align="center" height="21" colspan="6">{continuar}</td>
     </tr>
-     
+     <tr>
+      <td>Forma usted parte de las personas que viajan?:</td>
+      <td><select name="preg" id="preg">
+        <option>Si</option>
+        <option>No</option>
+      </select>      </td>
+    </tr>
    
      
      <tr>
@@ -166,7 +176,7 @@ location.href='u_comprar_undestino_conestadia_aereo.php?selected=' + selected  +
     <tr>
 
 </table>
- <p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
 </form>
 </body>
 </html>

@@ -17,7 +17,7 @@
 			 //echo($dur);
 			  //echo($fkvia);
            
-					 mysql_query("UPDATE `viaje` SET  `via_tipo` =  'Paquete', `via_tipoviaje` =  '$cue_numero', `via_fecha_ini` =  '$fecha',`via_fecha_fin` =  '$fecha1', `via_millas` =  '$millas',`via_tipo_paq` =  '$tipopaq',`via_cant_per` =  '$cantper', `fk_via_id_origen` =  '$banco', `fk_via_id_destino` =  '$banco1' ,`via_hotel`= $hotel WHERE  `viaje`.`via_id` = $cue_id");
+					 mysql_query("UPDATE `viaje` SET  `via_tipo` =  'Paquete', `via_tipoviaje` =  '$cue_numero', `via_fecha_ini` =  '$fecha',`via_fecha_fin` =  '$fecha1', `via_millas` =  '$millas',`via_tipo_paq` =  '$tipopaq',`via_cant_per` =  '$cantper', `fk_flo_id`= '$ruta' WHERE  `viaje`.`via_id` = $cue_id");
 					
 					$hola='a_paquetes_estadia_crucero.php?mensaje=2';
 				    header("Location:$hola");
@@ -50,59 +50,49 @@
 					 $panelestadios->add("cantper",$cantper);
 					
 			
-					$select='';
-					$result= mysql_query("SELECT v.*, a.cru_nombre, d.des_nombre FROM  via v, crucero a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_cru_id=a.cru_id AND v.fk_cru_id IS NOT NULL AND v.fk_aer_id IS NULL AND v.fk_ter_id IS NULL");
-					while($row = mysql_fetch_array($result))
-					{				
-						
-						if ($row["via_id"]==$fkvia){
-						    //echo 'if';
-						   $select_actual='<option selected="selected" value="'.$row["via_id"].'">'.$row["cru_nombre"]."/".$row["des_nombre"].'</option>'; }	
-						else{
-						    //echo "banco es $banco";
-						   $select_actual='<option value="'.$row["via_id"].'">'.$row["cru_nombre"]."/".$row["des_nombre"].'</option>'; 	}	
-					    $select=$select.$select_actual;
-					}
-					$panelestadios->add("bancos",$select);
+					$result2= mysql_query("select * from crucero");
+								while($row2 = mysql_fetch_array($result2))
+								{				
+									
+									if ($row2["cru_id"]==$aerid){
+										//echo 'if';
+										$select_actual2='<option selected="selected" value="'.$row2["cru_id"].'">'.$row2["cru_nombre"].'</option>'; }	
+									else{
+										//echo "banco es $banco";
+										$select_actual2='<option value="'.$row2["cru_id"].'">'.$row2["cru_nombre"].'</option>'; 	}	
+									$select2=$select2.$select_actual2;
+								}
+								$panelestadios->add("cruceros",$select2);
 					
 					
 					$select1='';
-					$result1= mysql_query("SELECT v.*, a.cru_nombre, d.des_nombre FROM  via v, crucero a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_cru_id=a.cru_id AND v.fk_cru_id IS NOT NULL AND v.fk_aer_id IS NULL AND v.fk_ter_id IS NULL");
-					while($row1 = mysql_fetch_array($result1))
-					{				
-						
-						if ($row1["via_id"]==$fkvia2){
-						    //echo 'if';
-						   $select_actual='<option selected="selected" value="'.$row1["via_id"].'">'.$row1["cru_nombre"]."/".$row1["des_nombre"].'</option>'; }	
-						else{
-						    //echo "banco es $banco";
-						   $select_actual='<option value="'.$row1["via_id"].'">'.$row1["cru_nombre"]."/".$row1["des_nombre"].'</option>'; 	}	
-					    $select=$select.$select_actual;
-					}
-					$panelestadios->add("bancos1",$select);
-					
-					echo($fkvia2);
-					// echo($selected2);
-					   $res3=mysql_query("SELECT fk_cru_id FROM  via where via_id=$fkvia2");
-						$ro3 = mysql_fetch_array($res3);
-						$devuelve3=$ro3['fk_cru_id'];	
-						//echo "$devuelve3 dev";
-							
-						$result4= mysql_query("SELECT ho.flo_nombre, ho.flo_id FROM  flota ho WHERE ho.fk_cru_id=$devuelve3");
+					$result1= mysql_query("SELECT distinct r.fk_flo_id FROM ruta r WHERE fk_flo_id IN (SELECT flo_id FROM flota WHERE fk_cru_id =$aerid)");
+						while($row1 = mysql_fetch_array($result1))
+						{
+						  $result5= mysql_query("SELECT flo_nombre from flota where flo_id=".$row1[fk_flo_id]."");
+						  $row5 = mysql_fetch_array($result5);
+						  $rutax=$row5["flo_nombre"]."/ "; 
+						  $result4= mysql_query("SELECT r.*, d.des_nombre FROM ruta r, destino d WHERE fk_flo_id=".$row1[fk_flo_id]." and r.fk_des_id=d.des_id"); 
+						$conr=0;    
 						while($row4 = mysql_fetch_array($result4))
 						{
-						if ($row4["flo_id"]==$hotel){
-						    //echo 'if';
-						   $select_actual4='<option selected="selected" value="'.$row4["flo_id"].'">'.$row4["flo_nombre"].'</option>'; }	
-						else{
-						    //echo "banco es $banco";
-						   $select_actual4='<option value="'.$row1["flo_id"].'">'.$row4["flo_nombre"].'</option>'; 	}	
-						$select4=$select4.$select_actual4;
+						 $rutax=$rutax.$row4["des_nombre"]."-";
+						 if ($conr==0){
+						  $cost=$row4["rut_costo"];
+						 }
+						 $conr=$conr+1;
 						}
-						$panelestadios->add("hoteles",$select4);
-						
-					
-					
+						$rutax=$rutax.$cost;
+						if ($row1["fk_flo_id"]==$hotel){
+						$select_actual1='<option selected="selected" value="'.$row1["fk_flo_id"].'">'.$rutax.'</option>'; 
+						}
+						else
+						{
+						 $select_actual1='<option value="'.$row1["fk_flo_id"].'">'.$rutax.'</option>'; 
+						}
+						$select1=$select1.$select_actual1;
+						}
+						$panelestadios->add("rutas",$select1);	
 					
 					
 					

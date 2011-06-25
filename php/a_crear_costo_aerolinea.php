@@ -69,7 +69,7 @@
 			  }
 			  else
 			  {
-				mysql_query("INSERT INTO `via` (`via_id` ,`via_costo` ,`via_terminal` ,`via_millas`, `fk_des_id`, `fk_aer_id`)VALUES (NULL ,'$tipo', '$cue_numero',  '$fecha', '$destino', '$banco')");
+				mysql_query("INSERT INTO `via` (`via_id` ,`via_costo` ,`via_terminal` ,`via_millas`, `fk_des_id`, `fk_aer_id`)VALUES (NULL ,null, '$cue_numero',  '$fecha', '$destino', '$banco')");
 			    
 				$hola='a_aerolineas.php?mensaje=1';
 				header("Location:$hola");

@@ -64,22 +64,38 @@
 					}
 					$panelestadios->add("bancos",$select);
 					
-					
-					
 					$select1='';
-					$result1= mysql_query("SELECT h.* FROM  hotel h WHERE h.hot_id= $hotel");
+					echo($fkviaid2);
+					$result1= mysql_query("SELECT v.*, a.aer_nombre, d.des_nombre FROM  via v, aerolinea a, destino d WHERE v.fk_des_id=d.des_id AND v.fk_aer_id=a.aer_id AND v.fk_aer_id IS NOT NULL AND v.fk_cru_id IS NULL AND v.fk_ter_id IS NULL");
 					while($row1 = mysql_fetch_array($result1))
 					{				
 						
-						if ($row1["hot_id"]==$hotel){
+						if ($row1["via_id"]==$fkviaid2){
 						    //echo 'if';
-						   $select_actual1='<option selected="selected" value="'.$row1["hot_id"].'">'.$row1["hot_nombre"].'</option>'; }	
+						   $select_actual1='<option selected="selected" value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"].'</option>'; }	
 						else{
 						    //echo "banco es $banco";
-						   $select_actual1='<option value="'.$row1["hot_id"].'">'.$row1["hot_nombre"].'</option>'; 	}	
+						   $select_actual1='<option value="'.$row1["via_id"].'">'.$row1["aer_nombre"]."/".$row1["des_nombre"].'</option>'; 	}	
 					    $select1=$select1.$select_actual1;
 					}
-					$panelestadios->add("hoteles",$select1);
+					$panelestadios->add("bancos1",$select1);
+					
+					
+					
+					$select2='';
+					$result2= mysql_query("SELECT h.* FROM  hotel h WHERE h.hot_id= $hotel");
+					while($row2 = mysql_fetch_array($result2))
+					{				
+						
+						if ($row2["hot_id"]==$hotel){
+						    //echo 'if';
+						   $select_actual2='<option selected="selected" value="'.$row2["hot_id"].'">'.$row2["hot_nombre"].'</option>'; }	
+						else{
+						    //echo "banco es $banco";
+						   $select_actual2='<option value="'.$row2["hot_id"].'">'.$row2["hot_nombre"].'</option>'; 	}	
+					    $select2=$select2.$select_actual2;
+					}
+					$panelestadios->add("hoteles",$select2);
 					
 					
 					

@@ -31,7 +31,7 @@
 	$panelcuentas->add("crear",'<a href="../php/u_crear_presupuesto_multi_sinestadia.php?mivariable='.$mivariable.'">Realizar un Presupuesto</a>');
 	
 	
-	$result= mysql_query("SELECT p.pre_id,p.pre_fecha,p.pre_abono,p.pre_habitacion,p.pre_cant_per,p.pre_paseo,p.pre_total,p.fk_via_id_origen,p.fk_via_id_destino,ho.hot_nombre,ho.hot_id,ha.hab_id,s.ser_nombre FROM  presupuesto p, hotel ho, servicio s, habitacion ha WHERE  p.fk_per_cedula='$cedula' AND p.pre_status='No comprado' and p.pre_paseo IS NOT NULL and p.pre_habitacion IS NOT NULL AND p.pre_habitacion=ha.hab_id AND ha.fk_hot_id=ho.hot_id AND p.pre_servicio=s.ser_id  ORDER BY p.pre_id");
+	$result= mysql_query("SELECT p.pre_id,p.pre_fecha,p.pre_abono,p.pre_habitacion,p.pre_cant_per,p.pre_paseo,p.pre_total,p.fk_via_id_origen,p.fk_via_id_destino FROM  presupuesto p WHERE  p.fk_per_cedula='$cedula' AND p.pre_status='No comprado' and p.pre_paseo IS NOT NULL ORDER BY p.pre_id");
 	//$result=mysql_query("SELECT cue_id,cue_numero,cue_tipo,cue_fecha_apertura,fk_ban_id FROM cuenta_bancaria");
 	
 	while($row = mysql_fetch_array($result))
@@ -47,8 +47,7 @@
 					    <td width="210"><div align="center">'.$row["pre_cant_per"].'</td>			
 				<td width="210"><div align="center">'.$row["pre_abono"].'</td>
 				<td width="210"><div align="center">'.$row["pre_total"].'</td>	
-	  <td width="300"><a href="../php/u_comprar_multi_sinestadia.php?id='.$row['pre_id'].'&fecha='.$row['pre_fecha'].'&hotel='.$row['hot_nombre'].'&habitacion='.$row['pre_habitacion'].'&servicio='.$row['ser_nombre'].'&origen='.$row['fk_via_id_origen'].'&destino='.$row['fk_via_id_destino'].'&paseo='.$row['pre_paseo'].'&total='.$row['pre_total'].'&cantper='.$row['pre_cant_per'].'">Comprar</a> <a href="../php/u_verpaseo_multi_sinestadia.php?id='.$row['pre_id'].'">Ver Paseos</a>
-    </tr>';
+	  <td width="300"><a href="../php/u_comprar_multi_sinestadia.php?id='.$row['pre_id'].'&fecha='.$row['pre_fecha'].'&hotel='.$row['hot_nombre'].'&habitacion='.$row['pre_habitacion'].'&servicio='.$row['ser_nombre'].'&origen='.$row['fk_via_id_origen'].'&destino='.$row['fk_via_id_destino'].'&paseo='.$row['pre_paseo'].'&total='.$row['pre_total'].'&cantper='.$row['pre_cant_per'].'">ComprarTodo</a><a href="../php/u_reservar_presupuesto_multi_sinestadia.php?id='.$row['pre_id'].'&fecha='.$row['pre_fecha'].'&origen='.$row[7].'&destino='.$row[8].'&cantper='.$row['pre_cant_per'].'&origen1='.$row[7].'&destino1='.$row[8].'&total='.$row['pre_total'].'&servicio='.$row['ser_nombre'].'&habitacion='.$row['pre_habitacion'].'&hotel='.$row['hot_nombre'].'&paseo='.$row['pre_paseo'].'"> Reserva</a></td></tr>';
 	    
 		$tabla_completa= $tabla_completa.$tabla;
 		//$_SESSION['cant']=$row['pre_cant_per'];
@@ -58,13 +57,6 @@
 	
 	mysql_free_result($result);
 	//echo($cant);
-	
-	
-	
-
-	
-
-
 	
 	$panelcuentas->add("informacion",$tabla_completa);
 	$admin->add("contenido",$panelcuentas);

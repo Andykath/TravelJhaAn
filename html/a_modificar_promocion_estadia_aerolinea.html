@@ -34,12 +34,12 @@ return (key <= 13 || (key >= 48 && key <= 57));
 
 function populate(inForm,selected,cue_numero,fecha,fecha1,des,dur,cue_id) {
 
-location.href='a_modificar_promocion_estadia_aerolinea2.php?selected=' + selected + '&nombre=' + cue_numero + '&fechai=' + fecha + '&fechaf=' + fecha1 + '&desc=' + des + '&durac=' + dur + '&hotel=k' + '&id=' + cue_id;
+location.href='a_modificar_promocion_estadia_aerolinea2.php?selected=' + selected + '&nombre=' + cue_numero + '&fechai=' + fecha + '&fechaf=' + fecha1 + '&desc=' + des + '&durac=' + dur +  '&selected2=k' + '&id=' + cue_id;
 }
 
-function populate1(inForm,selected,cue_numero,fecha,fecha1,des,dur,hotel,cue_id) {
+function populate1(inForm,selected,cue_numero,fecha,fecha1,des,dur,selected2,cue_id) {
 
-location.href='a_modificar_promocion_estadia_aerolinea2.php?selected=' + selected + '&nombre=' + cue_numero + '&fechai=' + fecha + '&fechaf=' + fecha1 + '&desc=' + des + '&durac=' + dur + '&hotel=' + hotel + '&id=' + cue_id;
+location.href='a_modificar_promocion_estadia_aerolinea2.php?selected=' + selected + '&nombre=' + cue_numero + '&fechai=' + fecha + '&fechaf=' + fecha1 + '&desc=' + des + '&durac=' + dur + '&selected2=' + selected2 + '&id=' + cue_id;
 }
 
 
@@ -62,6 +62,10 @@ location.href='a_modificar_promocion_estadia_aerolinea2.php?selected=' + selecte
     
     <tr>
       <td colspan="2" align="center">Llena la informacion de la nueva promocion</td>
+    </tr>
+     <tr>
+      <td width="203">ID:</td>
+      <td width="225"><input type="text" name="cue_id" id="cue_id" value="{cue_id}" readonly></td>
     </tr>
     <tr>
       <td width="203">Nombre Promocion:</td>
@@ -86,9 +90,16 @@ location.href='a_modificar_promocion_estadia_aerolinea2.php?selected=' + selecte
       <td width="225"><input type="text" name="dur" id="dur" value="{dur}"></td>
     </tr>
     <tr>
-      <td>Aerolinea/Destino:</td>
+      <td>Aerolinea/Origen:</td>
       <td><select name="banco" id="banco" onChange="populate(document.form1,document.form1.banco.options[document.form1.banco.selectedIndex].value, document.form1.cue_numero.value, document.form1.fecha.value, document.form1.fecha1.value, document.form1.des.value, document.form1.dur.value,document.form1.cue_id.value)">
       {bancos}
+      </select>      </td>
+    </tr>
+     <tr>
+      <td>Aerolinea/Destino:</td>
+      <td><select name="banco1" id="banco1" onChange="populate1(document.form1,document.form1.banco.options[document.form1.banco.selectedIndex].value, document.form1.cue_numero.value, document.form1.fecha.value, document.form1.fecha1.value,document.form1.des.value, document.form1.dur.value,document.form1.banco1.options[document.form1.banco1.selectedIndex].value,document.form1.cue_id.value)">
+      <option selected="selected">Seleccione</option>
+      {bancos1}
       </select>      </td>
     </tr>
     <tr>
@@ -99,10 +110,7 @@ location.href='a_modificar_promocion_estadia_aerolinea2.php?selected=' + selecte
       </select>      </td>
     </tr>
     
-    <tr>
-      <td width="203">ID:</td>
-      <td width="225"><input type="text" name="cue_id" id="cue_id" value="{cue_id}" readonly></td>
-    </tr>
+   
     
     <tr>
       <td colspan="2" align="center"><input type="button" name="agregar" id="agregar" value="{tipo_boton}" onclick="validar()" /></td>
