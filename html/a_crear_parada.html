@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+</head>
+
+
+
+<script language="javascript" type="text/javascript" src="../js/datetimepicker_css.js"></script> 
+<script language="javascript">
+
+
+function validar()
+{
+// el if lo puse ||
+
+
+document.form1.submit();
+
+}
+
+var nav4 = window.Event ? true : false;
+function acceptNum(evt){	
+// NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57	
+var key = nav4 ? evt.which : evt.keyCode;	
+return (key <= 13 || (key >= 48 && key <= 57));
+}
+
+
+
+
+</script>
+
+<body>
+
+
+{form}
+<input type="hidden" name="estadio_viejo" id="estadio_nuevo" value="{cue_numero}" />	
+<input type="hidden" name="id" id="id" value="{cue_id}" />
+<input type="hidden" name="aforo_viejo" id="aforo_viejo" value="{tipo}" />
+<input type="hidden" name="ciudad_vieja" id="ciudad_vieja" value="{banco}" />
+<input type="hidden" name="fecha_vieja" id="fecha_vieja" value="{fecha}" />	
+  <table width="415" border="0">
+    
+    <tr>
+      <td colspan="2" align="center">Llena la informacion de la nueva parada</td>
+    </tr>
+     <tr>
+      <td>Parada:</td>
+      <td><select name="parada" id="parada">
+      {paradas}
+      </select>      </td>
+    </tr>
+    {id}
+  
+    <tr>
+      <td colspan="2" align="center"><input type="button" name="agregar" id="agregar" value="{tipo_boton}" onclick="validar()" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center" id="mensaje">{error}</td>
+    </tr>
+  </table>
+</form>
+
+</body>
+</html>

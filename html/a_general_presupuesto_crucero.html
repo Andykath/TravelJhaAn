@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<script language="javascript">
+function confirmar() { 
+
+    if(!confirm("¿Esta seguro que desea eliminar el presupuesto?"))
+	{ 
+	 	return false ;
+	}   
+}
+</script>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="932" border="0">
+    <tr>
+      <td height="53" colspan="6" align="right">Modulo para gestionar las presupuestos de Viajes UCAB</td>
+    </tr>
+    <tr>
+      <td align="center" height="21" colspan="6">{crear}</td>
+    </tr>
+    <tr>
+      <td align="center" height="21" colspan="6">{error}</td>
+    </tr>
+    
+    <tr align="center">
+      <td style="border:2px solid #000000;" width="144"><div align="center">Fecha</div></td>
+      <td style="border:2px solid #000000;" width="85"><div align="center">Servicio</div></td>
+       <td style="border:2px solid #000000;" width="89"><div align="center">Paseos</div></td>
+        <td style="border:2px solid #000000;" width="105"><div align="center">Crucero y Habitacion</div></td>
+       <td style="border:2px solid #000000;" width="88"><div align="center">Origen </div></td>
+        <td style="border:2px solid #000000;" width="83"><div align="center">Destino</div></td>
+         <td style="border:2px solid #000000;" width="78"><div align="center">Status</div></td>
+          <td style="border:2px solid #000000;" width="68"><div align="center">Cantidad de Viajeros</div></td>
+           <td style="border:2px solid #000000;" width="72"><div align="center">Total</div></td>
+    </tr>
+    {informacion}
+  </table>
+ 
+  
+  
+
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp; </p>
+</form>
+</body>
+</html>

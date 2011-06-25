@@ -1,0 +1,59 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+</head>
+
+<script language="javascript">
+function confirmar() { 
+
+    if(!confirm("Esta seguro que desea eliminar el paquete?"))
+	{ 
+	 	return false ;
+	}   
+}
+</script>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="932" border="0">
+    <tr>
+      <td height="53" colspan="12" align="center">Estimado usuario, en este modulo usted podra gestionar las reservas aereas. Gracias por preferirnos</td>
+    </tr>
+    <tr>
+      <td align="center" height="21" colspan="12">{crear}</td>
+    </tr>
+    <tr>
+      <td align="center" height="21" colspan="6">{error}</td>
+    </tr>
+      <tr align="center">
+      <td style="border:2px solid #000000;" width="81" height="21">Id reserva</td>
+       <td style="border:2px solid #000000;" width="210"><div align="center">Fecha Reserva</div></td>
+         <td style="border:2px solid #000000;" width="210"><div align="center">Aerolinea</div></td>
+         <td style="border:2px solid #000000;" width="210"><div align="center">Origen</div></td>
+          <td style="border:2px solid #000000;" width="210"><div align="center">Destino</div></td>
+           <td style="border:2px solid #000000;" width="210"><div align="center">Hotel</div></td>
+            <td style="border:2px solid #000000;" width="210"><div align="center">Habitacion</div></td>
+             <td style="border:2px solid #000000;" width="210"><div align="center">Servicio</div></td>
+              <td style="border:2px solid #000000;" width="210"><div align="center">Cant. Personas</div></td>
+              <td style="border:2px solid #000000;" width="210"><div align="center">Abono</div></td>
+               <td style="border:2px solid #000000;" width="210"><div align="center">Total</div></td>
+  
+    
+             
+    </tr>
+    {informacion}
+  </table>
+ 
+  
+  
+
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp; </p>
+</form>
+</body>
+</html>
+

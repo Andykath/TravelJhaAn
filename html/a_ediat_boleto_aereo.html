@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+</head>
+
+
+
+<script language="javascript" type="text/javascript" src="../js/datetimepicker_css.js"></script> 
+<script language="javascript">
+
+
+function validar()
+{
+// el if lo puse ||
+if (document.form1.viaje.value == 'Seleccione' || document.form1.dueño.value == 'Seleccione')
+{
+document.getElementById('mensaje').innerHTML = 'Debe llenar todos los campos!';
+return 0;
+
+}
+
+document.form1.submit();
+
+}
+
+var nav4 = window.Event ? true : false;
+function acceptNum(evt){	
+// NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57	
+var key = nav4 ? evt.which : evt.keyCode;	
+return (key <= 13 || (key >= 48 && key <= 57));
+}
+
+function populate(inForm,selected,dueño,id) {
+
+location.href='a_editar_boleto_aereo.php?selected=' + selected + '&dueño='  + dueño + '&id=' + id;
+}
+function populate0(inForm,dueño,id) {
+
+location.href='a_editar_boleto_aereo.php?dueño='  + dueño + '&id=' + id;
+}
+</script>
+
+<body>
+
+
+{form}
+
+<input type="hidden" name="id_viejo" id="id_viejo" value="{id}" />
+<input type="hidden" name="viaje_vieja" id="viaje_vieja" value="{viaje}" />
+
+<input type="hidden" name="costo_vieja" id="costo_vieja" value="{costo}" />
+<table width="415" border="0">
+    
+    <tr>
+      <td height="35" colspan="2" align="center">Seleccione la nueva Informacion del Boleto</td>
+    </tr>
+    <tr>
+      <td width="203">Id:</td>
+      <td width="202"><input type="text" name="id" id="id" value="{id}" size="2" readonly></td>
+    </tr>
+      <td>Dueño del boleto (Cliente):</td>
+      <td><select name="dueño" id="dueño" onchange="populate0(document.form1, document.form1.dueño.options[document.form1.dueño.selectedIndex].value, document.form1.id.value)">
+      <option selected="selected">Seleccione</option>
+      {dueños}
+      </select>      </td>
+    </tr>
+       <tr>
+      <td>Viaje:</td>
+      <td><select name="viaje" id="viaje" onchange="populate(document.form1, document.form1.viaje.options[document.form1.viaje.selectedIndex].value, document.form1.dueño.options[document.form1.dueño.selectedIndex].value, document.form1.id.value)">
+      <option selected="selected">Seleccione</option>
+      {viajes}
+      </select>      </td>
+    </tr>
+    <tr>
+      <td height="29" colspan="2" align="center" ><strong>Datos del Viaje</strong></td>
+  </tr>
+     <tr>
+     <td height="24">Tipo de viaje:</td>
+     <td id="tipo">{tipo}</td>
+    </tr>
+    <tr>
+     <td height="24">Cantidad de personas:</td>
+     <td id="tipo">{cant}</td>
+    </tr>
+     <tr>
+     <td height="24">Fecha de Partida:</td>
+     <td id="tipo">{fecha}</td>
+    </tr>
+<tr>
+  <tr>
+     <td height="24">Fecha de Llegada:</td>
+     <td id="tipo">{fecha2}</td>
+  </tr>
+	<tr>
+     <td height="24">Aerolinea:</td>
+     <td id="tipo">{aer}</td>
+    </tr>     
+     <tr>
+     <td height="24">Origen:</td>
+     <td id="tipo">{origen}</td>
+    </tr> 
+	<tr>
+     <td height="24">Destino:</td>
+     <td id="tipo">{destino}</td>
+    </tr> 
+    <tr>
+      <td height="33" colspan="2" align="center"><input type="button" name="agregar" id="agregar" value="{tipo_boton}" onclick="validar()" /></td>
+  </tr>
+    <tr>
+      <td colspan="2" align="center" id="mensaje">{error}</td>
+    </tr>
+     <tr>
+      <td colspan="2" align="left" id="mensaje">{aqui}</td>
+    </tr>
+</table>
+</form>
+
+</body>
+</html>
