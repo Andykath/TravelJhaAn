@@ -27,7 +27,7 @@
 	}
 
 	//echo "$ced saad";
-	$result= mysql_query("SELECT p.per_cedula, p.per_nombre1, p.per_cant_millas ,p.per_apellido1, p.per_sexo, p.per_direccion, p.per_fecha_nac, p.per_edo_civil,p.per_nacionalidad, p.per_visa,p.per_pasaporte,p.per_apellido2,p.per_nombre2,u.usu_login,u.usu_id,u.usu_password FROM persona p LEFT JOIN usuario u ON p.per_cedula = u.fk_per_cedula WHERE p.per_tipo='Cliente' AND p.per_cedula='$ced' ORDER BY p.per_cedula");
+	$result= mysql_query("SELECT p.per_cedula, p.per_nombre1 ,p.per_apellido1, p.per_cant_millas, p.per_sexo, p.per_direccion, p.per_fecha_nac, p.per_edo_civil,p.per_nacionalidad, p.per_visa,p.per_pasaporte,p.per_apellido2,p.per_nombre2,u.usu_login,u.usu_id,u.usu_password FROM persona p LEFT JOIN usuario u ON p.per_cedula = u.fk_per_cedula WHERE p.per_tipo='Cliente' AND p.per_cedula='$ced' ORDER BY p.per_cedula");
 	//echo "$row['per_nombre1']";
     $row = mysql_fetch_array($result);
 	$panelmiperfil->add("nombre1",$row['per_nombre1']);
@@ -45,10 +45,10 @@
 	$panelmiperfil->add("login",$row['usu_login']);
 	$panelmiperfil->add("password",$row['usu_password']);
 	$panelmiperfil->add("millas",$row['per_cant_millas']);
-	//$panelmiperfil->add("links",'<a href="../php/a_modificar_empleado.php?nombre1='.$row['per_nombre1'].'&nombre2='.$row['per_nombre2'].'&apellido1='.$row['per_apellido1'].'&apellido2='.$row['per_apellido2'].'&cedula='.$row['per_cedula'].'&direccion='.$row['per_direccion'].'&fechanac='.$row['per_fecha_nac'].'&sexo='.$row['per_sexo'].'&edocivil='.$row['per_aedo_civil'].'&pasaporte='.$row['per_pasaporte'].'&visa='.$row['per_visa'].'&login='.$row['usu_login'].'&password='.$row['usu_password'].'&nacionalidad='.$row['per_nacionalidad'].'">Modificar</a> <a href="../php/a_eliminar_empleado.php?cedula='.$row["per_cedula"].'" onclick="return confirmar()">Eliminar</a>');
+	$panelmiperfil->add("links",'<a href="../php/a_modificar_empleado.php?nombre1='.$row['per_nombre1'].'&nombre2='.$row['per_nombre2'].'&apellido1='.$row['per_apellido1'].'&apellido2='.$row['per_apellido2'].'&cedula='.$row['per_cedula'].'&direccion='.$row['per_direccion'].'&fechanac='.$row['per_fecha_nac'].'&sexo='.$row['per_sexo'].'&edocivil='.$row['per_aedo_civil'].'&pasaporte='.$row['per_pasaporte'].'&visa='.$row['per_visa'].'&login='.$row['usu_login'].'&password='.$row['usu_password'].'&nacionalidad='.$row['per_nacionalidad'].'&millas='.$row['per_cant_millas'].'">Modificar</a> <a href="../php/a_eliminar_empleado.php?cedula='.$row["per_cedula"].'" onclick="return confirmar()">Eliminar</a>');
    
    
-   //$panelmiperfil->add("modif",'<a href="../php/a_telefonos.php?&cedula='.$row['per_cedula'].'">Gestionar</a>');
+   $panelmiperfil->add("modif",'<a href="../php/a_telefonos.php?&cedula='.$row['per_cedula'].'">Gestionar</a>');
 		
    $result6=mysql_query("SELECT t.tel_numero,t.tel_tipo,t.tel_id FROM telefono t WHERE t.fk_per_cedula='$ced'");
 	

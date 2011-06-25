@@ -26,7 +26,7 @@
 			  $row = mysql_fetch_array($result1);
 			  $nacionalidad1=$row[0];
 					//echo "$nombre1, $cedula, $nacionalidad, $login   2";
-					mysql_query("UPDATE `persona` SET  `per_cedula` =  '$cedula', `per_nombre1` =  '$nombre1',`per_nombre2` =  '$nombre2', `per_apellido1`='$apellido1',`per_apellido2` =  '$apellido2',`per_sexo` =  '$sexo',`per_tipo` =  'Empleado',`per_direccion` =  '$direccion',`per_fecha_nac` =  '$fecha',`per_edo_civil` =  '$edocivil',`per_nacionalidad` =  '$nacionalidad1',`per_visa` =  '$visa',`per_pasaporte` =  '$pasaporte' WHERE  `persona`.`per_cedula` = $cedula1");
+					mysql_query("UPDATE `persona` SET  `per_cedula` =  '$cedula', `per_nombre1` =  '$nombre1',`per_nombre2` =  '$nombre2', `per_apellido1`='$apellido1',`per_apellido2` =  '$apellido2',`per_sexo` =  '$sexo',`per_tipo` =  'Empleado',`per_direccion` =  '$direccion',`per_fecha_nac` =  '$fecha',`per_edo_civil` =  '$edocivil',`per_nacionalidad` =  '$nacionalidad1',`per_visa` =  '$visa',`per_pasaporte` =  '$pasaporte', `per_cant_millas` =  '$millas' WHERE  `persona`.`per_cedula` = $cedula1");
 					mysql_query("UPDATE `usuario` SET `usu_login`='$login', `usu_password`='$password' WHERE `fk_per_cedula`=$cedula1");
 					$hola='a_usuarios.php?mensaje=2';
 				    header("Location:$hola");
@@ -42,7 +42,7 @@
 					  $result2= mysql_query("SELECT des_nombre FROM destino WHERE des_id=$nacionalidad");
 			         $row1 = mysql_fetch_array($result2);
 			        $nacionalidad2=$row1[0];
-					  mysql_query("UPDATE `persona` SET  `per_cedula` =  '$cedula', `per_nombre1` =  '$nombre1',`per_nombre2` =  '$nombre2', `per_apellido1`='$apellido1',`per_apellido2` =  '$apellido2',`per_sexo` =  '$sexo',`per_tipo` =  'Empleado',`per_direccion` =  '$direccion',`per_fecha_nac` =  '$fecha',`per_edo_civil` =  '$edocivil',`per_nacionalidad` =  '$nacionalidad2',`per_visa` =  '$visa',`per_pasaporte` =  '$pasaporte' WHERE  `persona`.`per_cedula` = $cedula1");
+					  mysql_query("UPDATE `persona` SET  `per_cedula` =  '$cedula', `per_nombre1` =  '$nombre1',`per_nombre2` =  '$nombre2', `per_apellido1`='$apellido1',`per_apellido2` =  '$apellido2',`per_sexo` =  '$sexo',`per_tipo` =  'Empleado',`per_direccion` =  '$direccion',`per_fecha_nac` =  '$fecha',`per_edo_civil` =  '$edocivil',`per_nacionalidad` =  '$nacionalidad2',`per_visa` =  '$visa',`per_pasaporte` =  '$pasaporte', `per_cant_millas` =  '$millas' WHERE  `persona`.`per_cedula` = $cedula1");
 					  
 					  mysql_query("UPDATE `usuario` SET `usu_login`='$login', `usu_password`='$password' WHERE `fk_per_cedula`=$cedula");	
 					
@@ -78,6 +78,7 @@
 					$panelestadios->add("pasaporte",$pasaporte);
 					$panelestadios->add("login",$login);
 					$panelestadios->add("password",$password);
+					$panelestadios->add("millas",$millas);
 					
 					$panelestadios->add("id",'<tr><td>Id:</td><td>'.$id.'</td></tr>');
 

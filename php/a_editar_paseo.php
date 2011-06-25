@@ -24,7 +24,7 @@
 					{
 					
 					
-					mysql_query("UPDATE `paseo` SET  `pas_nombre` =  '$cue_numero',  `pas_descripcion` =  '$banco',`pas_costo` =  '$banco' WHERE  `paseo`.`pas_id` = $cue_id");
+					mysql_query("UPDATE `paseo` SET  `pas_nombre` =  '$cue_numero',  `pas_descripcion` =  '$banco',`pas_costo` =  '$fecha' WHERE  `paseo`.`pas_id` = $cue_id");
 					
 					$hola='a_paseos.php?mensaje=2';
 				    header("Location:$hola");	

@@ -45,7 +45,7 @@
 	$panelmiperfil->add("login",$row['usu_login']);
 	$panelmiperfil->add("password",$row['usu_password']);
 	$panelmiperfil->add("millas",$row['per_cant_millas']);
-	$panelmiperfil->add("links",'<a href="../php/a_modificar_empleado.php?nombre1='.$row['per_nombre1'].'&nombre2='.$row['per_nombre2'].'&apellido1='.$row['per_apellido1'].'&apellido2='.$row['per_apellido2'].'&cedula='.$row['per_cedula'].'&direccion='.$row['per_direccion'].'&fechanac='.$row['per_fecha_nac'].'&sexo='.$row['per_sexo'].'&edocivil='.$row['per_aedo_civil'].'&pasaporte='.$row['per_pasaporte'].'&visa='.$row['per_visa'].'&login='.$row['usu_login'].'&password='.$row['usu_password'].'&nacionalidad='.$row['per_nacionalidad'].'">Modificar</a> <a href="../php/a_eliminar_empleado.php?cedula='.$row["per_cedula"].'" onclick="return confirmar()">Eliminar</a>');
+	$panelmiperfil->add("links",'<a href="../php/a_modificar_empleado.php?nombre1='.$row['per_nombre1'].'&nombre2='.$row['per_nombre2'].'&apellido1='.$row['per_apellido1'].'&apellido2='.$row['per_apellido2'].'&cedula='.$row['per_cedula'].'&direccion='.$row['per_direccion'].'&fechanac='.$row['per_fecha_nac'].'&sexo='.$row['per_sexo'].'&edocivil='.$row['per_aedo_civil'].'&pasaporte='.$row['per_pasaporte'].'&visa='.$row['per_visa'].'&login='.$row['usu_login'].'&password='.$row['usu_password'].'&nacionalidad='.$row['per_nacionalidad'].'&millas='.$row['per_cant_millas'].'">Modificar</a> <a href="../php/a_eliminar_empleado.php?cedula='.$row["per_cedula"].'" onclick="return confirmar()">Eliminar</a>');
    
    
    $panelmiperfil->add("modif",'<a href="../php/a_telefonos.php?&cedula='.$row['per_cedula'].'">Gestionar</a>');
